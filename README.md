@@ -4,7 +4,7 @@
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://<your-tenant>.apps.selfbits.io/api/v2/<your-tenant>/apps/<your-app>*
+All URIs are relative to *https://YOUR-TENANT.apps.selfbits.io/api/v2/YOUR-TENANT/apps/YOUR-APPLICATION*
 
 
 Class | Method | HTTP request | Description
