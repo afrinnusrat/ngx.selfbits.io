@@ -20,3 +20,4 @@ export interface NewInvite {
     customData?: any;
 
 }
+

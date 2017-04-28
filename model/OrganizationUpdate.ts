@@ -28,3 +28,4 @@ export interface OrganizationUpdate {
     customData?: any;
 
 }
+

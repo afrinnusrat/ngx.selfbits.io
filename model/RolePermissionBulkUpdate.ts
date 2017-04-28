@@ -16,3 +16,4 @@ export interface RolePermissionBulkUpdate {
     update: models.RolePermissionUpdate;
 
 }
+

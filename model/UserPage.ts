@@ -24,3 +24,4 @@ export interface UserPage {
     pages?: number;
 
 }
+

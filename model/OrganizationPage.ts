@@ -24,3 +24,4 @@ export interface OrganizationPage {
     pages?: number;
 
 }
+

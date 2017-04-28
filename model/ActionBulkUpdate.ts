@@ -16,3 +16,4 @@ export interface ActionBulkUpdate {
     update: models.ActionUpdate;
 
 }
+

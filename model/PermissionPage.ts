@@ -24,3 +24,4 @@ export interface PermissionPage {
     pages?: number;
 
 }
+

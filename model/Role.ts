@@ -24,3 +24,4 @@ export interface Role {
     customData?: any;
 
 }
+

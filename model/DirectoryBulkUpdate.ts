@@ -16,3 +16,4 @@ export interface DirectoryBulkUpdate {
     update: models.DirectoryUpdate;
 
 }
+

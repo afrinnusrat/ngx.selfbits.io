@@ -24,3 +24,4 @@ export interface EndpointPage {
     pages?: number;
 
 }
+

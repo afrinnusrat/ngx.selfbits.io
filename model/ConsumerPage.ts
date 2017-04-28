@@ -24,3 +24,4 @@ export interface ConsumerPage {
     pages?: number;
 
 }
+

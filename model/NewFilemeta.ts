@@ -18,3 +18,4 @@ export interface NewFilemeta {
     customData?: any;
 
 }
+

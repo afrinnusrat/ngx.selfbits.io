@@ -26,3 +26,4 @@ export interface AuthorizationResponse {
     organizationId?: string;
 
 }
+

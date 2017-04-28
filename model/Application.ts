@@ -30,3 +30,4 @@ export interface Application {
     customData?: any;
 
 }
+

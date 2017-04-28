@@ -28,3 +28,4 @@ export interface NewClient {
     allowedOrigins?: Array<string>;
 
 }
+

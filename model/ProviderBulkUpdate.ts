@@ -16,3 +16,4 @@ export interface ProviderBulkUpdate {
     update: models.ProviderUpdate;
 
 }
+

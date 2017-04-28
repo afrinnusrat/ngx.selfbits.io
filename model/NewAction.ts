@@ -30,3 +30,4 @@ export interface NewAction {
     customData?: any;
 
 }
+

@@ -24,3 +24,4 @@ export interface InvitePage {
     pages?: number;
 
 }
+

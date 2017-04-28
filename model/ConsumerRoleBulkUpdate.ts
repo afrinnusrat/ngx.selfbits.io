@@ -16,3 +16,4 @@ export interface ConsumerRoleBulkUpdate {
     update: models.ConsumerRoleUpdate;
 
 }
+

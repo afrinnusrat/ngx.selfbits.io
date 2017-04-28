@@ -22,3 +22,4 @@ export interface NewPermission {
     customData?: any;
 
 }
+

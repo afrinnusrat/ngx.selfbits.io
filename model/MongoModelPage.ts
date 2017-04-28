@@ -24,3 +24,4 @@ export interface MongoModelPage {
     pages?: number;
 
 }
+

@@ -16,3 +16,4 @@ export interface InviteBulkUpdate {
     update: models.InviteUpdate;
 
 }
+

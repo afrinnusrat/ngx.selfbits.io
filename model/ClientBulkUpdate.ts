@@ -16,3 +16,4 @@ export interface ClientBulkUpdate {
     update: models.ClientUpdate;
 
 }
+

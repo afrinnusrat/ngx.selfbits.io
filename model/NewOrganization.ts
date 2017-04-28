@@ -30,3 +30,4 @@ export interface NewOrganization {
     customData?: any;
 
 }
+

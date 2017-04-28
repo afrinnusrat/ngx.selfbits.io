@@ -28,3 +28,4 @@ export interface Client {
     allowedOrigins?: Array<string>;
 
 }
+

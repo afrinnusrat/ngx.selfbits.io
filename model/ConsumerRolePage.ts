@@ -24,3 +24,4 @@ export interface ConsumerRolePage {
     pages?: number;
 
 }
+

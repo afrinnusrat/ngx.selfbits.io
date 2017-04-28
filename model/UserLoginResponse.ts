@@ -18,3 +18,4 @@ export interface UserLoginResponse {
     authorization: models.AuthorizationResponse;
 
 }
+

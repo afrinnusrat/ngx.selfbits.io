@@ -38,3 +38,4 @@ export interface User {
     customData?: any;
 
 }
+

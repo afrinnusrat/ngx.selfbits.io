@@ -20,3 +20,4 @@ export interface Tenant {
     domain?: string;
 
 }
+

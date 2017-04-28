@@ -20,3 +20,4 @@ export interface MongoModelUpdate {
     customData?: any;
 
 }
+

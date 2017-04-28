@@ -40,3 +40,4 @@ export interface NewUser {
     customData?: any;
 
 }
+

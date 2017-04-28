@@ -30,3 +30,4 @@ export interface NewProvider {
     customData?: any;
 
 }
+

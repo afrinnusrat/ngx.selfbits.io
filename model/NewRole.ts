@@ -24,3 +24,4 @@ export interface NewRole {
     customData?: any;
 
 }
+

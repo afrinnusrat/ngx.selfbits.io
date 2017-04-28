@@ -36,3 +36,4 @@ export namespace Endpoint {
         DELETE = <any> 'DELETE'
     }
 }
+

@@ -24,3 +24,4 @@ export interface RolePage {
     pages?: number;
 
 }
+

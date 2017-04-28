@@ -20,3 +20,4 @@ export interface TenantCreateResponse {
     authorization?: models.AuthorizationResponse;
 
 }
+

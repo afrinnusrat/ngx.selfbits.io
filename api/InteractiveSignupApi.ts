@@ -19,7 +19,7 @@ import { Observable }                                        from 'rxjs/Observab
 import 'rxjs/add/operator/map';
 
 import * as models                                           from '../model/models';
-import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 /* tslint:disable:no-unused-variable member-ordering */
@@ -27,15 +27,13 @@ import { Configuration }                                     from '../configurat
 
 @Injectable()
 export class InteractiveSignupApi {
-    protected basePath = 'https://selfbits.apps.selfbits.io/api/v2/selfbits/apps/scp';
-    public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
+    public defaultHeaders: Headers = new Headers();
 
-    constructor(protected http: Http, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
-        if (basePath) {
-        }
+    constructor(protected http: Http, @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
+            this.defaultHeaders = new Headers({'Authorization': this.configuration.apiKey});
         }
     }
 

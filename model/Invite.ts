@@ -20,3 +20,4 @@ export interface Invite {
     customData?: any;
 
 }
+

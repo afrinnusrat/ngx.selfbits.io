@@ -22,3 +22,4 @@ export interface RoleUpdate {
     customData?: any;
 
 }
+

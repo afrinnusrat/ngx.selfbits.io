@@ -22,3 +22,4 @@ export interface NewApplication {
     customData?: any;
 
 }
+

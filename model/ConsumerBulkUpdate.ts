@@ -16,3 +16,4 @@ export interface ConsumerBulkUpdate {
     update: models.ConsumerUpdate;
 
 }
+

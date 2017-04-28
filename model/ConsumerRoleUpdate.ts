@@ -18,3 +18,4 @@ export interface ConsumerRoleUpdate {
     roleId?: string;
 
 }
+

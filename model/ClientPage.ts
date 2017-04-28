@@ -24,3 +24,4 @@ export interface ClientPage {
     pages?: number;
 
 }
+

@@ -22,3 +22,4 @@ export interface NewMongoModel {
     customData?: any;
 
 }
+

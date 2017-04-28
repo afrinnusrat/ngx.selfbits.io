@@ -20,3 +20,4 @@ export interface ConsumerRole {
     roleId?: string;
 
 }
+

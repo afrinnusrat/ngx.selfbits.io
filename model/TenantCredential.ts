@@ -18,3 +18,4 @@ export interface TenantCredential {
     authorization?: models.AuthorizationResponse;
 
 }
+

@@ -30,3 +30,4 @@ export interface Filemeta {
     customData?: any;
 
 }
+

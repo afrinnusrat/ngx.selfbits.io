@@ -16,3 +16,4 @@ export interface OrganizationBulkUpdate {
     update: models.OrganizationUpdate;
 
 }
+

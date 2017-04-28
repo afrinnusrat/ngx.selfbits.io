@@ -16,3 +16,4 @@ export interface UserBulkUpdate {
     update: models.UserUpdate;
 
 }
+

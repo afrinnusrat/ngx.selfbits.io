@@ -16,3 +16,4 @@ export interface MongoModelBulkUpdate {
     update: models.MongoModelUpdate;
 
 }
+

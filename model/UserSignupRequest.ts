@@ -30,3 +30,4 @@ export interface UserSignupRequest {
     customData?: any;
 
 }
+

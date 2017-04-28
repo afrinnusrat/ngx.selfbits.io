@@ -24,3 +24,4 @@ export interface RolePermissionPage {
     pages?: number;
 
 }
+

@@ -16,3 +16,4 @@ export interface EndpointBulkUpdate {
     update: models.EndpointUpdate;
 
 }
+

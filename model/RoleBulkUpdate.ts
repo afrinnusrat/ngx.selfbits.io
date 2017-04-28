@@ -16,3 +16,4 @@ export interface RoleBulkUpdate {
     update: models.RoleUpdate;
 
 }
+

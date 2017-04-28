@@ -22,3 +22,4 @@ export interface Permission {
     customData?: any;
 
 }
+
