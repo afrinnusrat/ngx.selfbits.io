@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 
-import { Filemeta } from './model/Filemeta';
-import { FilemetasApi } from './api/FilemetasApi';
+import { Filemeta } from '../model/Filemeta';
+import { FilemetasApi } from '../api/FilemetasApi';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
