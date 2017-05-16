@@ -1,0 +1,48 @@
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+__export(require("./ActionsApi"));
+var ActionsApi_1 = require("./ActionsApi");
+__export(require("./ApplicationsApi"));
+var ApplicationsApi_1 = require("./ApplicationsApi");
+__export(require("./ClientsApi"));
+var ClientsApi_1 = require("./ClientsApi");
+__export(require("./ConsumersApi"));
+var ConsumersApi_1 = require("./ConsumersApi");
+__export(require("./DirectoriesApi"));
+var DirectoriesApi_1 = require("./DirectoriesApi");
+__export(require("./EmailVerificationApi"));
+var EmailVerificationApi_1 = require("./EmailVerificationApi");
+__export(require("./EndpointsApi"));
+var EndpointsApi_1 = require("./EndpointsApi");
+__export(require("./FilesApi"));
+var FilesApi_1 = require("./FilesApi");
+__export(require("./InteractiveViewsApi"));
+var InteractiveViewsApi_1 = require("./InteractiveViewsApi");
+__export(require("./InvitesApi"));
+var InvitesApi_1 = require("./InvitesApi");
+__export(require("./LoginApi"));
+var LoginApi_1 = require("./LoginApi");
+__export(require("./MongoDataApi"));
+var MongoDataApi_1 = require("./MongoDataApi");
+__export(require("./MongoDatabasesApi"));
+var MongoDatabasesApi_1 = require("./MongoDatabasesApi");
+__export(require("./MongoModelsApi"));
+var MongoModelsApi_1 = require("./MongoModelsApi");
+__export(require("./OrganizationsApi"));
+var OrganizationsApi_1 = require("./OrganizationsApi");
+__export(require("./PasswordResetApi"));
+var PasswordResetApi_1 = require("./PasswordResetApi");
+__export(require("./ProvidersApi"));
+var ProvidersApi_1 = require("./ProvidersApi");
+__export(require("./RolesApi"));
+var RolesApi_1 = require("./RolesApi");
+__export(require("./SignupApi"));
+var SignupApi_1 = require("./SignupApi");
+__export(require("./TenantsApi"));
+var TenantsApi_1 = require("./TenantsApi");
+__export(require("./UsersApi"));
+var UsersApi_1 = require("./UsersApi");
+exports.APIS = [ActionsApi_1.ActionsApi, ApplicationsApi_1.ApplicationsApi, ClientsApi_1.ClientsApi, ConsumersApi_1.ConsumersApi, DirectoriesApi_1.DirectoriesApi, EmailVerificationApi_1.EmailVerificationApi, EndpointsApi_1.EndpointsApi, FilesApi_1.FilesApi, InteractiveViewsApi_1.InteractiveViewsApi, InvitesApi_1.InvitesApi, LoginApi_1.LoginApi, MongoDataApi_1.MongoDataApi, MongoDatabasesApi_1.MongoDatabasesApi, MongoModelsApi_1.MongoModelsApi, OrganizationsApi_1.OrganizationsApi, PasswordResetApi_1.PasswordResetApi, ProvidersApi_1.ProvidersApi, RolesApi_1.RolesApi, SignupApi_1.SignupApi, TenantsApi_1.TenantsApi, UsersApi_1.UsersApi];
+//# sourceMappingURL=api.js.map

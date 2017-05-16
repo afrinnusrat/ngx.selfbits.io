@@ -1,0 +1,30 @@
+import { Http, Headers } from '@angular/http';
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import * as models from '../model/models';
+import { Configuration } from '../configuration';
+export declare class FilesApi {
+    protected http: Http;
+    configuration: Configuration;
+    defaultHeaders: Headers;
+    constructor(http: Http, configuration: Configuration);
+    browse(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs>;
+    browse_1(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs>;
+    createPrivate(file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse>;
+    createPublic(file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse>;
+    deleteOne(fileId: string, extraHttpRequestParams?: any): Observable<{}>;
+    query(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.FilePage>;
+    readOne(fileId?: string, filePath?: string, extraHttpRequestParams?: any): Observable<models.File>;
+    updateOne(fileId: string, updatedFile: models.FileUpdate, extraHttpRequestParams?: any): Observable<models.File>;
+    verifyUpload(fileId: string, etagObject: models.FileVerificationRequest, extraHttpRequestParams?: any): Observable<models.File>;
+    browseWithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response>;
+    browse_1WithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response>;
+    createPrivateWithHttpInfo(file?: models.NewFile, extraHttpRequestParams?: any): Observable<Response>;
+    createPublicWithHttpInfo(file?: models.NewFile, extraHttpRequestParams?: any): Observable<Response>;
+    deleteOneWithHttpInfo(fileId: string, extraHttpRequestParams?: any): Observable<Response>;
+    queryWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response>;
+    readOneWithHttpInfo(fileId?: string, filePath?: string, extraHttpRequestParams?: any): Observable<Response>;
+    updateOneWithHttpInfo(fileId: string, updatedFile: models.FileUpdate, extraHttpRequestParams?: any): Observable<Response>;
+    verifyUploadWithHttpInfo(fileId: string, etagObject: models.FileVerificationRequest, extraHttpRequestParams?: any): Observable<Response>;
+}

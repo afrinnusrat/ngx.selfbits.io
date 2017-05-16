@@ -1,0 +1,30 @@
+import { Http, Headers } from '@angular/http';
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import * as models from '../model/models';
+import { Configuration } from '../configuration';
+export declare class OrganizationsApi {
+    protected http: Http;
+    configuration: Configuration;
+    defaultHeaders: Headers;
+    constructor(http: Http, configuration: Configuration);
+    organizationsBulkPost(organizations?: models.NewOrganizationArray, extraHttpRequestParams?: any): Observable<models.OrganizationArray>;
+    organizationsDelete(filter: string, extraHttpRequestParams?: any): Observable<models.BulkDeleteResponse>;
+    organizationsGet(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, _public?: boolean, extraHttpRequestParams?: any): Observable<models.OrganizationPage>;
+    organizationsOrganizationIdDelete(organizationId: string, extraHttpRequestParams?: any): Observable<{}>;
+    organizationsOrganizationIdGet(organizationId: string, extraHttpRequestParams?: any): Observable<models.Organization>;
+    organizationsOrganizationIdInvitesPost(organizationId: string, extraHttpRequestParams?: any): Observable<models.Organization>;
+    organizationsOrganizationIdPut(organizationId: string, updatedOrganization: models.OrganizationUpdate, extraHttpRequestParams?: any): Observable<models.Organization>;
+    organizationsPost(organization?: models.NewOrganization, extraHttpRequestParams?: any): Observable<models.Organization>;
+    organizationsPut(filter: string, organizationBulkUpdate: models.OrganizationBulkUpdate, extraHttpRequestParams?: any): Observable<models.BulkUpdateResponse>;
+    organizationsBulkPostWithHttpInfo(organizations?: models.NewOrganizationArray, extraHttpRequestParams?: any): Observable<Response>;
+    organizationsDeleteWithHttpInfo(filter: string, extraHttpRequestParams?: any): Observable<Response>;
+    organizationsGetWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, _public?: boolean, extraHttpRequestParams?: any): Observable<Response>;
+    organizationsOrganizationIdDeleteWithHttpInfo(organizationId: string, extraHttpRequestParams?: any): Observable<Response>;
+    organizationsOrganizationIdGetWithHttpInfo(organizationId: string, extraHttpRequestParams?: any): Observable<Response>;
+    organizationsOrganizationIdInvitesPostWithHttpInfo(organizationId: string, extraHttpRequestParams?: any): Observable<Response>;
+    organizationsOrganizationIdPutWithHttpInfo(organizationId: string, updatedOrganization: models.OrganizationUpdate, extraHttpRequestParams?: any): Observable<Response>;
+    organizationsPostWithHttpInfo(organization?: models.NewOrganization, extraHttpRequestParams?: any): Observable<Response>;
+    organizationsPutWithHttpInfo(filter: string, organizationBulkUpdate: models.OrganizationBulkUpdate, extraHttpRequestParams?: any): Observable<Response>;
+}

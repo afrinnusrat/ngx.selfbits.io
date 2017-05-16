@@ -1,0 +1,30 @@
+import { Http, Headers } from '@angular/http';
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import * as models from '../model/models';
+import { Configuration } from '../configuration';
+export declare class ActionsApi {
+    protected http: Http;
+    configuration: Configuration;
+    defaultHeaders: Headers;
+    constructor(http: Http, configuration: Configuration);
+    actionsActionIdDelete(actionId: string, extraHttpRequestParams?: any): Observable<{}>;
+    actionsActionIdExecPost(actionId: string, payload?: models.ActionExecutionRequestPayload, extraHttpRequestParams?: any): Observable<models.ActionExecutionResponse>;
+    actionsActionIdGet(actionId: string, extraHttpRequestParams?: any): Observable<models.Action>;
+    actionsActionIdPut(actionId: string, updatedAction: models.ActionUpdate, extraHttpRequestParams?: any): Observable<models.Action>;
+    actionsBulkPost(actions?: models.NewActionArray, extraHttpRequestParams?: any): Observable<models.ActionArray>;
+    actionsDelete(filter: string, extraHttpRequestParams?: any): Observable<models.BulkDeleteResponse>;
+    actionsGet(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.ActionPage>;
+    actionsPost(action?: models.NewAction, extraHttpRequestParams?: any): Observable<models.Action>;
+    actionsPut(filter: string, actionBulkUpdate: models.ActionBulkUpdate, extraHttpRequestParams?: any): Observable<models.BulkUpdateResponse>;
+    actionsActionIdDeleteWithHttpInfo(actionId: string, extraHttpRequestParams?: any): Observable<Response>;
+    actionsActionIdExecPostWithHttpInfo(actionId: string, payload?: models.ActionExecutionRequestPayload, extraHttpRequestParams?: any): Observable<Response>;
+    actionsActionIdGetWithHttpInfo(actionId: string, extraHttpRequestParams?: any): Observable<Response>;
+    actionsActionIdPutWithHttpInfo(actionId: string, updatedAction: models.ActionUpdate, extraHttpRequestParams?: any): Observable<Response>;
+    actionsBulkPostWithHttpInfo(actions?: models.NewActionArray, extraHttpRequestParams?: any): Observable<Response>;
+    actionsDeleteWithHttpInfo(filter: string, extraHttpRequestParams?: any): Observable<Response>;
+    actionsGetWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response>;
+    actionsPostWithHttpInfo(action?: models.NewAction, extraHttpRequestParams?: any): Observable<Response>;
+    actionsPutWithHttpInfo(filter: string, actionBulkUpdate: models.ActionBulkUpdate, extraHttpRequestParams?: any): Observable<Response>;
+}

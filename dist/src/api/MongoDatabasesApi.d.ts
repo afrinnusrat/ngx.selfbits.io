@@ -1,0 +1,30 @@
+import { Http, Headers } from '@angular/http';
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import * as models from '../model/models';
+import { Configuration } from '../configuration';
+export declare class MongoDatabasesApi {
+    protected http: Http;
+    configuration: Configuration;
+    defaultHeaders: Headers;
+    constructor(http: Http, configuration: Configuration);
+    mDbBulkPost(mongoDatabases?: models.NewMongoDatabaseArray, extraHttpRequestParams?: any): Observable<models.MongoDatabaseArray>;
+    mDbDelete(filter: string, extraHttpRequestParams?: any): Observable<models.BulkDeleteResponse>;
+    mDbGet(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.MongoDatabasePage>;
+    mDbMongoDatabaseIdDelete(mongoDatabaseId: string, extraHttpRequestParams?: any): Observable<{}>;
+    mDbMongoDatabaseIdGet(mongoDatabaseId: string, extraHttpRequestParams?: any): Observable<models.MongoDatabase>;
+    mDbMongoDatabaseIdPut(mongoDatabaseId: string, updatedMongoDatabase: models.MongoDatabaseUpdate, extraHttpRequestParams?: any): Observable<models.MongoDatabase>;
+    mDbMongoDatabaseIdTestPost(mongoDatabaseId: string, extraHttpRequestParams?: any): Observable<models.MongoDatabaseTestResponse>;
+    mDbPost(mongoDatabase?: models.NewMongoDatabase, extraHttpRequestParams?: any): Observable<models.MongoDatabase>;
+    mDbPut(filter: string, mongoDatabaseBulkUpdate: models.MongoDatabaseBulkUpdate, extraHttpRequestParams?: any): Observable<models.BulkUpdateResponse>;
+    mDbBulkPostWithHttpInfo(mongoDatabases?: models.NewMongoDatabaseArray, extraHttpRequestParams?: any): Observable<Response>;
+    mDbDeleteWithHttpInfo(filter: string, extraHttpRequestParams?: any): Observable<Response>;
+    mDbGetWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response>;
+    mDbMongoDatabaseIdDeleteWithHttpInfo(mongoDatabaseId: string, extraHttpRequestParams?: any): Observable<Response>;
+    mDbMongoDatabaseIdGetWithHttpInfo(mongoDatabaseId: string, extraHttpRequestParams?: any): Observable<Response>;
+    mDbMongoDatabaseIdPutWithHttpInfo(mongoDatabaseId: string, updatedMongoDatabase: models.MongoDatabaseUpdate, extraHttpRequestParams?: any): Observable<Response>;
+    mDbMongoDatabaseIdTestPostWithHttpInfo(mongoDatabaseId: string, extraHttpRequestParams?: any): Observable<Response>;
+    mDbPostWithHttpInfo(mongoDatabase?: models.NewMongoDatabase, extraHttpRequestParams?: any): Observable<Response>;
+    mDbPutWithHttpInfo(filter: string, mongoDatabaseBulkUpdate: models.MongoDatabaseBulkUpdate, extraHttpRequestParams?: any): Observable<Response>;
+}

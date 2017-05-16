@@ -1,0 +1,30 @@
+import { Http, Headers } from '@angular/http';
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import * as models from '../model/models';
+import { Configuration } from '../configuration';
+export declare class MongoModelsApi {
+    protected http: Http;
+    configuration: Configuration;
+    defaultHeaders: Headers;
+    constructor(http: Http, configuration: Configuration);
+    mModelsBulkPost(mongoModels?: models.NewMongoModelArray, extraHttpRequestParams?: any): Observable<models.MongoModelArray>;
+    mModelsDelete(filter: string, extraHttpRequestParams?: any): Observable<models.BulkDeleteResponse>;
+    mModelsGet(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.MongoModelPage>;
+    mModelsMongoModelIdDelete(mongoModelId: string, extraHttpRequestParams?: any): Observable<{}>;
+    mModelsMongoModelIdGet(mongoModelId: string, extraHttpRequestParams?: any): Observable<models.MongoModel>;
+    mModelsMongoModelIdPut(mongoModelId: string, updatedMongoModel: models.MongoModelUpdate, extraHttpRequestParams?: any): Observable<models.MongoModel>;
+    mModelsPost(mongoModel: models.NewMongoModel, extraHttpRequestParams?: any): Observable<models.MongoModel>;
+    mModelsPut(filter: string, mongoModelBulkUpdate: models.MongoModelBulkUpdate, extraHttpRequestParams?: any): Observable<models.BulkUpdateResponse>;
+    mModelsValidatePost(mongoModel: models.MongoModel, extraHttpRequestParams?: any): Observable<models.MongoModelValidationResponse>;
+    mModelsBulkPostWithHttpInfo(mongoModels?: models.NewMongoModelArray, extraHttpRequestParams?: any): Observable<Response>;
+    mModelsDeleteWithHttpInfo(filter: string, extraHttpRequestParams?: any): Observable<Response>;
+    mModelsGetWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response>;
+    mModelsMongoModelIdDeleteWithHttpInfo(mongoModelId: string, extraHttpRequestParams?: any): Observable<Response>;
+    mModelsMongoModelIdGetWithHttpInfo(mongoModelId: string, extraHttpRequestParams?: any): Observable<Response>;
+    mModelsMongoModelIdPutWithHttpInfo(mongoModelId: string, updatedMongoModel: models.MongoModelUpdate, extraHttpRequestParams?: any): Observable<Response>;
+    mModelsPostWithHttpInfo(mongoModel: models.NewMongoModel, extraHttpRequestParams?: any): Observable<Response>;
+    mModelsPutWithHttpInfo(filter: string, mongoModelBulkUpdate: models.MongoModelBulkUpdate, extraHttpRequestParams?: any): Observable<Response>;
+    mModelsValidatePostWithHttpInfo(mongoModel: models.MongoModel, extraHttpRequestParams?: any): Observable<Response>;
+}
