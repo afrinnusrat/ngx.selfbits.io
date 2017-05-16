@@ -37,7 +37,7 @@ Method | HTTP request | Description
 
 <a name="usersBulkPost"></a>
 # **usersBulkPost**
-> models.UserArray usersBulkPost(opts)
+> models.UserArray usersBulkPost(users)
 
 
 
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersBulkPost(users?: models.NewUserArray ).subscribe(
+    this.apiInstance.usersBulkPost(users: models.NewUserArray ).subscribe(
       data => console.log(res),
       err => console.log(err)
     )
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **users** | [**models.NewUserArray**](NewUserArray.md)| Multiple users | [optional] 
+ **users** | [**models.NewUserArray**](NewUserArray.md)| Multiple users | 
 
 ### Return type
 
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 <a name="usersPost"></a>
 # **usersPost**
-> models.User usersPost(opts)
+> models.User usersPost(user)
 
 
 
@@ -196,7 +196,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersPost(user?: models.NewUser ).subscribe(
+    this.apiInstance.usersPost(user: models.NewUser ).subscribe(
       data => console.log(res),
       err => console.log(err)
     )
@@ -208,7 +208,7 @@ export class AppComponent implements OnInit {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**models.NewUser**](NewUser.md)| Your new user | [optional] 
+ **user** | [**models.NewUser**](NewUser.md)| Your new user | 
 
 ### Return type
 

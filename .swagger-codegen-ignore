@@ -22,12 +22,15 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
-api.module.ts
+src/api.module.ts
+src/variables.ts
+src/configuration.ts
+src/services
 index.ts
+index.d.ts
 variables.ts
 configuration.ts
 package.json
 tsconfig.json
 typings.json
 .gitignore
-sbconfigservice.ts

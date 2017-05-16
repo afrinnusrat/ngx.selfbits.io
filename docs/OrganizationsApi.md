@@ -147,7 +147,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.organizationsGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string _public?: boolean ).subscribe(
       data => console.log(res),
       err => console.log(err)
     )
@@ -164,6 +164,7 @@ Name | Type | Description  | Notes
  **filter** | **string**| Sequelize filter object like {\&quot;isPublic\&quot;: \&quot;true\&quot;} | [optional] 
  **sort** | **string**| Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 } | [optional] 
  **select** | **string**| Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 } | [optional] 
+ **_public** | **boolean**| Fixed filter for public organizations | [optional] 
 
 ### Return type
 

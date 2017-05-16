@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 <a name="signupDirectoryDirectoryIdPost"></a>
 # **signupDirectoryDirectoryIdPost**
-> models.UserSignupResponse signupDirectoryDirectoryIdPost(sbClientIddirectoryIdopts)
+> models.UserSignupResponse signupDirectoryDirectoryIdPost(sbClientIddirectoryIdsignupRequestopts)
 
 Signup with specific directory
 
@@ -103,7 +103,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.signupDirectoryDirectoryIdPost(sbClientId: string directoryId: string sbClientSecret?: string invite?: string returnCredentials?: boolean signupRequest?: models.UserSignupRequest ).subscribe(
+    this.apiInstance.signupDirectoryDirectoryIdPost(sbClientId: string directoryId: string signupRequest: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
       data => console.log(res),
       err => console.log(err)
     )
@@ -117,10 +117,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sbClientId** | **string**| Your application client id | 
  **directoryId** | **string**| the directory of the new user | 
+ **signupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | 
  **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
  **returnCredentials** | **boolean**| if true, return the credentials in the signup response | [optional] 
- **signupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | [optional] 
 
 ### Return type
 
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="signupOrganizationOrganizationIdDirectoryDirectoryIdPost"></a>
 # **signupOrganizationOrganizationIdDirectoryDirectoryIdPost**
-> models.UserSignupResponse signupOrganizationOrganizationIdDirectoryDirectoryIdPost(sbClientIdorganizationIddirectoryIdopts)
+> models.UserSignupResponse signupOrganizationOrganizationIdDirectoryDirectoryIdPost(sbClientIdorganizationIddirectoryIdsignupRequestopts)
 
 Signup with specific organization and a specific directory
 
@@ -203,7 +203,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.signupOrganizationOrganizationIdDirectoryDirectoryIdPost(sbClientId: string organizationId: string directoryId: string sbClientSecret?: string invite?: string returnCredentials?: boolean signupRequest?: models.UserSignupRequest ).subscribe(
+    this.apiInstance.signupOrganizationOrganizationIdDirectoryDirectoryIdPost(sbClientId: string organizationId: string directoryId: string signupRequest: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
       data => console.log(res),
       err => console.log(err)
     )
@@ -218,10 +218,10 @@ Name | Type | Description  | Notes
  **sbClientId** | **string**| Your application client id | 
  **organizationId** | **string**| the organization of the new user | 
  **directoryId** | **string**| the directory of the new user | 
+ **signupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | 
  **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
  **returnCredentials** | **boolean**| if true, return the credentials in the signup response | [optional] 
- **signupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | [optional] 
 
 ### Return type
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 <a name="signupOrganizationOrganizationIdPost"></a>
 # **signupOrganizationOrganizationIdPost**
-> models.UserSignupResponse signupOrganizationOrganizationIdPost(sbClientIdorganizationIdopts)
+> models.UserSignupResponse signupOrganizationOrganizationIdPost(sbClientIdorganizationIdsignupRequestopts)
 
 Signup with specific organization and its default directory
 
@@ -255,7 +255,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.signupOrganizationOrganizationIdPost(sbClientId: string organizationId: string sbClientSecret?: string invite?: string returnCredentials?: boolean signupRequest?: models.UserSignupRequest ).subscribe(
+    this.apiInstance.signupOrganizationOrganizationIdPost(sbClientId: string organizationId: string signupRequest: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
       data => console.log(res),
       err => console.log(err)
     )
@@ -269,10 +269,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sbClientId** | **string**| Your application client id | 
  **organizationId** | **string**| the organization of the new user | 
+ **signupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | 
  **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
  **returnCredentials** | **boolean**| if true, return the credentials in the signup response | [optional] 
- **signupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | [optional] 
 
 ### Return type
 
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 <a name="signupPost"></a>
 # **signupPost**
-> models.UserSignupResponse signupPost(sbClientIdopts)
+> models.UserSignupResponse signupPost(sbClientIdprofileopts)
 
 Signup with default organization and its default directory
 
@@ -358,7 +358,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.signupPost(sbClientId: string sbClientSecret?: string invite?: string returnCredentials?: boolean profile?: models.UserSignupRequest ).subscribe(
+    this.apiInstance.signupPost(sbClientId: string profile: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
       data => console.log(res),
       err => console.log(err)
     )
@@ -371,10 +371,10 @@ export class AppComponent implements OnInit {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sbClientId** | **string**| Your application client id | 
+ **profile** | [**models.UserSignupRequest**](UserSignupRequest.md)| New user&#39;s profile | 
  **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
  **returnCredentials** | **boolean**| if true, return the credentials in the signup response | [optional] 
- **profile** | [**models.UserSignupRequest**](UserSignupRequest.md)| New user&#39;s profile | [optional] 
 
 ### Return type
 
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 
 <a name="signupProviderProviderIdPost"></a>
 # **signupProviderProviderIdPost**
-> models.UserSignupResponse signupProviderProviderIdPost(sbClientIdproviderIdopts)
+> models.UserSignupResponse signupProviderProviderIdPost(sbClientIdproviderIdsignupRequestopts)
 
 Signup with default organization and a directory depending on the specified provider
 
@@ -408,7 +408,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.signupProviderProviderIdPost(sbClientId: string providerId: string sbClientSecret?: string invite?: string returnCredentials?: boolean signupRequest?: models.UserSignupRequest ).subscribe(
+    this.apiInstance.signupProviderProviderIdPost(sbClientId: string providerId: string signupRequest: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
       data => console.log(res),
       err => console.log(err)
     )
@@ -422,10 +422,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sbClientId** | **string**| Your application client id | 
  **providerId** | **string**| the provider of a directory of the new user | 
+ **signupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | 
  **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
  **returnCredentials** | **boolean**| if true, return the credentials in the signup response | [optional] 
- **signupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | [optional] 
 
 ### Return type
 

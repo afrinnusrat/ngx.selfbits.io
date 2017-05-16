@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional] [default to null]
 **userId** | **string** |  | [optional] [default to null]
 **directoryId** | **string** |  | [optional] [default to null]
+**organizationId** | **string** |  | [optional] [default to null]
 **accountId** | **string** |  | [optional] [default to null]
 **accountPassword** | **string** |  | [optional] [default to null]
 **primaryEmail** | **string** |  | [optional] [default to null]

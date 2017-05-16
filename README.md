@@ -74,7 +74,6 @@ Class | Method | HTTP request | Description
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *EmailVerificationApi* | [**emailsVerificationPost**](docs/EmailVerificationApi.md#emailsVerificationPost) | **RequestMethod.Post** /emails/verification | 
-*EmailVerificationApi* | [**emailsVerifyGet**](docs/EmailVerificationApi.md#emailsVerifyGet) | **RequestMethod.Get** /emails/verify | 
 
 
 
@@ -95,45 +94,39 @@ Class | Method | HTTP request | Description
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*FilemetasApi* | [**filemetasFilemetaIdDelete**](docs/FilemetasApi.md#filemetasFilemetaIdDelete) | **RequestMethod.Delete** /filemetas/${filemetaId} | 
-*FilemetasApi* | [**filemetasFilemetaIdGet**](docs/FilemetasApi.md#filemetasFilemetaIdGet) | **RequestMethod.Get** /filemetas/${filemetaId} | 
-*FilemetasApi* | [**filemetasFilemetaIdPut**](docs/FilemetasApi.md#filemetasFilemetaIdPut) | **RequestMethod.Put** /filemetas/${filemetaId} | 
-*FilemetasApi* | [**filemetasFilemetaIdVerifyPost**](docs/FilemetasApi.md#filemetasFilemetaIdVerifyPost) | **RequestMethod.Post** /filemetas/${filemetaId}/verify | 
-*FilemetasApi* | [**filemetasGet**](docs/FilemetasApi.md#filemetasGet) | **RequestMethod.Get** /filemetas | 
-*FilemetasApi* | [**filemetasPost**](docs/FilemetasApi.md#filemetasPost) | **RequestMethod.Post** /filemetas | 
+*FilesApi* | [**browse**](docs/FilesApi.md#browse) | **RequestMethod.Get** /files/browse/public | browse file path
+*FilesApi* | [**browse_0**](docs/FilesApi.md#browse_0) | **RequestMethod.Get** /files/browse/private | browse file path
+*FilesApi* | [**createPrivate**](docs/FilesApi.md#createPrivate) | **RequestMethod.Post** /files/private | initialize private file upload
+*FilesApi* | [**createPublic**](docs/FilesApi.md#createPublic) | **RequestMethod.Post** /files/public | initialize public file upload
+*FilesApi* | [**deleteOne**](docs/FilesApi.md#deleteOne) | **RequestMethod.Delete** /files/${fileId} | delete existing file
+*FilesApi* | [**query**](docs/FilesApi.md#query) | **RequestMethod.Get** /files | query files
+*FilesApi* | [**readOne**](docs/FilesApi.md#readOne) | **RequestMethod.Get** /files/file | Read existing file by id or by filePath
+*FilesApi* | [**updateOne**](docs/FilesApi.md#updateOne) | **RequestMethod.Put** /files/${fileId} | Update customData of an existing file
+*FilesApi* | [**verifyUpload**](docs/FilesApi.md#verifyUpload) | **RequestMethod.Post** /files/${fileId}/verify | verify the successful file upload
 
 
 
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*InteractiveAuthenticationApi* | [**authDirectoryDirectoryIdGet**](docs/InteractiveAuthenticationApi.md#authDirectoryDirectoryIdGet) | **RequestMethod.Get** /auth/directory/${directoryId} | Interactive user authentication with external provider
-*InteractiveAuthenticationApi* | [**authOrganizationOrganizationIdDirectoryDirectoryIdGet**](docs/InteractiveAuthenticationApi.md#authOrganizationOrganizationIdDirectoryDirectoryIdGet) | **RequestMethod.Get** /auth/organization/${organizationId}/directory/${directoryId} | Interactive user authentication using specific organization and directory
-*InteractiveAuthenticationApi* | [**authOrganizationOrganizationIdProviderProviderIdGet**](docs/InteractiveAuthenticationApi.md#authOrganizationOrganizationIdProviderProviderIdGet) | **RequestMethod.Get** /auth/organization/${organizationId}/provider/${providerId} | Interactive user authentication using specific organization and a specific provider
-*InteractiveAuthenticationApi* | [**authProviderProviderIdGet**](docs/InteractiveAuthenticationApi.md#authProviderProviderIdGet) | **RequestMethod.Get** /auth/provider/${providerId} | Interactive user authentication with external provider
-
-
-
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*InteractiveLoginApi* | [**loginDirectoryDirectoryIdGet**](docs/InteractiveLoginApi.md#loginDirectoryDirectoryIdGet) | **RequestMethod.Get** /login/directory/${directoryId} | 
-*InteractiveLoginApi* | [**loginGet**](docs/InteractiveLoginApi.md#loginGet) | **RequestMethod.Get** /login | 
-*InteractiveLoginApi* | [**loginOrganizationOrganizationIdDirectoryDirectoryIdGet**](docs/InteractiveLoginApi.md#loginOrganizationOrganizationIdDirectoryDirectoryIdGet) | **RequestMethod.Get** /login/organization/${organizationId}/directory/${directoryId} | Interactive user login with specific organization and a specific directory
-*InteractiveLoginApi* | [**loginOrganizationOrganizationIdGet**](docs/InteractiveLoginApi.md#loginOrganizationOrganizationIdGet) | **RequestMethod.Get** /login/organization/${organizationId} | Interactive user login with default organization and its default directory
-*InteractiveLoginApi* | [**loginOrganizationOrganizationIdProviderProviderIdGet**](docs/InteractiveLoginApi.md#loginOrganizationOrganizationIdProviderProviderIdGet) | **RequestMethod.Get** /login/organization/${organizationId}/provider/${providerId} | Interactive user login with specific organization and specific provider
-
-
-
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*InteractiveSignupApi* | [**signupDirectoryDirectoryIdGet**](docs/InteractiveSignupApi.md#signupDirectoryDirectoryIdGet) | **RequestMethod.Get** /signup/directory/${directoryId} | Interactive user signup with a specific directory
-*InteractiveSignupApi* | [**signupGet**](docs/InteractiveSignupApi.md#signupGet) | **RequestMethod.Get** /signup | Interactive user signup with default organization and its default directory
-*InteractiveSignupApi* | [**signupOrganizationOrganizationIdDirectoryDirectoryIdGet**](docs/InteractiveSignupApi.md#signupOrganizationOrganizationIdDirectoryDirectoryIdGet) | **RequestMethod.Get** /signup/organization/${organizationId}/directory/${directoryId} | Interactive user signup with specific organization and a specific directory
-*InteractiveSignupApi* | [**signupOrganizationOrganizationIdGet**](docs/InteractiveSignupApi.md#signupOrganizationOrganizationIdGet) | **RequestMethod.Get** /signup/organization/${organizationId} | Interactive user signup with specified organization and its default directory
-*InteractiveSignupApi* | [**signupOrganizationOrganizationIdProviderProviderIdGet**](docs/InteractiveSignupApi.md#signupOrganizationOrganizationIdProviderProviderIdGet) | **RequestMethod.Get** /signup/organization/${organizationId}/provider/${providerId} | Interactive user signup with specific organization and specific provider
-*InteractiveSignupApi* | [**signupProviderProviderIdGet**](docs/InteractiveSignupApi.md#signupProviderProviderIdGet) | **RequestMethod.Get** /signup/provider/${providerId} | Interactive user signup with default organization and a directory depending on specified provider
+*InteractiveViewsApi* | [**authDirectoryDirectoryIdGet**](docs/InteractiveViewsApi.md#authDirectoryDirectoryIdGet) | **RequestMethod.Get** /auth/directory/${directoryId} | Interactive user authentication with external provider
+*InteractiveViewsApi* | [**authOrganizationOrganizationIdDirectoryDirectoryIdGet**](docs/InteractiveViewsApi.md#authOrganizationOrganizationIdDirectoryDirectoryIdGet) | **RequestMethod.Get** /auth/organization/${organizationId}/directory/${directoryId} | Interactive user authentication using specific organization and directory
+*InteractiveViewsApi* | [**authOrganizationOrganizationIdProviderProviderIdGet**](docs/InteractiveViewsApi.md#authOrganizationOrganizationIdProviderProviderIdGet) | **RequestMethod.Get** /auth/organization/${organizationId}/provider/${providerId} | Interactive user authentication using specific organization and a specific provider
+*InteractiveViewsApi* | [**authProviderProviderIdGet**](docs/InteractiveViewsApi.md#authProviderProviderIdGet) | **RequestMethod.Get** /auth/provider/${providerId} | Interactive user authentication with external provider
+*InteractiveViewsApi* | [**emailsVerifyGet**](docs/InteractiveViewsApi.md#emailsVerifyGet) | **RequestMethod.Get** /emails/verify | 
+*InteractiveViewsApi* | [**loginDirectoryDirectoryIdGet**](docs/InteractiveViewsApi.md#loginDirectoryDirectoryIdGet) | **RequestMethod.Get** /login/directory/${directoryId} | 
+*InteractiveViewsApi* | [**loginGet**](docs/InteractiveViewsApi.md#loginGet) | **RequestMethod.Get** /login | 
+*InteractiveViewsApi* | [**loginOrganizationOrganizationIdDirectoryDirectoryIdGet**](docs/InteractiveViewsApi.md#loginOrganizationOrganizationIdDirectoryDirectoryIdGet) | **RequestMethod.Get** /login/organization/${organizationId}/directory/${directoryId} | Interactive user login with specific organization and a specific directory
+*InteractiveViewsApi* | [**loginOrganizationOrganizationIdGet**](docs/InteractiveViewsApi.md#loginOrganizationOrganizationIdGet) | **RequestMethod.Get** /login/organization/${organizationId} | Interactive user login with default organization and its default directory
+*InteractiveViewsApi* | [**loginOrganizationOrganizationIdProviderProviderIdGet**](docs/InteractiveViewsApi.md#loginOrganizationOrganizationIdProviderProviderIdGet) | **RequestMethod.Get** /login/organization/${organizationId}/provider/${providerId} | Interactive user login with specific organization and specific provider
+*InteractiveViewsApi* | [**passwordResetCallbackGet**](docs/InteractiveViewsApi.md#passwordResetCallbackGet) | **RequestMethod.Get** /password/reset/callback | 
+*InteractiveViewsApi* | [**passwordResetGet**](docs/InteractiveViewsApi.md#passwordResetGet) | **RequestMethod.Get** /password/reset | 
+*InteractiveViewsApi* | [**signupDirectoryDirectoryIdGet**](docs/InteractiveViewsApi.md#signupDirectoryDirectoryIdGet) | **RequestMethod.Get** /signup/directory/${directoryId} | Interactive user signup with a specific directory
+*InteractiveViewsApi* | [**signupGet**](docs/InteractiveViewsApi.md#signupGet) | **RequestMethod.Get** /signup | Interactive user signup with default organization and its default directory
+*InteractiveViewsApi* | [**signupOrganizationOrganizationIdDirectoryDirectoryIdGet**](docs/InteractiveViewsApi.md#signupOrganizationOrganizationIdDirectoryDirectoryIdGet) | **RequestMethod.Get** /signup/organization/${organizationId}/directory/${directoryId} | Interactive user signup with specific organization and a specific directory
+*InteractiveViewsApi* | [**signupOrganizationOrganizationIdGet**](docs/InteractiveViewsApi.md#signupOrganizationOrganizationIdGet) | **RequestMethod.Get** /signup/organization/${organizationId} | Interactive user signup with specified organization and its default directory
+*InteractiveViewsApi* | [**signupOrganizationOrganizationIdProviderProviderIdGet**](docs/InteractiveViewsApi.md#signupOrganizationOrganizationIdProviderProviderIdGet) | **RequestMethod.Get** /signup/organization/${organizationId}/provider/${providerId} | Interactive user signup with specific organization and specific provider
+*InteractiveViewsApi* | [**signupProviderProviderIdGet**](docs/InteractiveViewsApi.md#signupProviderProviderIdGet) | **RequestMethod.Get** /signup/provider/${providerId} | Interactive user signup with default organization and a directory depending on specified provider
 
 
 
@@ -218,6 +211,14 @@ Class | Method | HTTP request | Description
 *OrganizationsApi* | [**organizationsOrganizationIdPut**](docs/OrganizationsApi.md#organizationsOrganizationIdPut) | **RequestMethod.Put** /organizations/${organizationId} | 
 *OrganizationsApi* | [**organizationsPost**](docs/OrganizationsApi.md#organizationsPost) | **RequestMethod.Post** /organizations | 
 *OrganizationsApi* | [**organizationsPut**](docs/OrganizationsApi.md#organizationsPut) | **RequestMethod.Put** /organizations | 
+
+
+
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*PasswordResetApi* | [**passwordResetPost**](docs/PasswordResetApi.md#passwordResetPost) | **RequestMethod.Post** /password/reset | password reset
+*PasswordResetApi* | [**triggerPasswordReset**](docs/PasswordResetApi.md#triggerPasswordReset) | **RequestMethod.Post** /password/reset/trigger | trigger password reset by email
 
 
 
@@ -333,10 +334,12 @@ Class | Method | HTTP request | Description
  - [EndpointBulkUpdate](docs/EndpointBulkUpdate.md)
  - [EndpointPage](docs/EndpointPage.md)
  - [EndpointUpdate](docs/EndpointUpdate.md)
- - [Filemeta](docs/Filemeta.md)
- - [FilemetaPage](docs/FilemetaPage.md)
- - [FilemetaUpdate](docs/FilemetaUpdate.md)
- - [FilemetaVerificationRequest](docs/FilemetaVerificationRequest.md)
+ - [File](docs/File.md)
+ - [FileBrowserDoc](docs/FileBrowserDoc.md)
+ - [FileBrowserDocs](docs/FileBrowserDocs.md)
+ - [FilePage](docs/FilePage.md)
+ - [FileUpdate](docs/FileUpdate.md)
+ - [FileVerificationRequest](docs/FileVerificationRequest.md)
  - [Invite](docs/Invite.md)
  - [InviteArray](docs/InviteArray.md)
  - [InviteBulkUpdate](docs/InviteBulkUpdate.md)
@@ -374,8 +377,8 @@ Class | Method | HTTP request | Description
  - [NewDirectoryArray](docs/NewDirectoryArray.md)
  - [NewEndpoint](docs/NewEndpoint.md)
  - [NewEndpointArray](docs/NewEndpointArray.md)
- - [NewFilemeta](docs/NewFilemeta.md)
- - [NewFilemetaResponse](docs/NewFilemetaResponse.md)
+ - [NewFile](docs/NewFile.md)
+ - [NewFileResponse](docs/NewFileResponse.md)
  - [NewInvite](docs/NewInvite.md)
  - [NewInviteArray](docs/NewInviteArray.md)
  - [NewMongoData](docs/NewMongoData.md)
@@ -412,6 +415,8 @@ Class | Method | HTTP request | Description
  - [ProviderBulkUpdate](docs/ProviderBulkUpdate.md)
  - [ProviderPage](docs/ProviderPage.md)
  - [ProviderUpdate](docs/ProviderUpdate.md)
+ - [ResetPasswordRequest](docs/ResetPasswordRequest.md)
+ - [ResetPasswordResponse](docs/ResetPasswordResponse.md)
  - [Role](docs/Role.md)
  - [RoleArray](docs/RoleArray.md)
  - [RoleBulkUpdate](docs/RoleBulkUpdate.md)
@@ -422,6 +427,8 @@ Class | Method | HTTP request | Description
  - [RolePermissionPage](docs/RolePermissionPage.md)
  - [RolePermissionUpdate](docs/RolePermissionUpdate.md)
  - [RoleUpdate](docs/RoleUpdate.md)
+ - [SendPasswordResetEmailRequest](docs/SendPasswordResetEmailRequest.md)
+ - [SendPasswordResetEmailResponse](docs/SendPasswordResetEmailResponse.md)
  - [SendVerificationEmailRequest](docs/SendVerificationEmailRequest.md)
  - [SendVerificationEmailResponse](docs/SendVerificationEmailResponse.md)
  - [Tenant](docs/Tenant.md)

@@ -26,7 +26,6 @@ All URIs are relative to *https://YOUR-TENANT.apps.selfbits.io/api/v2/YOUR-TENAN
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**emailsVerificationPost**](EmailVerificationApi.md#emailsVerificationPost) | **RequestMethod.Post** /emails/verification | 
-[**emailsVerifyGet**](EmailVerificationApi.md#emailsVerifyGet) | **RequestMethod.Get** /emails/verify | 
 
 
 <a name="emailsVerificationPost"></a>
@@ -61,53 +60,6 @@ export class AppComponent implements OnInit {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sendVerificationEmailRequest** | [**models.SendVerificationEmailRequest**](SendVerificationEmailRequest.md)| Email you want to verifiy | 
-
-### Return type
-
-[**models.SendVerificationEmailResponse**](models.SendVerificationEmailResponse.md)
-
-### Authorization
-
-[ConsumerSecurity](../README.md#ConsumerSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="emailsVerifyGet"></a>
-# **emailsVerifyGet**
-> models.SendVerificationEmailResponse emailsVerifyGet(emailcode)
-
-
-
-Verify email
-
-### Example
-```typescript
-import { EmailVerificationApi } from 'ngx.selfbits.io';
-
-@Component({ selector: 'app-root', templateUrl: './app.component.html' })
-export class AppComponent implements OnInit {
-  constructor(
-    private apiInstance: EmailVerificationApi
-  ) { }
-
-  ngOnInit() {
-    this.apiInstance.emailsVerifyGet(email: string code: string ).subscribe(
-      data => console.log(res),
-      err => console.log(err)
-    )
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Email you want to verifiy | 
- **code** | **string**| Code that was generated for the email verification | 
 
 ### Return type
 

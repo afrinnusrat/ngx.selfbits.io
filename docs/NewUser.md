@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **lastName** | **string** |  | [optional] [default to null]
 **phone** | **string** |  | [optional] [default to null]
 **gender** | **string** |  | [optional] [default to null]
-**password** | **string** |  | [optional] [default to null]
 **picture** | **string** |  | [optional] [default to null]
 **utcOffset** | **number** |  | [optional] [default to null]
 **languageCode** | **string** |  | [optional] [default to null]
