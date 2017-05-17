@@ -9,6 +9,14 @@ export declare class ApplicationsApi {
     configuration: Configuration;
     defaultHeaders: Headers;
     constructor(http: Http, configuration: Configuration);
+    /**
+     *
+     * Returns current application
+     */
     rootGet(extraHttpRequestParams?: any): Observable<models.Application>;
+    /**
+     *
+     * Returns current application
+     */
     rootGetWithHttpInfo(extraHttpRequestParams?: any): Observable<Response>;
 }

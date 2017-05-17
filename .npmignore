@@ -5,6 +5,7 @@
 nbproject
 manifest.mf
 build.xml
+.npmrc
 node_modules/*
 npm-debug.log
 *.ts
@@ -17,6 +18,8 @@ coverage
 !bundles/*.js
 
 src/
+
+/dist/compiled
 
 #################
 ## JetBrains

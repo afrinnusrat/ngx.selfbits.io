@@ -1,22 +1,16 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var http_1 = require("@angular/http");
 var configuration_1 = require("./configuration");
 var services_1 = require("./services/services");
 var api_1 = require("./api/api");
-var Selfbits = Selfbits_1 = (function () {
+var Selfbits = (function () {
     function Selfbits() {
     }
     Selfbits.forRoot = function (configuration) {
         return {
-            ngModule: Selfbits_1,
+            ngModule: Selfbits,
             providers: [
                 { provide: configuration_1.Configuration, useValue: configuration }
             ]
@@ -24,14 +18,15 @@ var Selfbits = Selfbits_1 = (function () {
     };
     return Selfbits;
 }());
-Selfbits = Selfbits_1 = __decorate([
-    core_1.NgModule({
-        imports: [common_1.CommonModule, http_1.HttpModule],
-        declarations: [],
-        exports: [],
-        providers: api_1.APIS.concat(services_1.SERVICES)
-    })
-], Selfbits);
+Selfbits.decorators = [
+    { type: core_1.NgModule, args: [{
+                imports: [common_1.CommonModule, http_1.HttpModule],
+                declarations: [],
+                exports: [],
+                providers: api_1.APIS.concat(services_1.SERVICES)
+            },] },
+];
+/** @nocollapse */
+Selfbits.ctorParameters = function () { return []; };
 exports.Selfbits = Selfbits;
-var Selfbits_1;
 //# sourceMappingURL=api.module.js.map

@@ -34,3 +34,4 @@ package.json
 tsconfig.json
 typings.json
 .gitignore
+.npmignore

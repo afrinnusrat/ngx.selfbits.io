@@ -1,5 +1,13 @@
-wwwroot/*.js
 node_modules
 yarn-error.log
-npm-debug.log
+npm-debug.log.*
 .npmrc
+*.log
+/typings/
+
+/dist/
+*.metadata.json
+*.map.js
+*.ngFactory.ts
+*.ngsummary.json
+**/.vscode

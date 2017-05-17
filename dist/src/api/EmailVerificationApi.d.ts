@@ -9,6 +9,16 @@ export declare class EmailVerificationApi {
     configuration: Configuration;
     defaultHeaders: Headers;
     constructor(http: Http, configuration: Configuration);
+    /**
+     *
+     * Trigger email verification
+     * @param sendVerificationEmailRequest Email you want to verifiy
+     */
     emailsVerificationPost(sendVerificationEmailRequest: models.SendVerificationEmailRequest, extraHttpRequestParams?: any): Observable<models.SendVerificationEmailResponse>;
+    /**
+     *
+     * Trigger email verification
+     * @param sendVerificationEmailRequest Email you want to verifiy
+     */
     emailsVerificationPostWithHttpInfo(sendVerificationEmailRequest: models.SendVerificationEmailRequest, extraHttpRequestParams?: any): Observable<Response>;
 }
