@@ -5,14 +5,16 @@ var http_1 = require("@angular/http");
 var configuration_1 = require("./configuration");
 var services_1 = require("./services/services");
 var api_1 = require("./api/api");
+var initConfiguration;
 var Selfbits = (function () {
     function Selfbits() {
     }
     Selfbits.forRoot = function (configuration) {
+        initConfiguration = new configuration_1.Configuration(configuration);
         return {
             ngModule: Selfbits,
             providers: [
-                { provide: configuration_1.Configuration, useValue: configuration }
+                { provide: configuration_1.Configuration, useValue: initConfiguration }
             ]
         };
     };
