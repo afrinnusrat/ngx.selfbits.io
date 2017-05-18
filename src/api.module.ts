@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import { Configuration } from './configuration';
 import { SERVICES } from './services/services';
 import { APIS } from './api/api';
-let initConfiguration: Configuration;
 
 @NgModule({
 	imports: [CommonModule, HttpModule],
@@ -14,11 +13,10 @@ let initConfiguration: Configuration;
 })
 export class Selfbits {
 	public static forRoot(configuration: Configuration): ModuleWithProviders {
-		initConfiguration = new Configuration(configuration);
 		return {
 			ngModule: Selfbits,
 			providers: [
-				{ provide: Configuration, useValue: initConfiguration }
+				{ provide: Configuration, useValue: configuration }
 			]
 		}
 	}
