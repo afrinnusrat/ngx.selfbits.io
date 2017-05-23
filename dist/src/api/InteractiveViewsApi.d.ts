@@ -14,40 +14,36 @@ export declare class InteractiveViewsApi {
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    authDirectoryDirectoryIdGet(sbClientId: string, directoryId: string, randomState: string, sbClientSecret?: string, invite?: string, extraHttpRequestParams?: any): Observable<{}>;
+    authDirectoryDirectoryIdGet(sbClientId: string, directoryId: string, randomState: string, invite?: string, extraHttpRequestParams?: any): Observable<{}>;
     /**
      * Interactive user authentication using specific organization and directory
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    authOrganizationOrganizationIdDirectoryDirectoryIdGet(sbClientId: string, directoryId: string, randomState: string, sbClientSecret?: string, invite?: string, extraHttpRequestParams?: any): Observable<{}>;
+    authOrganizationOrganizationIdDirectoryDirectoryIdGet(sbClientId: string, directoryId: string, randomState: string, invite?: string, extraHttpRequestParams?: any): Observable<{}>;
     /**
      * Interactive user authentication using specific organization and a specific provider
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    authOrganizationOrganizationIdProviderProviderIdGet(sbClientId: string, directoryId: string, randomState: string, sbClientSecret?: string, invite?: string, extraHttpRequestParams?: any): Observable<{}>;
+    authOrganizationOrganizationIdProviderProviderIdGet(sbClientId: string, directoryId: string, randomState: string, invite?: string, extraHttpRequestParams?: any): Observable<{}>;
     /**
      * Interactive user authentication with external provider
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
-     * @param directoryId the directory of the new user
+     * @param providerId the provider of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    authProviderProviderIdGet(sbClientId: string, directoryId: string, randomState: string, sbClientSecret?: string, invite?: string, extraHttpRequestParams?: any): Observable<{}>;
+    authProviderProviderIdGet(sbClientId: string, providerId: string, randomState: string, invite?: string, extraHttpRequestParams?: any): Observable<{}>;
     /**
      *
      * Verify email
@@ -106,10 +102,10 @@ export declare class InteractiveViewsApi {
     /**
      *
      * Reset password
-     * @param accountId Target accountId of a password reset
+     * @param email Target email of a password reset
      * @param code Code that was generated for the password reset process
      */
-    passwordResetGet(accountId: string, code: string, extraHttpRequestParams?: any): Observable<{}>;
+    passwordResetGet(email: string, code: string, extraHttpRequestParams?: any): Observable<{}>;
     /**
      * Interactive user signup with a specific directory
      * Interactive user signup with default directory
@@ -171,40 +167,36 @@ export declare class InteractiveViewsApi {
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    authDirectoryDirectoryIdGetWithHttpInfo(sbClientId: string, directoryId: string, randomState: string, sbClientSecret?: string, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
+    authDirectoryDirectoryIdGetWithHttpInfo(sbClientId: string, directoryId: string, randomState: string, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * Interactive user authentication using specific organization and directory
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    authOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo(sbClientId: string, directoryId: string, randomState: string, sbClientSecret?: string, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
+    authOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo(sbClientId: string, directoryId: string, randomState: string, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * Interactive user authentication using specific organization and a specific provider
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    authOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo(sbClientId: string, directoryId: string, randomState: string, sbClientSecret?: string, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
+    authOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo(sbClientId: string, directoryId: string, randomState: string, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * Interactive user authentication with external provider
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
-     * @param directoryId the directory of the new user
+     * @param providerId the provider of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    authProviderProviderIdGetWithHttpInfo(sbClientId: string, directoryId: string, randomState: string, sbClientSecret?: string, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
+    authProviderProviderIdGetWithHttpInfo(sbClientId: string, providerId: string, randomState: string, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
     /**
      *
      * Verify email
@@ -263,10 +255,10 @@ export declare class InteractiveViewsApi {
     /**
      *
      * Reset password
-     * @param accountId Target accountId of a password reset
+     * @param email Target email of a password reset
      * @param code Code that was generated for the password reset process
      */
-    passwordResetGetWithHttpInfo(accountId: string, code: string, extraHttpRequestParams?: any): Observable<Response>;
+    passwordResetGetWithHttpInfo(email: string, code: string, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * Interactive user signup with a specific directory
      * Interactive user signup with default directory

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
@@ -32,11 +33,10 @@ var InteractiveViewsApi = (function () {
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authDirectoryDirectoryIdGet = function (sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams) {
-        return this.authDirectoryDirectoryIdGetWithHttpInfo(sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.authDirectoryDirectoryIdGet = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+        return this.authDirectoryDirectoryIdGetWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -52,11 +52,10 @@ var InteractiveViewsApi = (function () {
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authOrganizationOrganizationIdDirectoryDirectoryIdGet = function (sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams) {
-        return this.authOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo(sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.authOrganizationOrganizationIdDirectoryDirectoryIdGet = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+        return this.authOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -72,11 +71,10 @@ var InteractiveViewsApi = (function () {
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authOrganizationOrganizationIdProviderProviderIdGet = function (sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams) {
-        return this.authOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo(sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.authOrganizationOrganizationIdProviderProviderIdGet = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+        return this.authOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -90,13 +88,12 @@ var InteractiveViewsApi = (function () {
      * Interactive user authentication with external provider
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
-     * @param directoryId the directory of the new user
+     * @param providerId the provider of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authProviderProviderIdGet = function (sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams) {
-        return this.authProviderProviderIdGetWithHttpInfo(sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.authProviderProviderIdGet = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
+        return this.authProviderProviderIdGetWithHttpInfo(sbClientId, providerId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -234,11 +231,11 @@ var InteractiveViewsApi = (function () {
     /**
      *
      * Reset password
-     * @param accountId Target accountId of a password reset
+     * @param email Target email of a password reset
      * @param code Code that was generated for the password reset process
      */
-    InteractiveViewsApi.prototype.passwordResetGet = function (accountId, code, extraHttpRequestParams) {
-        return this.passwordResetGetWithHttpInfo(accountId, code, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.passwordResetGet = function (email, code, extraHttpRequestParams) {
+        return this.passwordResetGetWithHttpInfo(email, code, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -369,10 +366,9 @@ var InteractiveViewsApi = (function () {
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.authDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/auth/directory/${directoryId}'
             .replace('${' + 'directoryId' + '}', String(directoryId));
         var queryParameters = new http_1.URLSearchParams();
@@ -391,9 +387,6 @@ var InteractiveViewsApi = (function () {
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
-        }
-        if (sbClientSecret !== undefined) {
-            queryParameters.set('sb-client-secret', sbClientSecret);
         }
         if (randomState !== undefined) {
             queryParameters.set('randomState', randomState);
@@ -428,10 +421,9 @@ var InteractiveViewsApi = (function () {
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.authOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/auth/organization/${organizationId}/directory/${directoryId}'
             .replace('${' + 'directoryId' + '}', String(directoryId));
         var queryParameters = new http_1.URLSearchParams();
@@ -450,9 +442,6 @@ var InteractiveViewsApi = (function () {
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
-        }
-        if (sbClientSecret !== undefined) {
-            queryParameters.set('sb-client-secret', sbClientSecret);
         }
         if (randomState !== undefined) {
             queryParameters.set('randomState', randomState);
@@ -487,10 +476,9 @@ var InteractiveViewsApi = (function () {
      * @param sbClientId Your application client id
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.authOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/auth/organization/${organizationId}/provider/${providerId}'
             .replace('${' + 'directoryId' + '}', String(directoryId));
         var queryParameters = new http_1.URLSearchParams();
@@ -509,9 +497,6 @@ var InteractiveViewsApi = (function () {
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
-        }
-        if (sbClientSecret !== undefined) {
-            queryParameters.set('sb-client-secret', sbClientSecret);
         }
         if (randomState !== undefined) {
             queryParameters.set('randomState', randomState);
@@ -544,23 +529,22 @@ var InteractiveViewsApi = (function () {
      * Interactive user authentication with external provider
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
-     * @param directoryId the directory of the new user
+     * @param providerId the provider of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param sbClientSecret Your application client secret
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authProviderProviderIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, sbClientSecret, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.authProviderProviderIdGetWithHttpInfo = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/auth/provider/${providerId}'
-            .replace('${' + 'directoryId' + '}', String(directoryId));
+            .replace('${' + 'providerId' + '}', String(providerId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
             throw new Error('Required parameter sbClientId was null or undefined when calling authProviderProviderIdGet.');
         }
-        // verify required parameter 'directoryId' is not null or undefined
-        if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling authProviderProviderIdGet.');
+        // verify required parameter 'providerId' is not null or undefined
+        if (providerId === null || providerId === undefined) {
+            throw new Error('Required parameter providerId was null or undefined when calling authProviderProviderIdGet.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
@@ -568,9 +552,6 @@ var InteractiveViewsApi = (function () {
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
-        }
-        if (sbClientSecret !== undefined) {
-            queryParameters.set('sb-client-secret', sbClientSecret);
         }
         if (randomState !== undefined) {
             queryParameters.set('randomState', randomState);
@@ -933,23 +914,23 @@ var InteractiveViewsApi = (function () {
     /**
      *
      * Reset password
-     * @param accountId Target accountId of a password reset
+     * @param email Target email of a password reset
      * @param code Code that was generated for the password reset process
      */
-    InteractiveViewsApi.prototype.passwordResetGetWithHttpInfo = function (accountId, code, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.passwordResetGetWithHttpInfo = function (email, code, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/password/reset';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'accountId' is not null or undefined
-        if (accountId === null || accountId === undefined) {
-            throw new Error('Required parameter accountId was null or undefined when calling passwordResetGet.');
+        // verify required parameter 'email' is not null or undefined
+        if (email === null || email === undefined) {
+            throw new Error('Required parameter email was null or undefined when calling passwordResetGet.');
         }
         // verify required parameter 'code' is not null or undefined
         if (code === null || code === undefined) {
             throw new Error('Required parameter code was null or undefined when calling passwordResetGet.');
         }
-        if (accountId !== undefined) {
-            queryParameters.set('accountId', accountId);
+        if (email !== undefined) {
+            queryParameters.set('email', email);
         }
         if (code !== undefined) {
             queryParameters.set('code', code);

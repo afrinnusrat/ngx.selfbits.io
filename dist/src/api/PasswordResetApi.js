@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
@@ -45,7 +46,7 @@ var PasswordResetApi = (function () {
     /**
      * trigger password reset by email
      * request an email to reset a password of a user
-     * @param sendPasswordResetEmailRequest accountId (email or username) of your user
+     * @param sendPasswordResetEmailRequest verified email address of the user
      */
     PasswordResetApi.prototype.triggerPasswordReset = function (sendPasswordResetEmailRequest, extraHttpRequestParams) {
         return this.triggerPasswordResetWithHttpInfo(sendPasswordResetEmailRequest, extraHttpRequestParams)
@@ -99,7 +100,7 @@ var PasswordResetApi = (function () {
     /**
      * trigger password reset by email
      * request an email to reset a password of a user
-     * @param sendPasswordResetEmailRequest accountId (email or username) of your user
+     * @param sendPasswordResetEmailRequest verified email address of the user
      */
     PasswordResetApi.prototype.triggerPasswordResetWithHttpInfo = function (sendPasswordResetEmailRequest, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/password/reset/trigger';

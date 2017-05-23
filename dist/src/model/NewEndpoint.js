@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var NewEndpoint;
 (function (NewEndpoint) {
     var MethodEnum;

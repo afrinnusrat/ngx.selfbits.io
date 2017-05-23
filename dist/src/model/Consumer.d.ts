@@ -5,7 +5,7 @@ export interface Consumer {
     organizationId?: string;
     accountId?: string;
     accountPassword?: string;
-    primaryEmail?: string;
-    primaryEmailVerified?: boolean;
+    accountEmail?: string;
+    accountEmailVerified?: boolean;
     customData?: any;
 }

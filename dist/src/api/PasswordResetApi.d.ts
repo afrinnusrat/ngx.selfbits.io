@@ -18,7 +18,7 @@ export declare class PasswordResetApi {
     /**
      * trigger password reset by email
      * request an email to reset a password of a user
-     * @param sendPasswordResetEmailRequest accountId (email or username) of your user
+     * @param sendPasswordResetEmailRequest verified email address of the user
      */
     triggerPasswordReset(sendPasswordResetEmailRequest: models.SendPasswordResetEmailRequest, extraHttpRequestParams?: any): Observable<models.SendPasswordResetEmailResponse>;
     /**
@@ -30,7 +30,7 @@ export declare class PasswordResetApi {
     /**
      * trigger password reset by email
      * request an email to reset a password of a user
-     * @param sendPasswordResetEmailRequest accountId (email or username) of your user
+     * @param sendPasswordResetEmailRequest verified email address of the user
      */
     triggerPasswordResetWithHttpInfo(sendPasswordResetEmailRequest: models.SendPasswordResetEmailRequest, extraHttpRequestParams?: any): Observable<Response>;
 }

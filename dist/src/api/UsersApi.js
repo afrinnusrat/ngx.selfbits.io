@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
@@ -26,6 +27,22 @@ var UsersApi = (function () {
             this.defaultHeaders = new http_1.Headers({ 'Authorization': this.configuration.apiKey });
         }
     }
+    /**
+     *
+     * change user password
+     * @param changePasswordRequest change password request
+     */
+    UsersApi.prototype.changePassword = function (changePasswordRequest, extraHttpRequestParams) {
+        return this.changePasswordWithHttpInfo(changePasswordRequest, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
     /**
      *
      * Create multiple new users
@@ -159,6 +176,42 @@ var UsersApi = (function () {
                 return response.json();
             }
         });
+    };
+    /**
+     *
+     * change user password
+     * @param changePasswordRequest change password request
+     */
+    UsersApi.prototype.changePasswordWithHttpInfo = function (changePasswordRequest, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/users/me/changepassword';
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'changePasswordRequest' is not null or undefined
+        if (changePasswordRequest === null || changePasswordRequest === undefined) {
+            throw new Error('Required parameter changePasswordRequest was null or undefined when calling changePassword.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            body: changePasswordRequest == null ? '' : JSON.stringify(changePasswordRequest),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
     };
     /**
      *

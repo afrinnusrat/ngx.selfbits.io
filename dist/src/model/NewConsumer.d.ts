@@ -4,7 +4,6 @@ export interface NewConsumer {
     directoryId: string;
     accountId: string;
     accountPassword: string;
-    primaryEmail?: string;
-    primaryEmailVerified?: boolean;
+    accountEmail?: string;
     customData?: any;
 }

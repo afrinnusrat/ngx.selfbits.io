@@ -11,6 +11,12 @@ export declare class UsersApi {
     constructor(http: Http, configuration: Configuration);
     /**
      *
+     * change user password
+     * @param changePasswordRequest change password request
+     */
+    changePassword(changePasswordRequest: models.ChangePasswordRequest, extraHttpRequestParams?: any): Observable<models.ChangePasswordResponse>;
+    /**
+     *
      * Create multiple new users
      * @param users Multiple users
      */
@@ -63,6 +69,12 @@ export declare class UsersApi {
      * @param updatedUser updated user
      */
     usersUserIdPut(userId: string, updatedUser: models.UserUpdate, extraHttpRequestParams?: any): Observable<models.User>;
+    /**
+     *
+     * change user password
+     * @param changePasswordRequest change password request
+     */
+    changePasswordWithHttpInfo(changePasswordRequest: models.ChangePasswordRequest, extraHttpRequestParams?: any): Observable<Response>;
     /**
      *
      * Create multiple new users

@@ -1,3 +1,3 @@
 export interface SendPasswordResetEmailRequest {
-    accountId?: string;
+    email?: string;
 }

@@ -1,5 +1,5 @@
 export interface ResetPasswordRequest {
-    accountId?: string;
+    email?: string;
     code?: string;
     password?: string;
 }

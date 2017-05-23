@@ -10,4 +10,5 @@
  * Do not edit the class manually.
  */
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 //# sourceMappingURL=EndpointUpdate.js.map

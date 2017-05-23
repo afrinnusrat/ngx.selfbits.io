@@ -2,6 +2,7 @@
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
+Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./ActionsApi"));
 var ActionsApi_1 = require("./ActionsApi");
 __export(require("./ApplicationsApi"));
@@ -22,6 +23,8 @@ __export(require("./InteractiveViewsApi"));
 var InteractiveViewsApi_1 = require("./InteractiveViewsApi");
 __export(require("./InvitesApi"));
 var InvitesApi_1 = require("./InvitesApi");
+__export(require("./JoinApi"));
+var JoinApi_1 = require("./JoinApi");
 __export(require("./LoginApi"));
 var LoginApi_1 = require("./LoginApi");
 __export(require("./MongoDataApi"));
@@ -44,5 +47,5 @@ __export(require("./TenantsApi"));
 var TenantsApi_1 = require("./TenantsApi");
 __export(require("./UsersApi"));
 var UsersApi_1 = require("./UsersApi");
-exports.APIS = [ActionsApi_1.ActionsApi, ApplicationsApi_1.ApplicationsApi, ClientsApi_1.ClientsApi, ConsumersApi_1.ConsumersApi, DirectoriesApi_1.DirectoriesApi, EmailVerificationApi_1.EmailVerificationApi, EndpointsApi_1.EndpointsApi, FilesApi_1.FilesApi, InteractiveViewsApi_1.InteractiveViewsApi, InvitesApi_1.InvitesApi, LoginApi_1.LoginApi, MongoDataApi_1.MongoDataApi, MongoDatabasesApi_1.MongoDatabasesApi, MongoModelsApi_1.MongoModelsApi, OrganizationsApi_1.OrganizationsApi, PasswordResetApi_1.PasswordResetApi, ProvidersApi_1.ProvidersApi, RolesApi_1.RolesApi, SignupApi_1.SignupApi, TenantsApi_1.TenantsApi, UsersApi_1.UsersApi];
+exports.APIS = [ActionsApi_1.ActionsApi, ApplicationsApi_1.ApplicationsApi, ClientsApi_1.ClientsApi, ConsumersApi_1.ConsumersApi, DirectoriesApi_1.DirectoriesApi, EmailVerificationApi_1.EmailVerificationApi, EndpointsApi_1.EndpointsApi, FilesApi_1.FilesApi, InteractiveViewsApi_1.InteractiveViewsApi, InvitesApi_1.InvitesApi, JoinApi_1.JoinApi, LoginApi_1.LoginApi, MongoDataApi_1.MongoDataApi, MongoDatabasesApi_1.MongoDatabasesApi, MongoModelsApi_1.MongoModelsApi, OrganizationsApi_1.OrganizationsApi, PasswordResetApi_1.PasswordResetApi, ProvidersApi_1.ProvidersApi, RolesApi_1.RolesApi, SignupApi_1.SignupApi, TenantsApi_1.TenantsApi, UsersApi_1.UsersApi];
 //# sourceMappingURL=api.js.map
