@@ -5,7 +5,7 @@ npm-debug.log.*
 *.log
 /typings/
 
-/dist/
+/dist/compiled
 *.metadata.json
 *.map.js
 *.ngFactory.ts
