@@ -17,7 +17,7 @@ export interface User {
 
     email?: string;
 
-    emailVerified?: string;
+    emailVerified?: boolean;
 
     username?: string;
 
