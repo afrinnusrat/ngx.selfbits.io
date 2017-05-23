@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.tenantsGet().subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -96,7 +96,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.tenantsPost(tenant: models.NewTenant ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -142,7 +142,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.tenantsTenantIdApplicationsApplicationIdDelete(tenantId: string applicationId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -189,7 +189,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.tenantsTenantIdApplicationsGet(tenantId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -235,7 +235,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.tenantsTenantIdApplicationsPost(tenantId: string application: models.NewApplication ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -282,7 +282,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.tenantsTenantIdDelete(tenantId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

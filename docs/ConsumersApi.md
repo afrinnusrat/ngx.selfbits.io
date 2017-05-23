@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.consumersBulkPost(consumers?: models.NewConsumerArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.consumersConsumerIdDelete(consumerId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -147,7 +147,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.consumersConsumerIdGet(consumerId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -193,7 +193,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.consumersConsumerIdPut(consumerId: string updatedConsumer: models.ConsumerUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -240,7 +240,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.consumersDelete(filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -286,7 +286,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.consumersGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -336,7 +336,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.consumersPost(consumer?: models.NewConsumer ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -382,7 +382,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.consumersPut(filter: string consumerBulkUpdate: models.ConsumerBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

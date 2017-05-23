@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.browse(filePath: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.browse_1(filePath: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -148,7 +148,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.createPrivate(file?: models.NewFile ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -194,7 +194,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.createPublic(file?: models.NewFile ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -240,7 +240,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.deleteOne(fileId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -286,7 +286,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.query(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -336,7 +336,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.readOne(fileId?: string filePath?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -383,7 +383,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.updateOne(fileId: string updatedFile: models.FileUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -430,7 +430,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.verifyUpload(fileId: string etagObject: models.FileVerificationRequest ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

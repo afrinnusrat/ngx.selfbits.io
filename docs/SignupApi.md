@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupDirectoryDirectoryIdInteractivePost(sbClientId: string directoryId: string randomState: string sbClientSecret?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -104,7 +104,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupDirectoryDirectoryIdPost(sbClientId: string directoryId: string signupRequest: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -155,7 +155,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupDirectoryDirectoryIdTokenPost(sbClientId: string directoryId: string randomState: string sbClientSecret?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -204,7 +204,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupOrganizationOrganizationIdDirectoryDirectoryIdPost(sbClientId: string organizationId: string directoryId: string signupRequest: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -256,7 +256,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupOrganizationOrganizationIdPost(sbClientId: string organizationId: string signupRequest: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -307,7 +307,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupOrganizationOrganizationIdProviderProviderIdPost(organizationId: string directoryId: string sbClientId: string sbClientSecret?: string invite?: string returnCredentials?: boolean signupRequest?: models.UserSignupRequest ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -359,7 +359,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupPost(sbClientId: string profile: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -409,7 +409,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupProviderProviderIdPost(sbClientId: string providerId: string signupRequest: models.UserSignupRequest sbClientSecret?: string invite?: string returnCredentials?: boolean ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

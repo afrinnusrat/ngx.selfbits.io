@@ -25,6 +25,7 @@ All URIs are relative to *https://YOUR-TENANT.apps.selfbits.io/api/v2/YOUR-TENAN
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**changePassword**](UsersApi.md#changePassword) | **RequestMethod.Post** /users/me/changepassword | 
 [**usersBulkPost**](UsersApi.md#usersBulkPost) | **RequestMethod.Post** /users/bulk | 
 [**usersDelete**](UsersApi.md#usersDelete) | **RequestMethod.Delete** /users | 
 [**usersGet**](UsersApi.md#usersGet) | **RequestMethod.Get** /users | 
@@ -34,6 +35,52 @@ Method | HTTP request | Description
 [**usersUserIdGet**](UsersApi.md#usersUserIdGet) | **RequestMethod.Get** /users/${userId} | 
 [**usersUserIdPut**](UsersApi.md#usersUserIdPut) | **RequestMethod.Put** /users/${userId} | 
 
+
+<a name="changePassword"></a>
+# **changePassword**
+> models.ChangePasswordResponse changePassword(changePasswordRequest)
+
+
+
+change user password
+
+### Example
+```typescript
+import { UsersApi } from 'ngx.selfbits.io';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: UsersApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance.changePassword(changePasswordRequest: models.ChangePasswordRequest ).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **changePasswordRequest** | [**models.ChangePasswordRequest**](ChangePasswordRequest.md)| change password request | 
+
+### Return type
+
+[**models.ChangePasswordResponse**](models.ChangePasswordResponse.md)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="usersBulkPost"></a>
 # **usersBulkPost**
@@ -55,7 +102,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.usersBulkPost(users: models.NewUserArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -101,7 +148,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.usersDelete(filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -147,7 +194,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.usersGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -197,7 +244,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.usersPost(user: models.NewUser ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -243,7 +290,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.usersPut(filter: string userBulkUpdate: models.UserBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -290,7 +337,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.usersUserIdDelete(userId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -336,7 +383,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.usersUserIdGet(userId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -382,7 +429,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.usersUserIdPut(userId: string updatedUser: models.UserUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

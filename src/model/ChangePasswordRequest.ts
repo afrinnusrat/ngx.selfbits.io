@@ -12,20 +12,10 @@
 
 import * as models from './models';
 
-export interface NewConsumer {
-    id?: string;
+export interface ChangePasswordRequest {
+    oldPassword: string;
 
-    userId: string;
-
-    directoryId: string;
-
-    accountId: string;
-
-    accountPassword: string;
-
-    accountEmail?: string;
-
-    customData?: any;
+    newPassword: string;
 
 }
 

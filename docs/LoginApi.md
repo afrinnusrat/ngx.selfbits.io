@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginDirectoryDirectoryIdPost(sbClientId: string directoryId: string sbClientSecret?: string userLoginRequest?: models.UserLoginRequest ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginDirectoryDirectoryIdTokenPost(sbClientId: string directoryId: string randomState: string sbClientSecret?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -150,7 +150,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginOrganizationOrganizationIdPost(sbClientId: string organizationId: string sbClientSecret?: string userLoginRequest?: models.UserLoginRequest ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -199,7 +199,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginOrganizationOrganizationIdProviderProviderIdPost(sbClientId: string organizationId: string providerId: string sbClientSecret?: string userLoginRequest?: models.UserLoginRequest ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -249,7 +249,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginPost(sbClientId: string userLoginRequest: models.UserLoginRequest sbClientSecret?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

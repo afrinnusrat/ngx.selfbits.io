@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsActionIdDelete(actionId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsActionIdExecPost(actionId: string payload?: models.ActionExecutionRequestPayload ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -149,7 +149,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsActionIdGet(actionId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -195,7 +195,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsActionIdPut(actionId: string updatedAction: models.ActionUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -242,7 +242,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsBulkPost(actions?: models.NewActionArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -288,7 +288,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsDelete(filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -334,7 +334,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -384,7 +384,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsPost(action?: models.NewAction ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -430,7 +430,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.actionsPut(filter: string actionBulkUpdate: models.ActionBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

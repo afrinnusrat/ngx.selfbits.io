@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.providersBulkPost(providers?: models.NewProviderArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.providersDelete(filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -147,7 +147,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.providersGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -197,7 +197,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.providersPost(provider?: models.NewProvider ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -243,7 +243,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.providersProviderIdDelete(providerId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -289,7 +289,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.providersProviderIdGet(providerId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -335,7 +335,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.providersProviderIdPut(providerId: string updatedProvider: models.ProviderUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -382,7 +382,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.providersPut(filter: string providerBulkUpdate: models.ProviderBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

@@ -56,7 +56,7 @@ export class PasswordResetApi {
     /**
      * trigger password reset by email
      * request an email to reset a password of a user
-     * @param sendPasswordResetEmailRequest accountId (email or username) of your user
+     * @param sendPasswordResetEmailRequest verified email address of the user
      */
     public triggerPasswordReset(sendPasswordResetEmailRequest: models.SendPasswordResetEmailRequest, extraHttpRequestParams?: any): Observable<models.SendPasswordResetEmailResponse> {
         return this.triggerPasswordResetWithHttpInfo(sendPasswordResetEmailRequest, extraHttpRequestParams)
@@ -119,7 +119,7 @@ export class PasswordResetApi {
     /**
      * trigger password reset by email
      * request an email to reset a password of a user
-     * @param sendPasswordResetEmailRequest accountId (email or username) of your user
+     * @param sendPasswordResetEmailRequest verified email address of the user
      */
     public triggerPasswordResetWithHttpInfo(sendPasswordResetEmailRequest: models.SendPasswordResetEmailRequest, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.configuration.basePath + '/password/reset/trigger';

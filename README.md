@@ -147,6 +147,15 @@ Class | Method | HTTP request | Description
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*JoinApi* | [**joinOrganization**](docs/JoinApi.md#joinOrganization) | **RequestMethod.Post** /join/organization/${organizationId} | Join a specific organization
+*JoinApi* | [**joinOrganizationByDirectory**](docs/JoinApi.md#joinOrganizationByDirectory) | **RequestMethod.Post** /join/organization/${organizationId}/directory/${directoryId} | Join with specific organization and a specific directory
+*JoinApi* | [**joinOrganizationByProvider**](docs/JoinApi.md#joinOrganizationByProvider) | **RequestMethod.Post** /join/organization/${organizationId}/provider/${providerId} | Signup with specific organization and directory that belongs to a specific provider
+
+
+
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
 *LoginApi* | [**loginDirectoryDirectoryIdPost**](docs/LoginApi.md#loginDirectoryDirectoryIdPost) | **RequestMethod.Post** /login/directory/${directoryId} | 
 *LoginApi* | [**loginDirectoryDirectoryIdTokenPost**](docs/LoginApi.md#loginDirectoryDirectoryIdTokenPost) | **RequestMethod.Post** /login/directory/${directoryId}/token | 
 *LoginApi* | [**loginOrganizationOrganizationIdPost**](docs/LoginApi.md#loginOrganizationOrganizationIdPost) | **RequestMethod.Post** /login/organization/${organizationId} | 
@@ -279,6 +288,7 @@ Class | Method | HTTP request | Description
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*UsersApi* | [**changePassword**](docs/UsersApi.md#changePassword) | **RequestMethod.Post** /users/me/changepassword | 
 *UsersApi* | [**usersBulkPost**](docs/UsersApi.md#usersBulkPost) | **RequestMethod.Post** /users/bulk | 
 *UsersApi* | [**usersDelete**](docs/UsersApi.md#usersDelete) | **RequestMethod.Delete** /users | 
 *UsersApi* | [**usersGet**](docs/UsersApi.md#usersGet) | **RequestMethod.Get** /users | 
@@ -309,6 +319,8 @@ Class | Method | HTTP request | Description
  - [AuthorizationResponse](docs/AuthorizationResponse.md)
  - [BulkDeleteResponse](docs/BulkDeleteResponse.md)
  - [BulkUpdateResponse](docs/BulkUpdateResponse.md)
+ - [ChangePasswordRequest](docs/ChangePasswordRequest.md)
+ - [ChangePasswordResponse](docs/ChangePasswordResponse.md)
  - [Client](docs/Client.md)
  - [ClientArray](docs/ClientArray.md)
  - [ClientBulkUpdate](docs/ClientBulkUpdate.md)
@@ -324,6 +336,11 @@ Class | Method | HTTP request | Description
  - [ConsumerRolePage](docs/ConsumerRolePage.md)
  - [ConsumerRoleUpdate](docs/ConsumerRoleUpdate.md)
  - [ConsumerUpdate](docs/ConsumerUpdate.md)
+ - [Device](docs/Device.md)
+ - [DeviceArray](docs/DeviceArray.md)
+ - [DeviceBulkUpdate](docs/DeviceBulkUpdate.md)
+ - [DevicePage](docs/DevicePage.md)
+ - [DeviceUpdate](docs/DeviceUpdate.md)
  - [Directory](docs/Directory.md)
  - [DirectoryArray](docs/DirectoryArray.md)
  - [DirectoryBulkUpdate](docs/DirectoryBulkUpdate.md)
@@ -373,6 +390,8 @@ Class | Method | HTTP request | Description
  - [NewConsumerArray](docs/NewConsumerArray.md)
  - [NewConsumerRole](docs/NewConsumerRole.md)
  - [NewConsumerRoleArray](docs/NewConsumerRoleArray.md)
+ - [NewDevice](docs/NewDevice.md)
+ - [NewDeviceArray](docs/NewDeviceArray.md)
  - [NewDirectory](docs/NewDirectory.md)
  - [NewDirectoryArray](docs/NewDirectoryArray.md)
  - [NewEndpoint](docs/NewEndpoint.md)

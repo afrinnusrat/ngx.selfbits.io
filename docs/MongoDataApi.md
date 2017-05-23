@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.mModelsMongoModelIdDataBulkPost(mongoModelId: string mongoDataItems: models.NewMongoDataArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.mModelsMongoModelIdDataDelete(mongoModelId: string filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -149,7 +149,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.mModelsMongoModelIdDataGet(mongoModelId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -200,7 +200,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.mModelsMongoModelIdDataIdDelete(mongoModelId: string id: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -247,7 +247,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.mModelsMongoModelIdDataIdGet(mongoModelId: string id: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -294,7 +294,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.mModelsMongoModelIdDataIdPut(mongoModelId: string id: string updatedMongoData: models.MongoDataUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -342,7 +342,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.mModelsMongoModelIdDataPost(mongoModelId: string mongoDataItem: models.NewMongoData ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -389,7 +389,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.mModelsMongoModelIdDataPut(mongoModelId: string filter: string mongoDataBulkUpdate: models.MongoDataBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

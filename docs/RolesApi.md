@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.rolesBulkPost(roles?: models.NewRoleArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.rolesDelete(filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -147,7 +147,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.rolesGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -197,7 +197,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.rolesPost(role?: models.NewRole ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -243,7 +243,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.rolesPut(filter: string roleBulkUpdate: models.RoleBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -290,7 +290,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.rolesRoleIdDelete(roleId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -336,7 +336,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.rolesRoleIdGet(roleId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -382,7 +382,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.rolesRoleIdPut(roleId: string updatedRole: models.RoleUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

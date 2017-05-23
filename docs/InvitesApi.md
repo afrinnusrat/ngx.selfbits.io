@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.invitesBulkPost(invites?: models.NewInviteArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.invitesDelete(filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -147,7 +147,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.invitesGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -197,7 +197,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.invitesInviteIdDelete(inviteId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -243,7 +243,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.invitesInviteIdGet(inviteId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -289,7 +289,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.invitesInviteIdPut(inviteId: string updatedInvite: models.InviteUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -336,7 +336,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.invitesPost(invite: models.NewInvite ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -382,7 +382,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.invitesPut(filter: string inviteBulkUpdate: models.InviteBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

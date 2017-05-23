@@ -12,20 +12,16 @@
 
 import * as models from './models';
 
-export interface NewConsumer {
-    id?: string;
+export interface DevicePage {
+    docs?: Array<models.Device>;
 
-    userId: string;
+    total?: number;
 
-    directoryId: string;
+    limit?: number;
 
-    accountId: string;
+    page?: number;
 
-    accountPassword: string;
-
-    accountEmail?: string;
-
-    customData?: any;
+    pages?: number;
 
 }
 

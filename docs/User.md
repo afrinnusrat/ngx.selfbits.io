@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] [default to null]
 **email** | **string** |  | [optional] [default to null]
+**emailVerified** | **string** |  | [optional] [default to null]
 **username** | **string** |  | [optional] [default to null]
 **displayName** | **string** |  | [optional] [default to null]
 **firstName** | **string** |  | [optional] [default to null]

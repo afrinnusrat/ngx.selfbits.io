@@ -64,8 +64,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.authDirectoryDirectoryIdGet(sbClientId: string directoryId: string randomState: string sbClientSecret?: string invite?: string ).subscribe(
-      data => console.log(res),
+    this.apiInstance.authDirectoryDirectoryIdGet(sbClientId: string directoryId: string randomState: string invite?: string ).subscribe(
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -79,7 +79,6 @@ Name | Type | Description  | Notes
  **sbClientId** | **string**| Your application client id | 
  **directoryId** | **string**| the directory of the new user | 
  **randomState** | **string**| Random string to identifiy the account after the successful interactive authentication | 
- **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
 
 ### Return type
@@ -114,8 +113,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.authOrganizationOrganizationIdDirectoryDirectoryIdGet(sbClientId: string directoryId: string randomState: string sbClientSecret?: string invite?: string ).subscribe(
-      data => console.log(res),
+    this.apiInstance.authOrganizationOrganizationIdDirectoryDirectoryIdGet(sbClientId: string directoryId: string randomState: string invite?: string ).subscribe(
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -129,7 +128,6 @@ Name | Type | Description  | Notes
  **sbClientId** | **string**| Your application client id | 
  **directoryId** | **string**| the directory of the new user | 
  **randomState** | **string**| Random string to identifiy the account after the successful interactive authentication | 
- **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
 
 ### Return type
@@ -164,8 +162,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.authOrganizationOrganizationIdProviderProviderIdGet(sbClientId: string directoryId: string randomState: string sbClientSecret?: string invite?: string ).subscribe(
-      data => console.log(res),
+    this.apiInstance.authOrganizationOrganizationIdProviderProviderIdGet(sbClientId: string directoryId: string randomState: string invite?: string ).subscribe(
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -179,7 +177,6 @@ Name | Type | Description  | Notes
  **sbClientId** | **string**| Your application client id | 
  **directoryId** | **string**| the directory of the new user | 
  **randomState** | **string**| Random string to identifiy the account after the successful interactive authentication | 
- **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
 
 ### Return type
@@ -197,7 +194,7 @@ null (empty response body)
 
 <a name="authProviderProviderIdGet"></a>
 # **authProviderProviderIdGet**
-> authProviderProviderIdGet(sbClientIddirectoryIdrandomStateopts)
+> authProviderProviderIdGet(sbClientIdproviderIdrandomStateopts)
 
 Interactive user authentication with external provider
 
@@ -214,8 +211,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.authProviderProviderIdGet(sbClientId: string directoryId: string randomState: string sbClientSecret?: string invite?: string ).subscribe(
-      data => console.log(res),
+    this.apiInstance.authProviderProviderIdGet(sbClientId: string providerId: string randomState: string invite?: string ).subscribe(
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -227,9 +224,8 @@ export class AppComponent implements OnInit {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sbClientId** | **string**| Your application client id | 
- **directoryId** | **string**| the directory of the new user | 
+ **providerId** | **string**| the provider of the new user | 
  **randomState** | **string**| Random string to identifiy the account after the successful interactive authentication | 
- **sbClientSecret** | **string**| Your application client secret | [optional] 
  **invite** | **string**| Optional invite code | [optional] 
 
 ### Return type
@@ -265,7 +261,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.emailsVerifyGet(email: string code: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -312,7 +308,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginDirectoryDirectoryIdGet(sbClientId: string directoryId: string randomState: string randomState2?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -361,7 +357,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginGet(sbClientId: string randomState?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -408,7 +404,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginOrganizationOrganizationIdDirectoryDirectoryIdGet(sbClientId: string organizationId: string directoryId: string randomState?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -457,7 +453,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginOrganizationOrganizationIdGet(sbClientId: string organizationId: string randomState?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -505,7 +501,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.loginOrganizationOrganizationIdProviderProviderIdGet(sbClientId: string organizationId: string providerId: string randomState?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -554,7 +550,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.passwordResetCallbackGet(error: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -582,7 +578,7 @@ null (empty response body)
 
 <a name="passwordResetGet"></a>
 # **passwordResetGet**
-> passwordResetGet(accountIdcode)
+> passwordResetGet(emailcode)
 
 
 
@@ -599,8 +595,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.passwordResetGet(accountId: string code: string ).subscribe(
-      data => console.log(res),
+    this.apiInstance.passwordResetGet(email: string code: string ).subscribe(
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -611,7 +607,7 @@ export class AppComponent implements OnInit {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **string**| Target accountId of a password reset | 
+ **email** | **string**| Target email of a password reset | 
  **code** | **string**| Code that was generated for the password reset process | 
 
 ### Return type
@@ -647,7 +643,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupDirectoryDirectoryIdGet(sbClientId: string directoryId: string randomState: string invite?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -696,7 +692,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupGet(sbClientId: string randomState: string invite?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -744,7 +740,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupOrganizationOrganizationIdDirectoryDirectoryIdGet(sbClientId: string organizationId: string directoryId: string randomState: string invite?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -794,7 +790,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupOrganizationOrganizationIdGet(sbClientId: string organizationId: string randomState: string invite?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -843,7 +839,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupOrganizationOrganizationIdProviderProviderIdGet(sbClientId: string organizationId: string providerId: string randomState: string invite?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -893,7 +889,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.signupProviderProviderIdGet(sbClientId: string providerId: string randomState: string invite?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

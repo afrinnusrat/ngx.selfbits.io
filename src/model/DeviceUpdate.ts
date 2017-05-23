@@ -12,18 +12,12 @@
 
 import * as models from './models';
 
-export interface NewConsumer {
-    id?: string;
+export interface DeviceUpdate {
+    name?: string;
 
-    userId: string;
+    description?: string;
 
-    directoryId: string;
-
-    accountId: string;
-
-    accountPassword: string;
-
-    accountEmail?: string;
+    isBaseDevice?: boolean;
 
     customData?: any;
 

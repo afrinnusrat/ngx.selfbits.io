@@ -13,7 +13,7 @@
 import * as models from './models';
 
 export interface ResetPasswordRequest {
-    accountId?: string;
+    email?: string;
 
     code?: string;
 

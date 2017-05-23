@@ -1,8 +1,8 @@
-# .SendPasswordResetEmailRequest
+# .DeviceBulkUpdate
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **string** |  | [optional] [default to null]
+**update** | [**models.DeviceUpdate**](models.DeviceUpdate.md) |  | [default to null]
 
 

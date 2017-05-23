@@ -13,6 +13,8 @@
 import * as models from './models';
 
 export interface ConsumerUpdate {
+    accountPassword?: any;
+
     customData?: any;
 
 }

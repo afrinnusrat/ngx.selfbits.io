@@ -25,9 +25,9 @@ export interface Consumer {
 
     accountPassword?: string;
 
-    primaryEmail?: string;
+    accountEmail?: string;
 
-    primaryEmailVerified?: boolean;
+    accountEmailVerified?: boolean;
 
     customData?: any;
 

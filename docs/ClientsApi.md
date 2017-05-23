@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.clientsBulkPost(clients?: models.NewClientArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.clientsClientIdDelete(clientId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -147,7 +147,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.clientsClientIdGet(clientId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -193,7 +193,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.clientsClientIdPut(clientId: string updatedClient: models.ClientUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -240,7 +240,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.clientsDelete(filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -286,7 +286,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.clientsGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -336,7 +336,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.clientsPost(client?: models.NewClient ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -382,7 +382,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.clientsPut(filter: string clientBulkUpdate: models.ClientBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

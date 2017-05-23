@@ -39,6 +39,22 @@ export class UsersApi {
 
     /**
      * 
+     * change user password
+     * @param changePasswordRequest change password request
+     */
+    public changePassword(changePasswordRequest: models.ChangePasswordRequest, extraHttpRequestParams?: any): Observable<models.ChangePasswordResponse> {
+        return this.changePasswordWithHttpInfo(changePasswordRequest, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * 
      * Create multiple new users
      * @param users Multiple users
      */
@@ -171,6 +187,51 @@ export class UsersApi {
             });
     }
 
+
+    /**
+     * 
+     * change user password
+     * @param changePasswordRequest change password request
+     */
+    public changePasswordWithHttpInfo(changePasswordRequest: models.ChangePasswordRequest, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/changepassword';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'changePasswordRequest' is not null or undefined
+        if (changePasswordRequest === null || changePasswordRequest === undefined) {
+            throw new Error('Required parameter changePasswordRequest was null or undefined when calling changePassword.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: changePasswordRequest == null ? '' : JSON.stringify(changePasswordRequest), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
 
     /**
      * 

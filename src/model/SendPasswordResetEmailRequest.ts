@@ -13,7 +13,7 @@
 import * as models from './models';
 
 export interface SendPasswordResetEmailRequest {
-    accountId?: string;
+    email?: string;
 
 }
 

@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsBulkPost(organizations?: models.NewOrganizationArray ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsDelete(filter: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -148,7 +148,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsGet(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string _public?: boolean ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -199,7 +199,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsOrganizationIdDelete(organizationId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -245,7 +245,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsOrganizationIdGet(organizationId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -291,7 +291,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsOrganizationIdInvitesPost(organizationId: string ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -337,7 +337,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsOrganizationIdPut(organizationId: string updatedOrganization: models.OrganizationUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -384,7 +384,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsPost(organization?: models.NewOrganization ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -430,7 +430,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.organizationsPut(filter: string organizationBulkUpdate: models.OrganizationBulkUpdate ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }

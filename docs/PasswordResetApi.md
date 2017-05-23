@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.passwordResetPost(resetPasswordRequest: models.ResetPasswordRequest ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -95,7 +95,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiInstance.triggerPasswordReset(sendPasswordResetEmailRequest: models.SendPasswordResetEmailRequest ).subscribe(
-      data => console.log(res),
+      data => console.log(data),
       err => console.log(err)
     )
   }
@@ -106,7 +106,7 @@ export class AppComponent implements OnInit {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sendPasswordResetEmailRequest** | [**models.SendPasswordResetEmailRequest**](SendPasswordResetEmailRequest.md)| accountId (email or username) of your user | 
+ **sendPasswordResetEmailRequest** | [**models.SendPasswordResetEmailRequest**](SendPasswordResetEmailRequest.md)| verified email address of the user | 
 
 ### Return type
 
