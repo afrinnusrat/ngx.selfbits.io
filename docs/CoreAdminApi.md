@@ -130,7 +130,7 @@ Method | HTTP request | Description
 
 <a name="actionsCreateMany"></a>
 # **actionsCreateMany**
-> models.ActionArray actionsCreateMany(opts)
+> models.ActionArray actionsCreateMany
 
 Create multiple new actions
 
@@ -147,7 +147,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsCreateMany(actions?: models.NewActionArray ).subscribe(
+    this.apiInstance.actionsCreateMany(actions?: models.NewActionArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 <a name="actionsCreateOne"></a>
 # **actionsCreateOne**
-> models.Action actionsCreateOne(opts)
+> models.Action actionsCreateOne
 
 Create new action
 
@@ -193,7 +193,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsCreateOne(action?: models.NewAction ).subscribe(
+    this.apiInstance.actionsCreateOne(action?: models.NewAction).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 <a name="actionsDeleteMany"></a>
 # **actionsDeleteMany**
-> models.BulkDeleteResponse actionsDeleteMany(filter)
+> models.BulkDeleteResponse actionsDeleteMany
 
 Bulk delete existing actions
 
@@ -239,7 +239,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsDeleteMany(filter: string ).subscribe(
+    this.apiInstance.actionsDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 <a name="actionsDeleteOne"></a>
 # **actionsDeleteOne**
-> actionsDeleteOne(actionId)
+> actionsDeleteOne
 
 delete existing action
 
@@ -285,7 +285,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsDeleteOne(actionId: string ).subscribe(
+    this.apiInstance.actionsDeleteOne(actionId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -314,7 +314,7 @@ null (empty response body)
 
 <a name="actionsExecuteOne"></a>
 # **actionsExecuteOne**
-> models.ActionExecutionResponse actionsExecuteOne(actionIdopts)
+> models.ActionExecutionResponse actionsExecuteOne
 
 Execute action.
 
@@ -331,7 +331,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsExecuteOne(actionId: string payload?: models.ActionExecutionRequestPayload ).subscribe(
+    this.apiInstance.actionsExecuteOne(actionId: string, payload?: models.ActionExecutionRequestPayload).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 <a name="actionsQuery"></a>
 # **actionsQuery**
-> models.ActionPage actionsQuery(opts)
+> models.ActionPage actionsQuery
 
 Returns actions
 
@@ -378,7 +378,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.actionsQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -411,7 +411,7 @@ Name | Type | Description  | Notes
 
 <a name="actionsReadOne"></a>
 # **actionsReadOne**
-> models.Action actionsReadOne(actionId)
+> models.Action actionsReadOne
 
 Get one existing action
 
@@ -428,7 +428,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsReadOne(actionId: string ).subscribe(
+    this.apiInstance.actionsReadOne(actionId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -457,7 +457,7 @@ Name | Type | Description  | Notes
 
 <a name="actionsUpdateMany"></a>
 # **actionsUpdateMany**
-> models.BulkUpdateResponse actionsUpdateMany(filteractionBulkUpdate)
+> models.BulkUpdateResponse actionsUpdateMany
 
 Bulk update existing actions
 
@@ -474,7 +474,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsUpdateMany(filter: string actionBulkUpdate: models.ActionBulkUpdate ).subscribe(
+    this.apiInstance.actionsUpdateMany(filter: string, actionBulkUpdate: models.ActionBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -504,7 +504,7 @@ Name | Type | Description  | Notes
 
 <a name="actionsUpdateOne"></a>
 # **actionsUpdateOne**
-> models.Action actionsUpdateOne(actionIdupdatedAction)
+> models.Action actionsUpdateOne
 
 update existing action
 
@@ -521,7 +521,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.actionsUpdateOne(actionId: string updatedAction: models.ActionUpdate ).subscribe(
+    this.apiInstance.actionsUpdateOne(actionId: string, updatedAction: models.ActionUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -551,7 +551,7 @@ Name | Type | Description  | Notes
 
 <a name="changeUserPasswordAllOrganizations"></a>
 # **changeUserPasswordAllOrganizations**
-> models.AdminChangePasswordResponse changeUserPasswordAllOrganizations(userIdadminChangePasswordRequest)
+> models.AdminChangePasswordResponse changeUserPasswordAllOrganizations
 
 change user password globally
 
@@ -568,7 +568,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.changeUserPasswordAllOrganizations(userId: string adminChangePasswordRequest: models.AdminChangePasswordRequest ).subscribe(
+    this.apiInstance.changeUserPasswordAllOrganizations(userId: string, adminChangePasswordRequest: models.AdminChangePasswordRequest).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 <a name="changeUserPasswordByOrganization"></a>
 # **changeUserPasswordByOrganization**
-> models.AdminChangePasswordResponse changeUserPasswordByOrganization(userIdorganizationIdadminChangePasswordRequest)
+> models.AdminChangePasswordResponse changeUserPasswordByOrganization
 
 change user password for one organization
 
@@ -615,7 +615,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.changeUserPasswordByOrganization(userId: string organizationId: string adminChangePasswordRequest: models.AdminChangePasswordRequest ).subscribe(
+    this.apiInstance.changeUserPasswordByOrganization(userId: string, organizationId: string, adminChangePasswordRequest: models.AdminChangePasswordRequest).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -646,7 +646,7 @@ Name | Type | Description  | Notes
 
 <a name="clientsCreateMany"></a>
 # **clientsCreateMany**
-> models.ClientArray clientsCreateMany(opts)
+> models.ClientArray clientsCreateMany
 
 Create multiple new clients
 
@@ -663,7 +663,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.clientsCreateMany(clients?: models.NewClientArray ).subscribe(
+    this.apiInstance.clientsCreateMany(clients?: models.NewClientArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -692,7 +692,7 @@ Name | Type | Description  | Notes
 
 <a name="clientsCreateOne"></a>
 # **clientsCreateOne**
-> models.Client clientsCreateOne(opts)
+> models.Client clientsCreateOne
 
 Create new client
 
@@ -709,7 +709,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.clientsCreateOne(client?: models.NewClient ).subscribe(
+    this.apiInstance.clientsCreateOne(client?: models.NewClient).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
 
 <a name="clientsDeleteMany"></a>
 # **clientsDeleteMany**
-> models.BulkDeleteResponse clientsDeleteMany(filter)
+> models.BulkDeleteResponse clientsDeleteMany
 
 Bulk delete existing clients
 
@@ -755,7 +755,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.clientsDeleteMany(filter: string ).subscribe(
+    this.apiInstance.clientsDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -784,7 +784,7 @@ Name | Type | Description  | Notes
 
 <a name="clientsDeleteOne"></a>
 # **clientsDeleteOne**
-> clientsDeleteOne(clientId)
+> clientsDeleteOne
 
 delete existing client
 
@@ -801,7 +801,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.clientsDeleteOne(clientId: string ).subscribe(
+    this.apiInstance.clientsDeleteOne(clientId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -830,7 +830,7 @@ null (empty response body)
 
 <a name="clientsQuery"></a>
 # **clientsQuery**
-> models.ClientPage clientsQuery(opts)
+> models.ClientPage clientsQuery
 
 Returns clients
 
@@ -847,7 +847,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.clientsQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.clientsQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -880,7 +880,7 @@ Name | Type | Description  | Notes
 
 <a name="clientsReadOne"></a>
 # **clientsReadOne**
-> models.Client clientsReadOne(clientId)
+> models.Client clientsReadOne
 
 Get one existing client
 
@@ -897,7 +897,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.clientsReadOne(clientId: string ).subscribe(
+    this.apiInstance.clientsReadOne(clientId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -926,7 +926,7 @@ Name | Type | Description  | Notes
 
 <a name="clientsUpdateMany"></a>
 # **clientsUpdateMany**
-> models.BulkUpdateResponse clientsUpdateMany(filterclientBulkUpdate)
+> models.BulkUpdateResponse clientsUpdateMany
 
 Bulk update existing clients
 
@@ -943,7 +943,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.clientsUpdateMany(filter: string clientBulkUpdate: models.ClientBulkUpdate ).subscribe(
+    this.apiInstance.clientsUpdateMany(filter: string, clientBulkUpdate: models.ClientBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -973,7 +973,7 @@ Name | Type | Description  | Notes
 
 <a name="clientsUpdateOne"></a>
 # **clientsUpdateOne**
-> models.Client clientsUpdateOne(clientIdupdatedClient)
+> models.Client clientsUpdateOne
 
 update existing client
 
@@ -990,7 +990,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.clientsUpdateOne(clientId: string updatedClient: models.ClientUpdate ).subscribe(
+    this.apiInstance.clientsUpdateOne(clientId: string, updatedClient: models.ClientUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1020,7 +1020,7 @@ Name | Type | Description  | Notes
 
 <a name="consumersDeleteMany"></a>
 # **consumersDeleteMany**
-> models.BulkDeleteResponse consumersDeleteMany(filter)
+> models.BulkDeleteResponse consumersDeleteMany
 
 Bulk delete existing consumers
 
@@ -1037,7 +1037,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.consumersDeleteMany(filter: string ).subscribe(
+    this.apiInstance.consumersDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1066,7 +1066,7 @@ Name | Type | Description  | Notes
 
 <a name="consumersDeleteOne"></a>
 # **consumersDeleteOne**
-> consumersDeleteOne(consumerId)
+> consumersDeleteOne
 
 delete existing consumer
 
@@ -1083,7 +1083,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.consumersDeleteOne(consumerId: string ).subscribe(
+    this.apiInstance.consumersDeleteOne(consumerId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1112,7 +1112,7 @@ null (empty response body)
 
 <a name="consumersQuery"></a>
 # **consumersQuery**
-> models.ConsumerPage consumersQuery(opts)
+> models.ConsumerPage consumersQuery
 
 Returns consumers
 
@@ -1129,7 +1129,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.consumersQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.consumersQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1162,7 +1162,7 @@ Name | Type | Description  | Notes
 
 <a name="consumersReadOne"></a>
 # **consumersReadOne**
-> models.Consumer consumersReadOne(consumerId)
+> models.Consumer consumersReadOne
 
 Get one existing consumer
 
@@ -1179,7 +1179,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.consumersReadOne(consumerId: string ).subscribe(
+    this.apiInstance.consumersReadOne(consumerId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1208,7 +1208,7 @@ Name | Type | Description  | Notes
 
 <a name="consumersUpdateMany"></a>
 # **consumersUpdateMany**
-> models.BulkUpdateResponse consumersUpdateMany(filterconsumerBulkUpdate)
+> models.BulkUpdateResponse consumersUpdateMany
 
 Bulk update existing consumers
 
@@ -1225,7 +1225,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.consumersUpdateMany(filter: string consumerBulkUpdate: models.ConsumerBulkUpdate ).subscribe(
+    this.apiInstance.consumersUpdateMany(filter: string, consumerBulkUpdate: models.ConsumerBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1255,7 +1255,7 @@ Name | Type | Description  | Notes
 
 <a name="consumersUpdateOne"></a>
 # **consumersUpdateOne**
-> models.Consumer consumersUpdateOne(consumerIdupdatedConsumer)
+> models.Consumer consumersUpdateOne
 
 update existing consumer
 
@@ -1272,7 +1272,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.consumersUpdateOne(consumerId: string updatedConsumer: models.ConsumerUpdate ).subscribe(
+    this.apiInstance.consumersUpdateOne(consumerId: string, updatedConsumer: models.ConsumerUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1302,7 +1302,7 @@ Name | Type | Description  | Notes
 
 <a name="devicesDeleteMany"></a>
 # **devicesDeleteMany**
-> models.BulkDeleteResponse devicesDeleteMany(filter)
+> models.BulkDeleteResponse devicesDeleteMany
 
 Bulk delete existing devices
 
@@ -1319,7 +1319,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesDeleteMany(filter: string ).subscribe(
+    this.apiInstance.devicesDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1348,7 +1348,7 @@ Name | Type | Description  | Notes
 
 <a name="devicesDeleteOne"></a>
 # **devicesDeleteOne**
-> devicesDeleteOne(deviceId)
+> devicesDeleteOne
 
 delete existing device
 
@@ -1365,7 +1365,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesDeleteOne(deviceId: string ).subscribe(
+    this.apiInstance.devicesDeleteOne(deviceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1394,7 +1394,7 @@ null (empty response body)
 
 <a name="devicesQuery"></a>
 # **devicesQuery**
-> models.DevicePage devicesQuery(opts)
+> models.DevicePage devicesQuery
 
 Returns devices
 
@@ -1411,7 +1411,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.devicesQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1444,7 +1444,7 @@ Name | Type | Description  | Notes
 
 <a name="devicesReadOne"></a>
 # **devicesReadOne**
-> models.Device devicesReadOne(deviceId)
+> models.Device devicesReadOne
 
 Get one existing device
 
@@ -1461,7 +1461,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesReadOne(deviceId: string ).subscribe(
+    this.apiInstance.devicesReadOne(deviceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1490,7 +1490,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesCreateMany"></a>
 # **directoriesCreateMany**
-> models.DirectoryArray directoriesCreateMany(opts)
+> models.DirectoryArray directoriesCreateMany
 
 Create multiple new directories
 
@@ -1507,7 +1507,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesCreateMany(directories?: models.NewDirectoryArray ).subscribe(
+    this.apiInstance.directoriesCreateMany(directories?: models.NewDirectoryArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1536,7 +1536,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesCreateOne"></a>
 # **directoriesCreateOne**
-> models.Directory directoriesCreateOne(opts)
+> models.Directory directoriesCreateOne
 
 Create new directory
 
@@ -1553,7 +1553,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesCreateOne(directory?: models.NewDirectory ).subscribe(
+    this.apiInstance.directoriesCreateOne(directory?: models.NewDirectory).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1582,7 +1582,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesDeleteMany"></a>
 # **directoriesDeleteMany**
-> models.BulkDeleteResponse directoriesDeleteMany(filter)
+> models.BulkDeleteResponse directoriesDeleteMany
 
 Bulk delete existing directories
 
@@ -1599,7 +1599,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesDeleteMany(filter: string ).subscribe(
+    this.apiInstance.directoriesDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1628,7 +1628,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesDeleteOne"></a>
 # **directoriesDeleteOne**
-> directoriesDeleteOne(directoryId)
+> directoriesDeleteOne
 
 delete existing directory
 
@@ -1645,7 +1645,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesDeleteOne(directoryId: string ).subscribe(
+    this.apiInstance.directoriesDeleteOne(directoryId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1674,7 +1674,7 @@ null (empty response body)
 
 <a name="directoriesQuery"></a>
 # **directoriesQuery**
-> models.DirectoryPage directoriesQuery(opts)
+> models.DirectoryPage directoriesQuery
 
 Returns directories
 
@@ -1691,7 +1691,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.directoriesQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1724,7 +1724,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesReadOne"></a>
 # **directoriesReadOne**
-> models.Directory directoriesReadOne(directoryId)
+> models.Directory directoriesReadOne
 
 Get one existing directory
 
@@ -1741,7 +1741,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesReadOne(directoryId: string ).subscribe(
+    this.apiInstance.directoriesReadOne(directoryId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1770,7 +1770,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesUpdateMany"></a>
 # **directoriesUpdateMany**
-> models.BulkUpdateResponse directoriesUpdateMany(filterdirectoryBulkUpdate)
+> models.BulkUpdateResponse directoriesUpdateMany
 
 Bulk update existing users
 
@@ -1787,7 +1787,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesUpdateMany(filter: string directoryBulkUpdate: models.DirectoryBulkUpdate ).subscribe(
+    this.apiInstance.directoriesUpdateMany(filter: string, directoryBulkUpdate: models.DirectoryBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1817,7 +1817,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesUpdateOne"></a>
 # **directoriesUpdateOne**
-> models.Directory directoriesUpdateOne(directoryIdupdatedDirectory)
+> models.Directory directoriesUpdateOne
 
 update existing directory
 
@@ -1834,7 +1834,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesUpdateOne(directoryId: string updatedDirectory: models.DirectoryUpdate ).subscribe(
+    this.apiInstance.directoriesUpdateOne(directoryId: string, updatedDirectory: models.DirectoryUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1864,7 +1864,7 @@ Name | Type | Description  | Notes
 
 <a name="endpointsCreateMany"></a>
 # **endpointsCreateMany**
-> models.EndpointArray endpointsCreateMany(opts)
+> models.EndpointArray endpointsCreateMany
 
 Create multiple new endpoints
 
@@ -1881,7 +1881,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsCreateMany(endpoints?: models.NewEndpointArray ).subscribe(
+    this.apiInstance.endpointsCreateMany(endpoints?: models.NewEndpointArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1910,7 +1910,7 @@ Name | Type | Description  | Notes
 
 <a name="endpointsCreateOne"></a>
 # **endpointsCreateOne**
-> models.Endpoint endpointsCreateOne(opts)
+> models.Endpoint endpointsCreateOne
 
 Create new endpoint
 
@@ -1927,7 +1927,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsCreateOne(endpoint?: models.NewEndpoint ).subscribe(
+    this.apiInstance.endpointsCreateOne(endpoint?: models.NewEndpoint).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1956,7 +1956,7 @@ Name | Type | Description  | Notes
 
 <a name="endpointsDeleteMany"></a>
 # **endpointsDeleteMany**
-> models.BulkDeleteResponse endpointsDeleteMany(filter)
+> models.BulkDeleteResponse endpointsDeleteMany
 
 Bulk delete existing endpoints
 
@@ -1973,7 +1973,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsDeleteMany(filter: string ).subscribe(
+    this.apiInstance.endpointsDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2002,7 +2002,7 @@ Name | Type | Description  | Notes
 
 <a name="endpointsDeleteOne"></a>
 # **endpointsDeleteOne**
-> endpointsDeleteOne(endpointId)
+> endpointsDeleteOne
 
 delete existing endpoint
 
@@ -2019,7 +2019,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsDeleteOne(endpointId: string ).subscribe(
+    this.apiInstance.endpointsDeleteOne(endpointId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2048,7 +2048,7 @@ null (empty response body)
 
 <a name="endpointsDeployOneToStage"></a>
 # **endpointsDeployOneToStage**
-> models.RestEndpoint endpointsDeployOneToStage(endpointIdstage)
+> models.RestEndpoint endpointsDeployOneToStage
 
 Deploy endpoint to stage
 
@@ -2065,7 +2065,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsDeployOneToStage(endpointId: string stage: string ).subscribe(
+    this.apiInstance.endpointsDeployOneToStage(endpointId: string, stage: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2095,7 +2095,7 @@ Name | Type | Description  | Notes
 
 <a name="endpointsQuery"></a>
 # **endpointsQuery**
-> models.EndpointPage endpointsQuery(opts)
+> models.EndpointPage endpointsQuery
 
 Returns endpoints
 
@@ -2112,7 +2112,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.endpointsQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2145,7 +2145,7 @@ Name | Type | Description  | Notes
 
 <a name="endpointsReadOne"></a>
 # **endpointsReadOne**
-> models.Endpoint endpointsReadOne(endpointId)
+> models.Endpoint endpointsReadOne
 
 Get one existing endpoint
 
@@ -2162,7 +2162,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsReadOne(endpointId: string ).subscribe(
+    this.apiInstance.endpointsReadOne(endpointId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2191,7 +2191,7 @@ Name | Type | Description  | Notes
 
 <a name="endpointsUpdateMany"></a>
 # **endpointsUpdateMany**
-> models.BulkUpdateResponse endpointsUpdateMany(filterendpointBulkUpdate)
+> models.BulkUpdateResponse endpointsUpdateMany
 
 Bulk update existing users
 
@@ -2208,7 +2208,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsUpdateMany(filter: string endpointBulkUpdate: models.EndpointBulkUpdate ).subscribe(
+    this.apiInstance.endpointsUpdateMany(filter: string, endpointBulkUpdate: models.EndpointBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2238,7 +2238,7 @@ Name | Type | Description  | Notes
 
 <a name="endpointsUpdateOne"></a>
 # **endpointsUpdateOne**
-> models.Endpoint endpointsUpdateOne(endpointIdupdatedEndpoint)
+> models.Endpoint endpointsUpdateOne
 
 update existing endpoint
 
@@ -2255,7 +2255,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.endpointsUpdateOne(endpointId: string updatedEndpoint: models.EndpointUpdate ).subscribe(
+    this.apiInstance.endpointsUpdateOne(endpointId: string, updatedEndpoint: models.EndpointUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2285,7 +2285,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesDeleteMany"></a>
 # **invitesDeleteMany**
-> models.BulkDeleteResponse invitesDeleteMany(filter)
+> models.BulkDeleteResponse invitesDeleteMany
 
 Bulk delete existing invites
 
@@ -2302,7 +2302,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesDeleteMany(filter: string ).subscribe(
+    this.apiInstance.invitesDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2331,7 +2331,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesDeleteOne"></a>
 # **invitesDeleteOne**
-> invitesDeleteOne(inviteId)
+> invitesDeleteOne
 
 delete existing invite
 
@@ -2348,7 +2348,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesDeleteOne(inviteId: string ).subscribe(
+    this.apiInstance.invitesDeleteOne(inviteId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2377,7 +2377,7 @@ null (empty response body)
 
 <a name="invitesQuery"></a>
 # **invitesQuery**
-> models.OrganizationInvitePage invitesQuery(opts)
+> models.OrganizationInvitePage invitesQuery
 
 Returns invites
 
@@ -2394,7 +2394,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.invitesQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2427,7 +2427,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesReadOne"></a>
 # **invitesReadOne**
-> models.OrganizationInvite invitesReadOne(inviteId)
+> models.OrganizationInvite invitesReadOne
 
 Get one existing invite
 
@@ -2444,7 +2444,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesReadOne(inviteId: string ).subscribe(
+    this.apiInstance.invitesReadOne(inviteId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2473,7 +2473,7 @@ Name | Type | Description  | Notes
 
 <a name="mailserversCreateOne"></a>
 # **mailserversCreateOne**
-> models.MailServer mailserversCreateOne(opts)
+> models.MailServer mailserversCreateOne
 
 Create new mailServer
 
@@ -2490,7 +2490,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mailserversCreateOne(mailServer?: models.NewMailServer ).subscribe(
+    this.apiInstance.mailserversCreateOne(mailServer?: models.NewMailServer).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2519,7 +2519,7 @@ Name | Type | Description  | Notes
 
 <a name="mailserversDeleteMany"></a>
 # **mailserversDeleteMany**
-> models.BulkDeleteResponse mailserversDeleteMany(filter)
+> models.BulkDeleteResponse mailserversDeleteMany
 
 Bulk delete existing mailservers
 
@@ -2536,7 +2536,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mailserversDeleteMany(filter: string ).subscribe(
+    this.apiInstance.mailserversDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2565,7 +2565,7 @@ Name | Type | Description  | Notes
 
 <a name="mailserversDeleteOne"></a>
 # **mailserversDeleteOne**
-> mailserversDeleteOne(mailServerId)
+> mailserversDeleteOne
 
 delete existing mailServer
 
@@ -2582,7 +2582,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mailserversDeleteOne(mailServerId: string ).subscribe(
+    this.apiInstance.mailserversDeleteOne(mailServerId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2611,7 +2611,7 @@ null (empty response body)
 
 <a name="mailserversDisableOne"></a>
 # **mailserversDisableOne**
-> models.MailServer mailserversDisableOne(mailServerId)
+> models.MailServer mailserversDisableOne
 
 Disable the push service.
 
@@ -2628,7 +2628,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mailserversDisableOne(mailServerId: string ).subscribe(
+    this.apiInstance.mailserversDisableOne(mailServerId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2657,7 +2657,7 @@ Name | Type | Description  | Notes
 
 <a name="mailserversEnableOne"></a>
 # **mailserversEnableOne**
-> models.MailServer mailserversEnableOne(mailServerId)
+> models.MailServer mailserversEnableOne
 
 Enable the push service.
 
@@ -2674,7 +2674,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mailserversEnableOne(mailServerId: string ).subscribe(
+    this.apiInstance.mailserversEnableOne(mailServerId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2703,7 +2703,7 @@ Name | Type | Description  | Notes
 
 <a name="mailserversQuery"></a>
 # **mailserversQuery**
-> models.MailServerPage mailserversQuery(opts)
+> models.MailServerPage mailserversQuery
 
 Returns mail servers
 
@@ -2720,7 +2720,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mailserversQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.mailserversQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2753,7 +2753,7 @@ Name | Type | Description  | Notes
 
 <a name="mailserversReadOne"></a>
 # **mailserversReadOne**
-> models.MailServer mailserversReadOne(mailServerId)
+> models.MailServer mailserversReadOne
 
 Get one existing mailServer
 
@@ -2770,7 +2770,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mailserversReadOne(mailServerId: string ).subscribe(
+    this.apiInstance.mailserversReadOne(mailServerId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2799,7 +2799,7 @@ Name | Type | Description  | Notes
 
 <a name="mailserversUpdateOne"></a>
 # **mailserversUpdateOne**
-> models.MailServer mailserversUpdateOne(mailServerIdupdatedMailServer)
+> models.MailServer mailserversUpdateOne
 
 update existing mailServer
 
@@ -2816,7 +2816,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mailserversUpdateOne(mailServerId: string updatedMailServer: models.MailServerUpdate ).subscribe(
+    this.apiInstance.mailserversUpdateOne(mailServerId: string, updatedMailServer: models.MailServerUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2846,7 +2846,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsCreateMany"></a>
 # **organizationsCreateMany**
-> models.OrganizationArray organizationsCreateMany(opts)
+> models.OrganizationArray organizationsCreateMany
 
 Create multiple new organizations
 
@@ -2863,7 +2863,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsCreateMany(organizations?: models.NewOrganizationArray ).subscribe(
+    this.apiInstance.organizationsCreateMany(organizations?: models.NewOrganizationArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2892,7 +2892,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsCreateOne"></a>
 # **organizationsCreateOne**
-> models.Organization organizationsCreateOne(opts)
+> models.Organization organizationsCreateOne
 
 Create new organization
 
@@ -2909,7 +2909,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsCreateOne(organization?: models.NewOrganization ).subscribe(
+    this.apiInstance.organizationsCreateOne(organization?: models.NewOrganization).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2938,7 +2938,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsDeleteMany"></a>
 # **organizationsDeleteMany**
-> models.BulkDeleteResponse organizationsDeleteMany(filter)
+> models.BulkDeleteResponse organizationsDeleteMany
 
 Bulk delete existing organizations
 
@@ -2955,7 +2955,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsDeleteMany(filter: string ).subscribe(
+    this.apiInstance.organizationsDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -2984,7 +2984,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsDeleteOne"></a>
 # **organizationsDeleteOne**
-> organizationsDeleteOne(organizationId)
+> organizationsDeleteOne
 
 delete existing organization
 
@@ -3001,7 +3001,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsDeleteOne(organizationId: string ).subscribe(
+    this.apiInstance.organizationsDeleteOne(organizationId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3030,7 +3030,7 @@ null (empty response body)
 
 <a name="organizationsQuery"></a>
 # **organizationsQuery**
-> models.OrganizationPage organizationsQuery(opts)
+> models.OrganizationPage organizationsQuery
 
 Returns organizations
 
@@ -3047,7 +3047,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string _public?: boolean ).subscribe(
+    this.apiInstance.organizationsQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, _public?: boolean).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3081,7 +3081,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsReadOne"></a>
 # **organizationsReadOne**
-> models.Organization organizationsReadOne(organizationId)
+> models.Organization organizationsReadOne
 
 Get one existing organization
 
@@ -3098,7 +3098,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsReadOne(organizationId: string ).subscribe(
+    this.apiInstance.organizationsReadOne(organizationId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3127,7 +3127,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsUpdateMany"></a>
 # **organizationsUpdateMany**
-> models.BulkUpdateResponse organizationsUpdateMany(filterorganizationBulkUpdate)
+> models.BulkUpdateResponse organizationsUpdateMany
 
 Bulk update existing organizations
 
@@ -3144,7 +3144,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsUpdateMany(filter: string organizationBulkUpdate: models.OrganizationBulkUpdate ).subscribe(
+    this.apiInstance.organizationsUpdateMany(filter: string, organizationBulkUpdate: models.OrganizationBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3174,7 +3174,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsUpdateOne"></a>
 # **organizationsUpdateOne**
-> models.Organization organizationsUpdateOne(organizationIdupdatedOrganization)
+> models.Organization organizationsUpdateOne
 
 update existing organization
 
@@ -3191,7 +3191,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsUpdateOne(organizationId: string updatedOrganization: models.OrganizationUpdate ).subscribe(
+    this.apiInstance.organizationsUpdateOne(organizationId: string, updatedOrganization: models.OrganizationUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3221,7 +3221,7 @@ Name | Type | Description  | Notes
 
 <a name="providersCreateMany"></a>
 # **providersCreateMany**
-> models.ProviderArray providersCreateMany(opts)
+> models.ProviderArray providersCreateMany
 
 Create multiple new providers
 
@@ -3238,7 +3238,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.providersCreateMany(providers?: models.NewProviderArray ).subscribe(
+    this.apiInstance.providersCreateMany(providers?: models.NewProviderArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3267,7 +3267,7 @@ Name | Type | Description  | Notes
 
 <a name="providersCreateOne"></a>
 # **providersCreateOne**
-> models.Provider providersCreateOne(opts)
+> models.Provider providersCreateOne
 
 Create new provider
 
@@ -3284,7 +3284,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.providersCreateOne(provider?: models.NewProvider ).subscribe(
+    this.apiInstance.providersCreateOne(provider?: models.NewProvider).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3313,7 +3313,7 @@ Name | Type | Description  | Notes
 
 <a name="providersDeleteMany"></a>
 # **providersDeleteMany**
-> models.BulkDeleteResponse providersDeleteMany(filter)
+> models.BulkDeleteResponse providersDeleteMany
 
 Bulk delete existing providers
 
@@ -3330,7 +3330,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.providersDeleteMany(filter: string ).subscribe(
+    this.apiInstance.providersDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3359,7 +3359,7 @@ Name | Type | Description  | Notes
 
 <a name="providersDeleteOne"></a>
 # **providersDeleteOne**
-> providersDeleteOne(providerId)
+> providersDeleteOne
 
 delete existing provider
 
@@ -3376,7 +3376,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.providersDeleteOne(providerId: string ).subscribe(
+    this.apiInstance.providersDeleteOne(providerId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3405,7 +3405,7 @@ null (empty response body)
 
 <a name="providersQuery"></a>
 # **providersQuery**
-> models.ProviderPage providersQuery(opts)
+> models.ProviderPage providersQuery
 
 Returns providers
 
@@ -3422,7 +3422,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.providersQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.providersQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3455,7 +3455,7 @@ Name | Type | Description  | Notes
 
 <a name="providersReadOne"></a>
 # **providersReadOne**
-> models.Provider providersReadOne(providerId)
+> models.Provider providersReadOne
 
 Get one existing provider
 
@@ -3472,7 +3472,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.providersReadOne(providerId: string ).subscribe(
+    this.apiInstance.providersReadOne(providerId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3501,7 +3501,7 @@ Name | Type | Description  | Notes
 
 <a name="providersUpdateMany"></a>
 # **providersUpdateMany**
-> models.BulkUpdateResponse providersUpdateMany(filterproviderBulkUpdate)
+> models.BulkUpdateResponse providersUpdateMany
 
 Bulk update existing providers
 
@@ -3518,7 +3518,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.providersUpdateMany(filter: string providerBulkUpdate: models.ProviderBulkUpdate ).subscribe(
+    this.apiInstance.providersUpdateMany(filter: string, providerBulkUpdate: models.ProviderBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3548,7 +3548,7 @@ Name | Type | Description  | Notes
 
 <a name="providersUpdateOne"></a>
 # **providersUpdateOne**
-> models.Provider providersUpdateOne(providerIdupdatedProvider)
+> models.Provider providersUpdateOne
 
 update existing provider
 
@@ -3565,7 +3565,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.providersUpdateOne(providerId: string updatedProvider: models.ProviderUpdate ).subscribe(
+    this.apiInstance.providersUpdateOne(providerId: string, updatedProvider: models.ProviderUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3595,7 +3595,7 @@ Name | Type | Description  | Notes
 
 <a name="pushservicesCreateOne"></a>
 # **pushservicesCreateOne**
-> models.PushService pushservicesCreateOne(opts)
+> models.PushService pushservicesCreateOne
 
 Create new pushService
 
@@ -3612,7 +3612,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushservicesCreateOne(pushService?: models.NewPushService ).subscribe(
+    this.apiInstance.pushservicesCreateOne(pushService?: models.NewPushService).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3641,7 +3641,7 @@ Name | Type | Description  | Notes
 
 <a name="pushservicesDeleteMany"></a>
 # **pushservicesDeleteMany**
-> models.BulkDeleteResponse pushservicesDeleteMany(filter)
+> models.BulkDeleteResponse pushservicesDeleteMany
 
 Bulk delete existing pushservices
 
@@ -3658,7 +3658,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushservicesDeleteMany(filter: string ).subscribe(
+    this.apiInstance.pushservicesDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3687,7 +3687,7 @@ Name | Type | Description  | Notes
 
 <a name="pushservicesDeleteOne"></a>
 # **pushservicesDeleteOne**
-> pushservicesDeleteOne(pushServiceId)
+> pushservicesDeleteOne
 
 delete existing pushService
 
@@ -3704,7 +3704,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushservicesDeleteOne(pushServiceId: string ).subscribe(
+    this.apiInstance.pushservicesDeleteOne(pushServiceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3733,7 +3733,7 @@ null (empty response body)
 
 <a name="pushservicesDisableOne"></a>
 # **pushservicesDisableOne**
-> models.PushService pushservicesDisableOne(pushServiceId)
+> models.PushService pushservicesDisableOne
 
 Disable the push service.
 
@@ -3750,7 +3750,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushservicesDisableOne(pushServiceId: string ).subscribe(
+    this.apiInstance.pushservicesDisableOne(pushServiceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3779,7 +3779,7 @@ Name | Type | Description  | Notes
 
 <a name="pushservicesEnableOne"></a>
 # **pushservicesEnableOne**
-> models.PushService pushservicesEnableOne(pushServiceId)
+> models.PushService pushservicesEnableOne
 
 Enable the push service.
 
@@ -3796,7 +3796,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushservicesEnableOne(pushServiceId: string ).subscribe(
+    this.apiInstance.pushservicesEnableOne(pushServiceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3825,7 +3825,7 @@ Name | Type | Description  | Notes
 
 <a name="pushservicesQuery"></a>
 # **pushservicesQuery**
-> models.PushServicePage pushservicesQuery(opts)
+> models.PushServicePage pushservicesQuery
 
 Returns pushservices
 
@@ -3842,7 +3842,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushservicesQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.pushservicesQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3875,7 +3875,7 @@ Name | Type | Description  | Notes
 
 <a name="pushservicesReadOne"></a>
 # **pushservicesReadOne**
-> models.PushService pushservicesReadOne(pushServiceId)
+> models.PushService pushservicesReadOne
 
 Get one existing pushService
 
@@ -3892,7 +3892,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushservicesReadOne(pushServiceId: string ).subscribe(
+    this.apiInstance.pushservicesReadOne(pushServiceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3921,7 +3921,7 @@ Name | Type | Description  | Notes
 
 <a name="pushservicesUpdateOne"></a>
 # **pushservicesUpdateOne**
-> models.PushService pushservicesUpdateOne(pushServiceIdupdatedPushService)
+> models.PushService pushservicesUpdateOne
 
 update existing pushService
 
@@ -3938,7 +3938,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushservicesUpdateOne(pushServiceId: string updatedPushService: models.PushServiceUpdate ).subscribe(
+    this.apiInstance.pushservicesUpdateOne(pushServiceId: string, updatedPushService: models.PushServiceUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -3968,7 +3968,7 @@ Name | Type | Description  | Notes
 
 <a name="rolesCreateMany"></a>
 # **rolesCreateMany**
-> models.RoleArray rolesCreateMany(opts)
+> models.RoleArray rolesCreateMany
 
 Create multiple new roles
 
@@ -3985,7 +3985,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.rolesCreateMany(roles?: models.NewRoleArray ).subscribe(
+    this.apiInstance.rolesCreateMany(roles?: models.NewRoleArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4014,7 +4014,7 @@ Name | Type | Description  | Notes
 
 <a name="rolesCreateOne"></a>
 # **rolesCreateOne**
-> models.Role rolesCreateOne(opts)
+> models.Role rolesCreateOne
 
 Create new role
 
@@ -4031,7 +4031,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.rolesCreateOne(role?: models.NewRole ).subscribe(
+    this.apiInstance.rolesCreateOne(role?: models.NewRole).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4060,7 +4060,7 @@ Name | Type | Description  | Notes
 
 <a name="rolesDeleteMany"></a>
 # **rolesDeleteMany**
-> models.BulkDeleteResponse rolesDeleteMany(filter)
+> models.BulkDeleteResponse rolesDeleteMany
 
 Bulk delete existing roles
 
@@ -4077,7 +4077,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.rolesDeleteMany(filter: string ).subscribe(
+    this.apiInstance.rolesDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4106,7 +4106,7 @@ Name | Type | Description  | Notes
 
 <a name="rolesDeleteOne"></a>
 # **rolesDeleteOne**
-> rolesDeleteOne(roleId)
+> rolesDeleteOne
 
 delete existing role
 
@@ -4123,7 +4123,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.rolesDeleteOne(roleId: string ).subscribe(
+    this.apiInstance.rolesDeleteOne(roleId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4152,7 +4152,7 @@ null (empty response body)
 
 <a name="rolesQuery"></a>
 # **rolesQuery**
-> models.RolePage rolesQuery(opts)
+> models.RolePage rolesQuery
 
 Returns roles
 
@@ -4169,7 +4169,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.rolesQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.rolesQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4202,7 +4202,7 @@ Name | Type | Description  | Notes
 
 <a name="rolesReadOne"></a>
 # **rolesReadOne**
-> models.Role rolesReadOne(roleId)
+> models.Role rolesReadOne
 
 Get one existing role
 
@@ -4219,7 +4219,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.rolesReadOne(roleId: string ).subscribe(
+    this.apiInstance.rolesReadOne(roleId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4248,7 +4248,7 @@ Name | Type | Description  | Notes
 
 <a name="rolesUpdateMany"></a>
 # **rolesUpdateMany**
-> models.BulkUpdateResponse rolesUpdateMany(filterroleBulkUpdate)
+> models.BulkUpdateResponse rolesUpdateMany
 
 Bulk update existing roles
 
@@ -4265,7 +4265,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.rolesUpdateMany(filter: string roleBulkUpdate: models.RoleBulkUpdate ).subscribe(
+    this.apiInstance.rolesUpdateMany(filter: string, roleBulkUpdate: models.RoleBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4295,7 +4295,7 @@ Name | Type | Description  | Notes
 
 <a name="rolesUpdateOne"></a>
 # **rolesUpdateOne**
-> models.Role rolesUpdateOne(roleIdupdatedRole)
+> models.Role rolesUpdateOne
 
 update existing role
 
@@ -4312,7 +4312,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.rolesUpdateOne(roleId: string updatedRole: models.RoleUpdate ).subscribe(
+    this.apiInstance.rolesUpdateOne(roleId: string, updatedRole: models.RoleUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4342,7 +4342,7 @@ Name | Type | Description  | Notes
 
 <a name="smsServiceCreateOne"></a>
 # **smsServiceCreateOne**
-> models.SmsService smsServiceCreateOne(opts)
+> models.SmsService smsServiceCreateOne
 
 Create new smsService
 
@@ -4359,7 +4359,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.smsServiceCreateOne(smsService?: models.NewSmsService ).subscribe(
+    this.apiInstance.smsServiceCreateOne(smsService?: models.NewSmsService).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4388,7 +4388,7 @@ Name | Type | Description  | Notes
 
 <a name="smsServiceDeleteMany"></a>
 # **smsServiceDeleteMany**
-> models.BulkDeleteResponse smsServiceDeleteMany(filter)
+> models.BulkDeleteResponse smsServiceDeleteMany
 
 Bulk delete existing sms
 
@@ -4405,7 +4405,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.smsServiceDeleteMany(filter: string ).subscribe(
+    this.apiInstance.smsServiceDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4434,7 +4434,7 @@ Name | Type | Description  | Notes
 
 <a name="smsServiceDeleteOne"></a>
 # **smsServiceDeleteOne**
-> smsServiceDeleteOne(smsServiceId)
+> smsServiceDeleteOne
 
 delete existing smsService
 
@@ -4451,7 +4451,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.smsServiceDeleteOne(smsServiceId: string ).subscribe(
+    this.apiInstance.smsServiceDeleteOne(smsServiceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4480,7 +4480,7 @@ null (empty response body)
 
 <a name="smsServiceDisableOne"></a>
 # **smsServiceDisableOne**
-> models.SmsService smsServiceDisableOne(smsServiceId)
+> models.SmsService smsServiceDisableOne
 
 Disable the sms service.
 
@@ -4497,7 +4497,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.smsServiceDisableOne(smsServiceId: string ).subscribe(
+    this.apiInstance.smsServiceDisableOne(smsServiceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4526,7 +4526,7 @@ Name | Type | Description  | Notes
 
 <a name="smsServiceEnableOne"></a>
 # **smsServiceEnableOne**
-> models.SmsService smsServiceEnableOne(smsServiceId)
+> models.SmsService smsServiceEnableOne
 
 Enable the sms service.
 
@@ -4543,7 +4543,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.smsServiceEnableOne(smsServiceId: string ).subscribe(
+    this.apiInstance.smsServiceEnableOne(smsServiceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4572,7 +4572,7 @@ Name | Type | Description  | Notes
 
 <a name="smsServiceQuery"></a>
 # **smsServiceQuery**
-> models.SmsServicePage smsServiceQuery(opts)
+> models.SmsServicePage smsServiceQuery
 
 Returns sms services
 
@@ -4589,7 +4589,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.smsServiceQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.smsServiceQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4622,7 +4622,7 @@ Name | Type | Description  | Notes
 
 <a name="smsServiceReadOne"></a>
 # **smsServiceReadOne**
-> models.SmsService smsServiceReadOne(smsServiceId)
+> models.SmsService smsServiceReadOne
 
 Get one existing smsService
 
@@ -4639,7 +4639,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.smsServiceReadOne(smsServiceId: string ).subscribe(
+    this.apiInstance.smsServiceReadOne(smsServiceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4668,7 +4668,7 @@ Name | Type | Description  | Notes
 
 <a name="smsServiceUpdateOne"></a>
 # **smsServiceUpdateOne**
-> models.SmsService smsServiceUpdateOne(smsServiceIdupdatedSmsService)
+> models.SmsService smsServiceUpdateOne
 
 update existing smsService
 
@@ -4685,7 +4685,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.smsServiceUpdateOne(smsServiceId: string updatedSmsService: models.SmsServiceUpdate ).subscribe(
+    this.apiInstance.smsServiceUpdateOne(smsServiceId: string, updatedSmsService: models.SmsServiceUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4715,7 +4715,7 @@ Name | Type | Description  | Notes
 
 <a name="usersDeleteOne"></a>
 # **usersDeleteOne**
-> usersDeleteOne(userId)
+> usersDeleteOne
 
 delete existing user
 
@@ -4732,7 +4732,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersDeleteOne(userId: string ).subscribe(
+    this.apiInstance.usersDeleteOne(userId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4761,7 +4761,7 @@ null (empty response body)
 
 <a name="usersReadOne"></a>
 # **usersReadOne**
-> models.User usersReadOne(userId)
+> models.User usersReadOne
 
 Get one existing users
 
@@ -4778,7 +4778,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersReadOne(userId: string ).subscribe(
+    this.apiInstance.usersReadOne(userId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -4807,7 +4807,7 @@ Name | Type | Description  | Notes
 
 <a name="usersUpdateOne"></a>
 # **usersUpdateOne**
-> models.User usersUpdateOne(userIdupdatedUser)
+> models.User usersUpdateOne
 
 update existing user
 
@@ -4824,7 +4824,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersUpdateOne(userId: string updatedUser: models.UserUpdate ).subscribe(
+    this.apiInstance.usersUpdateOne(userId: string, updatedUser: models.UserUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

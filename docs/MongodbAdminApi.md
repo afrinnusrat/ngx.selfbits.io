@@ -55,7 +55,7 @@ Method | HTTP request | Description
 
 <a name="dataCreateManyByModel"></a>
 # **dataCreateManyByModel**
-> models.MongoDataArray dataCreateManyByModel(mongoModelIdmongoDataItems)
+> models.MongoDataArray dataCreateManyByModel
 
 Create multiple new data items
 
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.dataCreateManyByModel(mongoModelId: string mongoDataItems: models.NewMongoDataArray ).subscribe(
+    this.apiInstance.dataCreateManyByModel(mongoModelId: string, mongoDataItems: models.NewMongoDataArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 <a name="dataCreateOneByModel"></a>
 # **dataCreateOneByModel**
-> models.MongoData dataCreateOneByModel(mongoModelIdmongoDataItem)
+> models.MongoData dataCreateOneByModel
 
 Create new data item
 
@@ -119,7 +119,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.dataCreateOneByModel(mongoModelId: string mongoDataItem: models.NewMongoData ).subscribe(
+    this.apiInstance.dataCreateOneByModel(mongoModelId: string, mongoDataItem: models.NewMongoData).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 <a name="dataDeleteManyByModel"></a>
 # **dataDeleteManyByModel**
-> models.BulkDeleteResponse dataDeleteManyByModel(mongoModelIdfilter)
+> models.BulkDeleteResponse dataDeleteManyByModel
 
 Bulk delete existing data items
 
@@ -166,7 +166,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.dataDeleteManyByModel(mongoModelId: string filter: string ).subscribe(
+    this.apiInstance.dataDeleteManyByModel(mongoModelId: string, filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 <a name="dataDeleteOneByModel"></a>
 # **dataDeleteOneByModel**
-> models.BulkDeleteResponse dataDeleteOneByModel(mongoModelIdid)
+> models.BulkDeleteResponse dataDeleteOneByModel
 
 delete existing data item
 
@@ -213,7 +213,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.dataDeleteOneByModel(mongoModelId: string id: string ).subscribe(
+    this.apiInstance.dataDeleteOneByModel(mongoModelId: string, id: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 <a name="dataQueryByModel"></a>
 # **dataQueryByModel**
-> models.MongoDataPage dataQueryByModel(mongoModelIdopts)
+> models.MongoDataPage dataQueryByModel
 
 Returns data items paginated
 
@@ -260,7 +260,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.dataQueryByModel(mongoModelId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.dataQueryByModel(mongoModelId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 <a name="dataReadOneByModel"></a>
 # **dataReadOneByModel**
-> models.MongoData dataReadOneByModel(mongoModelIdid)
+> models.MongoData dataReadOneByModel
 
 Get one existing data item
 
@@ -311,7 +311,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.dataReadOneByModel(mongoModelId: string id: string ).subscribe(
+    this.apiInstance.dataReadOneByModel(mongoModelId: string, id: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 <a name="dataUpdateManyByModel"></a>
 # **dataUpdateManyByModel**
-> models.BulkUpdateResponse dataUpdateManyByModel(mongoModelIdfiltermongoDataBulkUpdate)
+> models.BulkUpdateResponse dataUpdateManyByModel
 
 Bulk update existing data items
 
@@ -358,7 +358,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.dataUpdateManyByModel(mongoModelId: string filter: string mongoDataBulkUpdate: models.MongoDataBulkUpdate ).subscribe(
+    this.apiInstance.dataUpdateManyByModel(mongoModelId: string, filter: string, mongoDataBulkUpdate: models.MongoDataBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 <a name="dataUpdateOneByModel"></a>
 # **dataUpdateOneByModel**
-> models.MongoData dataUpdateOneByModel(mongoModelIdidupdatedMongoData)
+> models.MongoData dataUpdateOneByModel
 
 update existing data item
 
@@ -406,7 +406,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.dataUpdateOneByModel(mongoModelId: string id: string updatedMongoData: models.MongoDataUpdate ).subscribe(
+    this.apiInstance.dataUpdateOneByModel(mongoModelId: string, id: string, updatedMongoData: models.MongoDataUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoDatabasesCreateMany"></a>
 # **mongoDatabasesCreateMany**
-> models.MongoDatabaseArray mongoDatabasesCreateMany(opts)
+> models.MongoDatabaseArray mongoDatabasesCreateMany
 
 Create multiple new mongo_databases
 
@@ -454,7 +454,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesCreateMany(mongoDatabases?: models.NewMongoDatabaseArray ).subscribe(
+    this.apiInstance.mongoDatabasesCreateMany(mongoDatabases?: models.NewMongoDatabaseArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoDatabasesCreateOne"></a>
 # **mongoDatabasesCreateOne**
-> models.MongoDatabase mongoDatabasesCreateOne(opts)
+> models.MongoDatabase mongoDatabasesCreateOne
 
 Create new mongo_database
 
@@ -500,7 +500,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesCreateOne(mongoDatabase?: models.NewMongoDatabase ).subscribe(
+    this.apiInstance.mongoDatabasesCreateOne(mongoDatabase?: models.NewMongoDatabase).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -529,7 +529,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoDatabasesDeleteMany"></a>
 # **mongoDatabasesDeleteMany**
-> models.BulkDeleteResponse mongoDatabasesDeleteMany(filter)
+> models.BulkDeleteResponse mongoDatabasesDeleteMany
 
 Bulk delete existing mongo_databases
 
@@ -546,7 +546,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesDeleteMany(filter: string ).subscribe(
+    this.apiInstance.mongoDatabasesDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -575,7 +575,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoDatabasesDeleteOne"></a>
 # **mongoDatabasesDeleteOne**
-> mongoDatabasesDeleteOne(mongoDatabaseId)
+> mongoDatabasesDeleteOne
 
 delete existing mongo_database
 
@@ -592,7 +592,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesDeleteOne(mongoDatabaseId: string ).subscribe(
+    this.apiInstance.mongoDatabasesDeleteOne(mongoDatabaseId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -621,7 +621,7 @@ null (empty response body)
 
 <a name="mongoDatabasesQuery"></a>
 # **mongoDatabasesQuery**
-> models.MongoDatabasePage mongoDatabasesQuery(opts)
+> models.MongoDatabasePage mongoDatabasesQuery
 
 Returns mongo_databases
 
@@ -638,7 +638,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.mongoDatabasesQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -671,7 +671,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoDatabasesReadOne"></a>
 # **mongoDatabasesReadOne**
-> models.MongoDatabase mongoDatabasesReadOne(mongoDatabaseId)
+> models.MongoDatabase mongoDatabasesReadOne
 
 Get one existing mongo_database
 
@@ -688,7 +688,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesReadOne(mongoDatabaseId: string ).subscribe(
+    this.apiInstance.mongoDatabasesReadOne(mongoDatabaseId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -717,7 +717,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoDatabasesTestOne"></a>
 # **mongoDatabasesTestOne**
-> models.MongoDatabaseTestResponse mongoDatabasesTestOne(mongoDatabaseId)
+> models.MongoDatabaseTestResponse mongoDatabasesTestOne
 
 Test connection. If the connection attempt fails, information is provided in the payload with status code 200.
 
@@ -734,7 +734,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesTestOne(mongoDatabaseId: string ).subscribe(
+    this.apiInstance.mongoDatabasesTestOne(mongoDatabaseId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -763,7 +763,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoDatabasesUpdateMany"></a>
 # **mongoDatabasesUpdateMany**
-> models.BulkUpdateResponse mongoDatabasesUpdateMany(filtermongoDatabaseBulkUpdate)
+> models.BulkUpdateResponse mongoDatabasesUpdateMany
 
 Bulk update existing mongo_databases
 
@@ -780,7 +780,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesUpdateMany(filter: string mongoDatabaseBulkUpdate: models.MongoDatabaseBulkUpdate ).subscribe(
+    this.apiInstance.mongoDatabasesUpdateMany(filter: string, mongoDatabaseBulkUpdate: models.MongoDatabaseBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -810,7 +810,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoDatabasesUpdateOne"></a>
 # **mongoDatabasesUpdateOne**
-> models.MongoDatabase mongoDatabasesUpdateOne(mongoDatabaseIdupdatedMongoDatabase)
+> models.MongoDatabase mongoDatabasesUpdateOne
 
 update existing mongo_database
 
@@ -827,7 +827,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoDatabasesUpdateOne(mongoDatabaseId: string updatedMongoDatabase: models.MongoDatabaseUpdate ).subscribe(
+    this.apiInstance.mongoDatabasesUpdateOne(mongoDatabaseId: string, updatedMongoDatabase: models.MongoDatabaseUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -857,7 +857,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoModelsCreateMany"></a>
 # **mongoModelsCreateMany**
-> models.MongoModelArray mongoModelsCreateMany(opts)
+> models.MongoModelArray mongoModelsCreateMany
 
 Create multiple new mongo_models
 
@@ -874,7 +874,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsCreateMany(mongoModels?: models.NewMongoModelArray ).subscribe(
+    this.apiInstance.mongoModelsCreateMany(mongoModels?: models.NewMongoModelArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -903,7 +903,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoModelsCreateOne"></a>
 # **mongoModelsCreateOne**
-> models.MongoModel mongoModelsCreateOne(mongoModel)
+> models.MongoModel mongoModelsCreateOne
 
 Create new mongo_model
 
@@ -920,7 +920,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsCreateOne(mongoModel: models.NewMongoModel ).subscribe(
+    this.apiInstance.mongoModelsCreateOne(mongoModel: models.NewMongoModel).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -949,7 +949,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoModelsDeleteMany"></a>
 # **mongoModelsDeleteMany**
-> models.BulkDeleteResponse mongoModelsDeleteMany(filter)
+> models.BulkDeleteResponse mongoModelsDeleteMany
 
 Bulk delete existing mongo_models
 
@@ -966,7 +966,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsDeleteMany(filter: string ).subscribe(
+    this.apiInstance.mongoModelsDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -995,7 +995,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoModelsDeleteOne"></a>
 # **mongoModelsDeleteOne**
-> mongoModelsDeleteOne(mongoModelId)
+> mongoModelsDeleteOne
 
 delete existing mongo_model
 
@@ -1012,7 +1012,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsDeleteOne(mongoModelId: string ).subscribe(
+    this.apiInstance.mongoModelsDeleteOne(mongoModelId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1041,7 +1041,7 @@ null (empty response body)
 
 <a name="mongoModelsQuery"></a>
 # **mongoModelsQuery**
-> models.MongoModelPage mongoModelsQuery(opts)
+> models.MongoModelPage mongoModelsQuery
 
 Returns mongo_models
 
@@ -1058,7 +1058,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.mongoModelsQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1091,7 +1091,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoModelsReadOne"></a>
 # **mongoModelsReadOne**
-> models.MongoModel mongoModelsReadOne(mongoModelId)
+> models.MongoModel mongoModelsReadOne
 
 Get one existing mongo_model
 
@@ -1108,7 +1108,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsReadOne(mongoModelId: string ).subscribe(
+    this.apiInstance.mongoModelsReadOne(mongoModelId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1137,7 +1137,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoModelsUpdateMany"></a>
 # **mongoModelsUpdateMany**
-> models.BulkUpdateResponse mongoModelsUpdateMany(filtermongoModelBulkUpdate)
+> models.BulkUpdateResponse mongoModelsUpdateMany
 
 Bulk update existing mongo_models
 
@@ -1154,7 +1154,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsUpdateMany(filter: string mongoModelBulkUpdate: models.MongoModelBulkUpdate ).subscribe(
+    this.apiInstance.mongoModelsUpdateMany(filter: string, mongoModelBulkUpdate: models.MongoModelBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1184,7 +1184,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoModelsUpdateOne"></a>
 # **mongoModelsUpdateOne**
-> models.MongoModel mongoModelsUpdateOne(mongoModelIdupdatedMongoModel)
+> models.MongoModel mongoModelsUpdateOne
 
 update existing mongo_model
 
@@ -1201,7 +1201,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsUpdateOne(mongoModelId: string updatedMongoModel: models.MongoModelUpdate ).subscribe(
+    this.apiInstance.mongoModelsUpdateOne(mongoModelId: string, updatedMongoModel: models.MongoModelUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1231,7 +1231,7 @@ Name | Type | Description  | Notes
 
 <a name="mongoModelsValidateByDefinition"></a>
 # **mongoModelsValidateByDefinition**
-> models.MongoModelValidationResponse mongoModelsValidateByDefinition(mongoModel)
+> models.MongoModelValidationResponse mongoModelsValidateByDefinition
 
 Validate a mongo model definition. If the validation fails, information is provided in the payload with status code 200.
 
@@ -1248,7 +1248,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.mongoModelsValidateByDefinition(mongoModel: models.MongoModel ).subscribe(
+    this.apiInstance.mongoModelsValidateByDefinition(mongoModel: models.MongoModel).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

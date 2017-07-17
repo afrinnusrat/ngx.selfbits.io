@@ -59,7 +59,7 @@ Method | HTTP request | Description
 
 <a name="applicationsCreateOneByOrganization"></a>
 # **applicationsCreateOneByOrganization**
-> models.Application applicationsCreateOneByOrganization(organizationIdapplication)
+> models.Application applicationsCreateOneByOrganization
 
 Create new application
 
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.applicationsCreateOneByOrganization(organizationId: string application: models.NewApplication ).subscribe(
+    this.apiInstance.applicationsCreateOneByOrganization(organizationId: string, application: models.NewApplication).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 <a name="applicationsDeleteOneByOrganization"></a>
 # **applicationsDeleteOneByOrganization**
-> applicationsDeleteOneByOrganization(organizationIdapplicationId)
+> applicationsDeleteOneByOrganization
 
 Delete existing SELFBITS CLOUD PLATFORM application
 
@@ -123,7 +123,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.applicationsDeleteOneByOrganization(organizationId: string applicationId: string ).subscribe(
+    this.apiInstance.applicationsDeleteOneByOrganization(organizationId: string, applicationId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -153,7 +153,7 @@ null (empty response body)
 
 <a name="applicationsQueryByOrganization"></a>
 # **applicationsQueryByOrganization**
-> models.ApplicationPage applicationsQueryByOrganization(organizationIdopts)
+> models.ApplicationPage applicationsQueryByOrganization
 
 Returns applications
 
@@ -170,7 +170,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.applicationsQueryByOrganization(organizationId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.applicationsQueryByOrganization(organizationId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 <a name="applicationsReadOneByOrganization"></a>
 # **applicationsReadOneByOrganization**
-> models.Application applicationsReadOneByOrganization(organizationIdapplicationId)
+> models.Application applicationsReadOneByOrganization
 
 Create new application
 
@@ -221,7 +221,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.applicationsReadOneByOrganization(organizationId: string applicationId: string ).subscribe(
+    this.apiInstance.applicationsReadOneByOrganization(organizationId: string, applicationId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesCreateOneByOrganization"></a>
 # **directoriesCreateOneByOrganization**
-> models.Directory directoriesCreateOneByOrganization(organizationIdopts)
+> models.Directory directoriesCreateOneByOrganization
 
 Create new directory
 
@@ -268,7 +268,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesCreateOneByOrganization(organizationId: string directory?: models.NewDirectory ).subscribe(
+    this.apiInstance.directoriesCreateOneByOrganization(organizationId: string, directory?: models.NewDirectory).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesDeleteManyByOrganization"></a>
 # **directoriesDeleteManyByOrganization**
-> models.BulkDeleteResponse directoriesDeleteManyByOrganization(organizationIdfilter)
+> models.BulkDeleteResponse directoriesDeleteManyByOrganization
 
 Bulk delete existing directories
 
@@ -315,7 +315,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesDeleteManyByOrganization(organizationId: string filter: string ).subscribe(
+    this.apiInstance.directoriesDeleteManyByOrganization(organizationId: string, filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesDeleteOneByOrganization"></a>
 # **directoriesDeleteOneByOrganization**
-> directoriesDeleteOneByOrganization(organizationIddirectoryId)
+> directoriesDeleteOneByOrganization
 
 delete existing directory
 
@@ -362,7 +362,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesDeleteOneByOrganization(organizationId: string directoryId: string ).subscribe(
+    this.apiInstance.directoriesDeleteOneByOrganization(organizationId: string, directoryId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -392,7 +392,7 @@ null (empty response body)
 
 <a name="directoriesQueryByOrganization"></a>
 # **directoriesQueryByOrganization**
-> models.DirectoryPage directoriesQueryByOrganization(organizationIdopts)
+> models.DirectoryPage directoriesQueryByOrganization
 
 Returns directories
 
@@ -409,7 +409,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesQueryByOrganization(organizationId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.directoriesQueryByOrganization(organizationId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesReadOneByOrganization"></a>
 # **directoriesReadOneByOrganization**
-> models.Directory directoriesReadOneByOrganization(organizationIddirectoryId)
+> models.Directory directoriesReadOneByOrganization
 
 Get one existing directory
 
@@ -460,7 +460,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesReadOneByOrganization(organizationId: string directoryId: string ).subscribe(
+    this.apiInstance.directoriesReadOneByOrganization(organizationId: string, directoryId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesUpdateManyByOrganization"></a>
 # **directoriesUpdateManyByOrganization**
-> models.BulkUpdateResponse directoriesUpdateManyByOrganization(organizationIdfilterdirectoryBulkUpdate)
+> models.BulkUpdateResponse directoriesUpdateManyByOrganization
 
 Bulk update existing users
 
@@ -507,7 +507,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesUpdateManyByOrganization(organizationId: string filter: string directoryBulkUpdate: models.DirectoryBulkUpdate ).subscribe(
+    this.apiInstance.directoriesUpdateManyByOrganization(organizationId: string, filter: string, directoryBulkUpdate: models.DirectoryBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 
 <a name="directoriesUpdateOneByOrganization"></a>
 # **directoriesUpdateOneByOrganization**
-> models.Directory directoriesUpdateOneByOrganization(organizationIddirectoryIdupdatedDirectory)
+> models.Directory directoriesUpdateOneByOrganization
 
 update existing directory
 
@@ -555,7 +555,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.directoriesUpdateOneByOrganization(organizationId: string directoryId: string updatedDirectory: models.DirectoryUpdate ).subscribe(
+    this.apiInstance.directoriesUpdateOneByOrganization(organizationId: string, directoryId: string, updatedDirectory: models.DirectoryUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -586,7 +586,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesCreateOneByOrganization"></a>
 # **invitesCreateOneByOrganization**
-> models.OrganizationInvite invitesCreateOneByOrganization(organizationId)
+> models.OrganizationInvite invitesCreateOneByOrganization
 
 Create organization invite
 
@@ -603,7 +603,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesCreateOneByOrganization(organizationId: string ).subscribe(
+    this.apiInstance.invitesCreateOneByOrganization(organizationId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesCreateOneByOrganizationAndUser"></a>
 # **invitesCreateOneByOrganizationAndUser**
-> models.OrganizationInvite invitesCreateOneByOrganizationAndUser(organizationIduserId)
+> models.OrganizationInvite invitesCreateOneByOrganizationAndUser
 
 Create organization invite
 
@@ -649,7 +649,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesCreateOneByOrganizationAndUser(organizationId: string userId: string ).subscribe(
+    this.apiInstance.invitesCreateOneByOrganizationAndUser(organizationId: string, userId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -679,7 +679,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesDeleteManyByOrganization"></a>
 # **invitesDeleteManyByOrganization**
-> models.BulkDeleteResponse invitesDeleteManyByOrganization(organizationIdfilter)
+> models.BulkDeleteResponse invitesDeleteManyByOrganization
 
 Bulk delete existing organization invites
 
@@ -696,7 +696,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesDeleteManyByOrganization(organizationId: string filter: string ).subscribe(
+    this.apiInstance.invitesDeleteManyByOrganization(organizationId: string, filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -726,7 +726,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesDeleteOneByOrganization"></a>
 # **invitesDeleteOneByOrganization**
-> invitesDeleteOneByOrganization(organizationIdinviteId)
+> invitesDeleteOneByOrganization
 
 delete existing invite
 
@@ -743,7 +743,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesDeleteOneByOrganization(organizationId: string inviteId: string ).subscribe(
+    this.apiInstance.invitesDeleteOneByOrganization(organizationId: string, inviteId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -773,7 +773,7 @@ null (empty response body)
 
 <a name="invitesDeleteOneByOrganizationAndUser"></a>
 # **invitesDeleteOneByOrganizationAndUser**
-> invitesDeleteOneByOrganizationAndUser(organizationIduserIdinviteId)
+> invitesDeleteOneByOrganizationAndUser
 
 delete existing invite
 
@@ -790,7 +790,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesDeleteOneByOrganizationAndUser(organizationId: string userId: string inviteId: string ).subscribe(
+    this.apiInstance.invitesDeleteOneByOrganizationAndUser(organizationId: string, userId: string, inviteId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -821,7 +821,7 @@ null (empty response body)
 
 <a name="invitesQueryByOrganization"></a>
 # **invitesQueryByOrganization**
-> models.OrganizationInvitePage invitesQueryByOrganization(organizationIdopts)
+> models.OrganizationInvitePage invitesQueryByOrganization
 
 Returns invites
 
@@ -838,7 +838,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesQueryByOrganization(organizationId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.invitesQueryByOrganization(organizationId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -872,7 +872,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesQueryByOrganizationAndUser"></a>
 # **invitesQueryByOrganizationAndUser**
-> models.OrganizationInvitePage invitesQueryByOrganizationAndUser(organizationIduserIdopts)
+> models.OrganizationInvitePage invitesQueryByOrganizationAndUser
 
 Returns invites
 
@@ -889,7 +889,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesQueryByOrganizationAndUser(organizationId: string userId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.invitesQueryByOrganizationAndUser(organizationId: string, userId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -924,7 +924,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesReadOneByOrganization"></a>
 # **invitesReadOneByOrganization**
-> models.OrganizationInvite invitesReadOneByOrganization(organizationIdinviteId)
+> models.OrganizationInvite invitesReadOneByOrganization
 
 Get one existing invite
 
@@ -941,7 +941,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesReadOneByOrganization(organizationId: string inviteId: string ).subscribe(
+    this.apiInstance.invitesReadOneByOrganization(organizationId: string, inviteId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsCreateMany"></a>
 # **organizationsCreateMany**
-> models.OrganizationArray organizationsCreateMany(opts)
+> models.OrganizationArray organizationsCreateMany
 
 Create multiple new organizations
 
@@ -988,7 +988,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsCreateMany(organizations?: models.NewOrganizationArray ).subscribe(
+    this.apiInstance.organizationsCreateMany(organizations?: models.NewOrganizationArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1017,7 +1017,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsCreateOne"></a>
 # **organizationsCreateOne**
-> models.Organization organizationsCreateOne(opts)
+> models.Organization organizationsCreateOne
 
 Create new organization
 
@@ -1034,7 +1034,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsCreateOne(organization?: models.NewOrganization ).subscribe(
+    this.apiInstance.organizationsCreateOne(organization?: models.NewOrganization).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1063,7 +1063,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsDeleteMany"></a>
 # **organizationsDeleteMany**
-> models.BulkDeleteResponse organizationsDeleteMany(filter)
+> models.BulkDeleteResponse organizationsDeleteMany
 
 Bulk delete existing organizations
 
@@ -1080,7 +1080,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsDeleteMany(filter: string ).subscribe(
+    this.apiInstance.organizationsDeleteMany(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1109,7 +1109,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsDeleteOne"></a>
 # **organizationsDeleteOne**
-> organizationsDeleteOne(organizationId)
+> organizationsDeleteOne
 
 delete existing organization
 
@@ -1126,7 +1126,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsDeleteOne(organizationId: string ).subscribe(
+    this.apiInstance.organizationsDeleteOne(organizationId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1155,7 +1155,7 @@ null (empty response body)
 
 <a name="organizationsQuery"></a>
 # **organizationsQuery**
-> models.OrganizationPage organizationsQuery(opts)
+> models.OrganizationPage organizationsQuery
 
 Returns organizations
 
@@ -1172,7 +1172,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string _public?: boolean ).subscribe(
+    this.apiInstance.organizationsQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, _public?: boolean).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1206,7 +1206,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsReadOne"></a>
 # **organizationsReadOne**
-> models.Organization organizationsReadOne(organizationId)
+> models.Organization organizationsReadOne
 
 Get one existing organization
 
@@ -1223,7 +1223,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsReadOne(organizationId: string ).subscribe(
+    this.apiInstance.organizationsReadOne(organizationId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1252,7 +1252,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsUpdateMany"></a>
 # **organizationsUpdateMany**
-> models.BulkUpdateResponse organizationsUpdateMany(filterorganizationBulkUpdate)
+> models.BulkUpdateResponse organizationsUpdateMany
 
 Bulk update existing organizations
 
@@ -1269,7 +1269,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsUpdateMany(filter: string organizationBulkUpdate: models.OrganizationBulkUpdate ).subscribe(
+    this.apiInstance.organizationsUpdateMany(filter: string, organizationBulkUpdate: models.OrganizationBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1299,7 +1299,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsUpdateOne"></a>
 # **organizationsUpdateOne**
-> models.Organization organizationsUpdateOne(organizationIdupdatedOrganization)
+> models.Organization organizationsUpdateOne
 
 update existing organization
 
@@ -1316,7 +1316,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsUpdateOne(organizationId: string updatedOrganization: models.OrganizationUpdate ).subscribe(
+    this.apiInstance.organizationsUpdateOne(organizationId: string, updatedOrganization: models.OrganizationUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1346,7 +1346,7 @@ Name | Type | Description  | Notes
 
 <a name="usersQueryByOrganization"></a>
 # **usersQueryByOrganization**
-> models.UserPage usersQueryByOrganization(organizationIdopts)
+> models.UserPage usersQueryByOrganization
 
 Returns users that have signed up with a specific organization
 
@@ -1363,7 +1363,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersQueryByOrganization(organizationId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.usersQueryByOrganization(organizationId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1397,7 +1397,7 @@ Name | Type | Description  | Notes
 
 <a name="usersReadOneByOrganization"></a>
 # **usersReadOneByOrganization**
-> models.User usersReadOneByOrganization(organizationIduserId)
+> models.User usersReadOneByOrganization
 
 Returns a specific user that has signed up with a specific organization
 
@@ -1414,7 +1414,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersReadOneByOrganization(organizationId: string userId: string ).subscribe(
+    this.apiInstance.usersReadOneByOrganization(organizationId: string, userId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1444,7 +1444,7 @@ Name | Type | Description  | Notes
 
 <a name="usersRemoveFromOrganization"></a>
 # **usersRemoveFromOrganization**
-> usersRemoveFromOrganization(organizationIduserId)
+> usersRemoveFromOrganization
 
 Remove a specific user from an organization
 
@@ -1461,7 +1461,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersRemoveFromOrganization(organizationId: string userId: string ).subscribe(
+    this.apiInstance.usersRemoveFromOrganization(organizationId: string, userId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

@@ -31,7 +31,7 @@ Method | HTTP request | Description
 
 <a name="tenantsPost"></a>
 # **tenantsPost**
-> models.TenantCreateResponse tenantsPost(tenant)
+> models.TenantCreateResponse tenantsPost
 
 
 
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.tenantsPost(tenant: models.NewTenant ).subscribe(
+    this.apiInstance.tenantsPost(tenant: models.NewTenant).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 <a name="tenantsTenantIdDelete"></a>
 # **tenantsTenantIdDelete**
-> tenantsTenantIdDelete(tenantId)
+> tenantsTenantIdDelete
 
 
 
@@ -94,7 +94,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.tenantsTenantIdDelete(tenantId: string ).subscribe(
+    this.apiInstance.tenantsTenantIdDelete(tenantId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

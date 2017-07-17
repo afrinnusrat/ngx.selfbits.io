@@ -37,7 +37,7 @@ Method | HTTP request | Description
 
 <a name="createManyByModel"></a>
 # **createManyByModel**
-> models.MongoDataArray createManyByModel(mongoModelIdmongoDataItems)
+> models.MongoDataArray createManyByModel
 
 Create multiple new data items
 
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.createManyByModel(mongoModelId: string mongoDataItems: models.NewMongoDataArray ).subscribe(
+    this.apiInstance.createManyByModel(mongoModelId: string, mongoDataItems: models.NewMongoDataArray).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 <a name="createOneByModel"></a>
 # **createOneByModel**
-> models.MongoData createOneByModel(mongoModelIdmongoDataItem)
+> models.MongoData createOneByModel
 
 Create new data item
 
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.createOneByModel(mongoModelId: string mongoDataItem: models.NewMongoData ).subscribe(
+    this.apiInstance.createOneByModel(mongoModelId: string, mongoDataItem: models.NewMongoData).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteManyByModel"></a>
 # **deleteManyByModel**
-> models.BulkDeleteResponse deleteManyByModel(mongoModelIdfilter)
+> models.BulkDeleteResponse deleteManyByModel
 
 Bulk delete existing data items
 
@@ -148,7 +148,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.deleteManyByModel(mongoModelId: string filter: string ).subscribe(
+    this.apiInstance.deleteManyByModel(mongoModelId: string, filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteOneByModel"></a>
 # **deleteOneByModel**
-> models.BulkDeleteResponse deleteOneByModel(mongoModelIdid)
+> models.BulkDeleteResponse deleteOneByModel
 
 delete existing data item
 
@@ -195,7 +195,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.deleteOneByModel(mongoModelId: string id: string ).subscribe(
+    this.apiInstance.deleteOneByModel(mongoModelId: string, id: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 <a name="queryByModel"></a>
 # **queryByModel**
-> models.MongoDataPage queryByModel(mongoModelIdopts)
+> models.MongoDataPage queryByModel
 
 Returns data items paginated
 
@@ -242,7 +242,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.queryByModel(mongoModelId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.queryByModel(mongoModelId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 <a name="readOneByModel"></a>
 # **readOneByModel**
-> models.MongoData readOneByModel(mongoModelIdid)
+> models.MongoData readOneByModel
 
 Get one existing data item
 
@@ -293,7 +293,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.readOneByModel(mongoModelId: string id: string ).subscribe(
+    this.apiInstance.readOneByModel(mongoModelId: string, id: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 <a name="updateManyByModel"></a>
 # **updateManyByModel**
-> models.BulkUpdateResponse updateManyByModel(mongoModelIdfiltermongoDataBulkUpdate)
+> models.BulkUpdateResponse updateManyByModel
 
 Bulk update existing data items
 
@@ -340,7 +340,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.updateManyByModel(mongoModelId: string filter: string mongoDataBulkUpdate: models.MongoDataBulkUpdate ).subscribe(
+    this.apiInstance.updateManyByModel(mongoModelId: string, filter: string, mongoDataBulkUpdate: models.MongoDataBulkUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 <a name="updateOneByModel"></a>
 # **updateOneByModel**
-> models.MongoData updateOneByModel(mongoModelIdidupdatedMongoData)
+> models.MongoData updateOneByModel
 
 update existing data item
 
@@ -388,7 +388,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.updateOneByModel(mongoModelId: string id: string updatedMongoData: models.MongoDataUpdate ).subscribe(
+    this.apiInstance.updateOneByModel(mongoModelId: string, id: string, updatedMongoData: models.MongoDataUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

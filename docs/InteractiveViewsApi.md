@@ -47,7 +47,7 @@ Method | HTTP request | Description
 
 <a name="openAuthViewByDirectory"></a>
 # **openAuthViewByDirectory**
-> openAuthViewByDirectory(sbClientIddirectoryIdrandomStateopts)
+> openAuthViewByDirectory
 
 Interactive user authentication with external provider
 
@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openAuthViewByDirectory(sbClientId: string directoryId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openAuthViewByDirectory(sbClientId: string, directoryId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -96,7 +96,7 @@ null (empty response body)
 
 <a name="openAuthViewByOrganizationAndDirectory"></a>
 # **openAuthViewByOrganizationAndDirectory**
-> openAuthViewByOrganizationAndDirectory(sbClientIdorganizationIddirectoryIdrandomStateopts)
+> openAuthViewByOrganizationAndDirectory
 
 Interactive user authentication using specific organization and directory
 
@@ -113,7 +113,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openAuthViewByOrganizationAndDirectory(sbClientId: string organizationId: string directoryId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openAuthViewByOrganizationAndDirectory(sbClientId: string, organizationId: string, directoryId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -146,7 +146,7 @@ null (empty response body)
 
 <a name="openAuthViewByOrganizationAndProvider"></a>
 # **openAuthViewByOrganizationAndProvider**
-> openAuthViewByOrganizationAndProvider(sbClientIdorganizationIdproviderIdrandomStateopts)
+> openAuthViewByOrganizationAndProvider
 
 Interactive user authentication using specific organization and a specific provider
 
@@ -163,7 +163,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openAuthViewByOrganizationAndProvider(sbClientId: string organizationId: string providerId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openAuthViewByOrganizationAndProvider(sbClientId: string, organizationId: string, providerId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -196,7 +196,7 @@ null (empty response body)
 
 <a name="openAuthViewByProvider"></a>
 # **openAuthViewByProvider**
-> openAuthViewByProvider(sbClientIdproviderIdrandomStateopts)
+> openAuthViewByProvider
 
 Interactive user authentication with external provider
 
@@ -213,7 +213,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openAuthViewByProvider(sbClientId: string providerId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openAuthViewByProvider(sbClientId: string, providerId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -245,7 +245,7 @@ null (empty response body)
 
 <a name="openEmailVerificationViewByEmailAndCode"></a>
 # **openEmailVerificationViewByEmailAndCode**
-> openEmailVerificationViewByEmailAndCode(emailcode)
+> openEmailVerificationViewByEmailAndCode
 
 Verify email
 
@@ -262,7 +262,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openEmailVerificationViewByEmailAndCode(email: string code: string ).subscribe(
+    this.apiInstance.openEmailVerificationViewByEmailAndCode(email: string, code: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -292,7 +292,7 @@ null (empty response body)
 
 <a name="openLoginView"></a>
 # **openLoginView**
-> openLoginView(sbClientIdopts)
+> openLoginView
 
 Interactive user login with default directory
 
@@ -309,7 +309,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openLoginView(sbClientId: string randomState?: string ).subscribe(
+    this.apiInstance.openLoginView(sbClientId: string, randomState?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -339,7 +339,7 @@ null (empty response body)
 
 <a name="openLoginViewByDirectory"></a>
 # **openLoginViewByDirectory**
-> openLoginViewByDirectory(sbClientIddirectoryIdrandomState)
+> openLoginViewByDirectory
 
 Interactive user login with specific directory
 
@@ -356,7 +356,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openLoginViewByDirectory(sbClientId: string directoryId: string randomState: string ).subscribe(
+    this.apiInstance.openLoginViewByDirectory(sbClientId: string, directoryId: string, randomState: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -387,7 +387,7 @@ null (empty response body)
 
 <a name="openLoginViewByOrganization"></a>
 # **openLoginViewByOrganization**
-> openLoginViewByOrganization(sbClientIdorganizationIdopts)
+> openLoginViewByOrganization
 
 Interactive user login with default organization and its default directory
 
@@ -404,7 +404,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openLoginViewByOrganization(sbClientId: string organizationId: string randomState?: string ).subscribe(
+    this.apiInstance.openLoginViewByOrganization(sbClientId: string, organizationId: string, randomState?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -435,7 +435,7 @@ null (empty response body)
 
 <a name="openLoginViewByOrganizationAndDirectory"></a>
 # **openLoginViewByOrganizationAndDirectory**
-> openLoginViewByOrganizationAndDirectory(sbClientIdorganizationIddirectoryIdopts)
+> openLoginViewByOrganizationAndDirectory
 
 Interactive user login with specific organization and a specific directory
 
@@ -452,7 +452,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openLoginViewByOrganizationAndDirectory(sbClientId: string organizationId: string directoryId: string randomState?: string ).subscribe(
+    this.apiInstance.openLoginViewByOrganizationAndDirectory(sbClientId: string, organizationId: string, directoryId: string, randomState?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -484,7 +484,7 @@ null (empty response body)
 
 <a name="openLoginViewByOrganizationAndProvider"></a>
 # **openLoginViewByOrganizationAndProvider**
-> openLoginViewByOrganizationAndProvider(sbClientIdorganizationIdproviderIdopts)
+> openLoginViewByOrganizationAndProvider
 
 Interactive user login with specific organization and specific provider
 
@@ -501,7 +501,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openLoginViewByOrganizationAndProvider(sbClientId: string organizationId: string providerId: string randomState?: string ).subscribe(
+    this.apiInstance.openLoginViewByOrganizationAndProvider(sbClientId: string, organizationId: string, providerId: string, randomState?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -533,7 +533,7 @@ null (empty response body)
 
 <a name="openPasswordResetCallbackView"></a>
 # **openPasswordResetCallbackView**
-> openPasswordResetCallbackView(error)
+> openPasswordResetCallbackView
 
 Reset password callback view
 
@@ -550,7 +550,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openPasswordResetCallbackView(error: string ).subscribe(
+    this.apiInstance.openPasswordResetCallbackView(error: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -579,7 +579,7 @@ null (empty response body)
 
 <a name="openPasswordResetView"></a>
 # **openPasswordResetView**
-> openPasswordResetView(emailcode)
+> openPasswordResetView
 
 Reset password view
 
@@ -596,7 +596,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openPasswordResetView(email: string code: string ).subscribe(
+    this.apiInstance.openPasswordResetView(email: string, code: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -626,7 +626,7 @@ null (empty response body)
 
 <a name="openSignupView"></a>
 # **openSignupView**
-> openSignupView(sbClientIdrandomStateopts)
+> openSignupView
 
 Interactive user signup with default organization and its default directory
 
@@ -643,7 +643,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openSignupView(sbClientId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openSignupView(sbClientId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -674,7 +674,7 @@ null (empty response body)
 
 <a name="openSignupViewByDirectory"></a>
 # **openSignupViewByDirectory**
-> openSignupViewByDirectory(sbClientIddirectoryIdrandomStateopts)
+> openSignupViewByDirectory
 
 Interactive user signup with a specific directory
 
@@ -691,7 +691,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openSignupViewByDirectory(sbClientId: string directoryId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openSignupViewByDirectory(sbClientId: string, directoryId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -723,7 +723,7 @@ null (empty response body)
 
 <a name="openSignupViewByOrganization"></a>
 # **openSignupViewByOrganization**
-> openSignupViewByOrganization(sbClientIdorganizationIdrandomStateopts)
+> openSignupViewByOrganization
 
 Interactive user signup with specified organization and its default directory
 
@@ -740,7 +740,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openSignupViewByOrganization(sbClientId: string organizationId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openSignupViewByOrganization(sbClientId: string, organizationId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -772,7 +772,7 @@ null (empty response body)
 
 <a name="openSignupViewByOrganizationAndDirectory"></a>
 # **openSignupViewByOrganizationAndDirectory**
-> openSignupViewByOrganizationAndDirectory(sbClientIdorganizationIddirectoryIdrandomStateopts)
+> openSignupViewByOrganizationAndDirectory
 
 Interactive user signup with specific organization and a specific directory
 
@@ -789,7 +789,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openSignupViewByOrganizationAndDirectory(sbClientId: string organizationId: string directoryId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openSignupViewByOrganizationAndDirectory(sbClientId: string, organizationId: string, directoryId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -822,7 +822,7 @@ null (empty response body)
 
 <a name="openSignupViewByOrganizationAndProvider"></a>
 # **openSignupViewByOrganizationAndProvider**
-> openSignupViewByOrganizationAndProvider(sbClientIdorganizationIdproviderIdrandomStateopts)
+> openSignupViewByOrganizationAndProvider
 
 Interactive user signup with specific organization and specific provider
 
@@ -839,7 +839,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openSignupViewByOrganizationAndProvider(sbClientId: string organizationId: string providerId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openSignupViewByOrganizationAndProvider(sbClientId: string, organizationId: string, providerId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -872,7 +872,7 @@ null (empty response body)
 
 <a name="openSignupViewByProvider"></a>
 # **openSignupViewByProvider**
-> openSignupViewByProvider(sbClientIdproviderIdrandomStateopts)
+> openSignupViewByProvider
 
 Interactive user signup with default organization and a directory depending on specified provider
 
@@ -889,7 +889,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.openSignupViewByProvider(sbClientId: string providerId: string randomState: string invite?: string ).subscribe(
+    this.apiInstance.openSignupViewByProvider(sbClientId: string, providerId: string, randomState: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

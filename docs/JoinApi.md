@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 <a name="joinOrganization"></a>
 # **joinOrganization**
-> models.UserSignupResponse joinOrganization(organizationIdopts)
+> models.UserSignupResponse joinOrganization
 
 Join a specific organization
 
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.joinOrganization(organizationId: string invite?: string ).subscribe(
+    this.apiInstance.joinOrganization(organizationId: string, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 <a name="joinOrganizationByDirectory"></a>
 # **joinOrganizationByDirectory**
-> models.UserSignupResponse joinOrganizationByDirectory(organizationIddirectoryIduserSignupRequestopts)
+> models.UserSignupResponse joinOrganizationByDirectory
 
 Join with specific organization and a specific directory
 
@@ -96,7 +96,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.joinOrganizationByDirectory(organizationId: string directoryId: string userSignupRequest: models.UserSignupRequest invite?: string ).subscribe(
+    this.apiInstance.joinOrganizationByDirectory(organizationId: string, directoryId: string, userSignupRequest: models.UserSignupRequest, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 <a name="joinOrganizationByProvider"></a>
 # **joinOrganizationByProvider**
-> models.UserSignupResponse joinOrganizationByProvider(organizationIdproviderIduserSignupRequestopts)
+> models.UserSignupResponse joinOrganizationByProvider
 
 Signup with specific organization and directory that belongs to a specific provider
 
@@ -145,7 +145,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.joinOrganizationByProvider(organizationId: string providerId: string userSignupRequest: models.UserSignupRequest invite?: string ).subscribe(
+    this.apiInstance.joinOrganizationByProvider(organizationId: string, providerId: string, userSignupRequest: models.UserSignupRequest, invite?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

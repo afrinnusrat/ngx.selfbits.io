@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 <a name="browsePrivateFilesByPath"></a>
 # **browsePrivateFilesByPath**
-> models.FileBrowserDocs browsePrivateFilesByPath(filePath)
+> models.FileBrowserDocs browsePrivateFilesByPath
 
 browse file path
 
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.browsePrivateFilesByPath(filePath: string ).subscribe(
+    this.apiInstance.browsePrivateFilesByPath(filePath: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 <a name="browsePublicFilesByPath"></a>
 # **browsePublicFilesByPath**
-> models.FileBrowserDocs browsePublicFilesByPath(filePath)
+> models.FileBrowserDocs browsePublicFilesByPath
 
 browse file path
 
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.browsePublicFilesByPath(filePath: string ).subscribe(
+    this.apiInstance.browsePublicFilesByPath(filePath: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 <a name="createPrivate"></a>
 # **createPrivate**
-> models.NewFileResponse createPrivate(opts)
+> models.NewFileResponse createPrivate
 
 initialize private file upload
 
@@ -147,7 +147,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.createPrivate(file?: models.NewFile ).subscribe(
+    this.apiInstance.createPrivate(file?: models.NewFile).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 <a name="createPublic"></a>
 # **createPublic**
-> models.NewFileResponse createPublic(opts)
+> models.NewFileResponse createPublic
 
 initialize public file upload
 
@@ -193,7 +193,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.createPublic(file?: models.NewFile ).subscribe(
+    this.apiInstance.createPublic(file?: models.NewFile).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteOne"></a>
 # **deleteOne**
-> deleteOne(fileId)
+> deleteOne
 
 delete existing file
 
@@ -239,7 +239,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.deleteOne(fileId: string ).subscribe(
+    this.apiInstance.deleteOne(fileId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -268,7 +268,7 @@ null (empty response body)
 
 <a name="query"></a>
 # **query**
-> models.FilePage query(opts)
+> models.FilePage query
 
 query files
 
@@ -285,7 +285,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.query(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.query(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 <a name="readOne"></a>
 # **readOne**
-> models.File readOne(opts)
+> models.File readOne
 
 Read existing file by id or by filePath
 
@@ -335,7 +335,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.readOne(fileId?: string filePath?: string ).subscribe(
+    this.apiInstance.readOne(fileId?: string, filePath?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 <a name="updateOne"></a>
 # **updateOne**
-> models.File updateOne(fileIdupdatedFile)
+> models.File updateOne
 
 Update customData of an existing file
 
@@ -382,7 +382,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.updateOne(fileId: string updatedFile: models.FileUpdate ).subscribe(
+    this.apiInstance.updateOne(fileId: string, updatedFile: models.FileUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 <a name="verifyUpload"></a>
 # **verifyUpload**
-> models.File verifyUpload(fileIdetagObject)
+> models.File verifyUpload
 
 verify the successful file upload
 
@@ -429,7 +429,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.verifyUpload(fileId: string etagObject: models.FileVerificationRequest ).subscribe(
+    this.apiInstance.verifyUpload(fileId: string, etagObject: models.FileVerificationRequest).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

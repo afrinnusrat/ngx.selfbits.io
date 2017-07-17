@@ -56,7 +56,7 @@ Method | HTTP request | Description
 
 <a name="devicesCreateOneByUser"></a>
 # **devicesCreateOneByUser**
-> models.Device devicesCreateOneByUser(userIdopts)
+> models.Device devicesCreateOneByUser
 
 Create or update device based on submitted uuid
 
@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesCreateOneByUser(userId: string device?: models.NewDevice ).subscribe(
+    this.apiInstance.devicesCreateOneByUser(userId: string, device?: models.NewDevice).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 <a name="devicesDeleteOneByUser"></a>
 # **devicesDeleteOneByUser**
-> devicesDeleteOneByUser(userIddeviceId)
+> devicesDeleteOneByUser
 
 delete existing device
 
@@ -120,7 +120,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesDeleteOneByUser(userId: string deviceId: string ).subscribe(
+    this.apiInstance.devicesDeleteOneByUser(userId: string, deviceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -150,7 +150,7 @@ null (empty response body)
 
 <a name="devicesQueryByUser"></a>
 # **devicesQueryByUser**
-> models.DevicePage devicesQueryByUser(userIdopts)
+> models.DevicePage devicesQueryByUser
 
 Return the devices of the user
 
@@ -167,7 +167,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesQueryByUser(userId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.devicesQueryByUser(userId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 <a name="devicesReadOneByUser"></a>
 # **devicesReadOneByUser**
-> models.Device devicesReadOneByUser(userIddeviceId)
+> models.Device devicesReadOneByUser
 
 Get one existing device
 
@@ -218,7 +218,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesReadOneByUser(userId: string deviceId: string ).subscribe(
+    this.apiInstance.devicesReadOneByUser(userId: string, deviceId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 <a name="devicesUpdateOneByUser"></a>
 # **devicesUpdateOneByUser**
-> models.Device devicesUpdateOneByUser(userIddeviceIdupdatedDevice)
+> models.Device devicesUpdateOneByUser
 
 update existing device
 
@@ -265,7 +265,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.devicesUpdateOneByUser(userId: string deviceId: string updatedDevice: models.DeviceUpdate ).subscribe(
+    this.apiInstance.devicesUpdateOneByUser(userId: string, deviceId: string, updatedDevice: models.DeviceUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesQueryByUser"></a>
 # **invitesQueryByUser**
-> models.OrganizationInvitePage invitesQueryByUser(userIdopts)
+> models.OrganizationInvitePage invitesQueryByUser
 
 Query user invites
 
@@ -313,7 +313,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesQueryByUser(userId: string pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.invitesQueryByUser(userId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesQueryOfCurrentUser"></a>
 # **invitesQueryOfCurrentUser**
-> models.OrganizationInvitePage invitesQueryOfCurrentUser(opts)
+> models.OrganizationInvitePage invitesQueryOfCurrentUser
 
 Query current user invites
 
@@ -364,7 +364,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesQueryOfCurrentUser(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.invitesQueryOfCurrentUser(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 
 <a name="invitesReadOneByUser"></a>
 # **invitesReadOneByUser**
-> models.Organization invitesReadOneByUser(userIdinviteId)
+> models.Organization invitesReadOneByUser
 
 Reject an organization invite
 
@@ -414,7 +414,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.invitesReadOneByUser(userId: string inviteId: string ).subscribe(
+    this.apiInstance.invitesReadOneByUser(userId: string, inviteId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsQueryByUser"></a>
 # **organizationsQueryByUser**
-> models.OrganizationPage organizationsQueryByUser(userId)
+> models.OrganizationPage organizationsQueryByUser
 
 Query user organizations
 
@@ -461,7 +461,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsQueryByUser(userId: string ).subscribe(
+    this.apiInstance.organizationsQueryByUser(userId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 
 <a name="organizationsReadOneByUser"></a>
 # **organizationsReadOneByUser**
-> models.Organization organizationsReadOneByUser(userIdorganizationId)
+> models.Organization organizationsReadOneByUser
 
 Get one organization of a user
 
@@ -507,7 +507,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.organizationsReadOneByUser(userId: string organizationId: string ).subscribe(
+    this.apiInstance.organizationsReadOneByUser(userId: string, organizationId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 
 <a name="pushendpointsCreateOneOfCurrentUser"></a>
 # **pushendpointsCreateOneOfCurrentUser**
-> models.DevicePushEndpoint pushendpointsCreateOneOfCurrentUser(pushEndpoint)
+> models.DevicePushEndpoint pushendpointsCreateOneOfCurrentUser
 
 Create or update push endpoint based on submitted uuid
 
@@ -554,7 +554,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushendpointsCreateOneOfCurrentUser(pushEndpoint: models.NewDevicePushEndpoint ).subscribe(
+    this.apiInstance.pushendpointsCreateOneOfCurrentUser(pushEndpoint: models.NewDevicePushEndpoint).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 
 <a name="pushendpointsDeleteManyOfCurrentUser"></a>
 # **pushendpointsDeleteManyOfCurrentUser**
-> models.BulkDeleteResponse pushendpointsDeleteManyOfCurrentUser(filter)
+> models.BulkDeleteResponse pushendpointsDeleteManyOfCurrentUser
 
 Bulk delete existing push endpoints
 
@@ -600,7 +600,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushendpointsDeleteManyOfCurrentUser(filter: string ).subscribe(
+    this.apiInstance.pushendpointsDeleteManyOfCurrentUser(filter: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
 
 <a name="pushendpointsDeleteOneOfCurrentUserByUuid"></a>
 # **pushendpointsDeleteOneOfCurrentUserByUuid**
-> pushendpointsDeleteOneOfCurrentUserByUuid(uuid)
+> pushendpointsDeleteOneOfCurrentUserByUuid
 
 delete existing device
 
@@ -646,7 +646,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushendpointsDeleteOneOfCurrentUserByUuid(uuid: string ).subscribe(
+    this.apiInstance.pushendpointsDeleteOneOfCurrentUserByUuid(uuid: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -675,7 +675,7 @@ null (empty response body)
 
 <a name="pushendpointsDisableOneOfCurrentUserByUuid"></a>
 # **pushendpointsDisableOneOfCurrentUserByUuid**
-> models.DevicePushEndpoint pushendpointsDisableOneOfCurrentUserByUuid(uuidpushEndpoint)
+> models.DevicePushEndpoint pushendpointsDisableOneOfCurrentUserByUuid
 
 Disable receiving push notifications on the given endpoint
 
@@ -692,7 +692,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushendpointsDisableOneOfCurrentUserByUuid(uuid: string pushEndpoint: models.NewDevicePushEndpoint ).subscribe(
+    this.apiInstance.pushendpointsDisableOneOfCurrentUserByUuid(uuid: string, pushEndpoint: models.NewDevicePushEndpoint).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -722,7 +722,7 @@ Name | Type | Description  | Notes
 
 <a name="pushendpointsEnableOneOfCurrentUserByUuid"></a>
 # **pushendpointsEnableOneOfCurrentUserByUuid**
-> models.DevicePushEndpoint pushendpointsEnableOneOfCurrentUserByUuid(uuidpushEndpoint)
+> models.DevicePushEndpoint pushendpointsEnableOneOfCurrentUserByUuid
 
 Enable receiving push notifications on the given endpoint
 
@@ -739,7 +739,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushendpointsEnableOneOfCurrentUserByUuid(uuid: string pushEndpoint: models.NewDevicePushEndpoint ).subscribe(
+    this.apiInstance.pushendpointsEnableOneOfCurrentUserByUuid(uuid: string, pushEndpoint: models.NewDevicePushEndpoint).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -769,7 +769,7 @@ Name | Type | Description  | Notes
 
 <a name="pushendpointsQueryOfCurrentUser"></a>
 # **pushendpointsQueryOfCurrentUser**
-> models.DevicePushEndpointPage pushendpointsQueryOfCurrentUser(opts)
+> models.DevicePushEndpointPage pushendpointsQueryOfCurrentUser
 
 Return the push endpoints of the user
 
@@ -786,7 +786,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushendpointsQueryOfCurrentUser(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.pushendpointsQueryOfCurrentUser(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -819,7 +819,7 @@ Name | Type | Description  | Notes
 
 <a name="pushendpointsReadOneOfCurrentUserByUuid"></a>
 # **pushendpointsReadOneOfCurrentUserByUuid**
-> models.DevicePushEndpoint pushendpointsReadOneOfCurrentUserByUuid(uuid)
+> models.DevicePushEndpoint pushendpointsReadOneOfCurrentUserByUuid
 
 Get one existing device
 
@@ -836,7 +836,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.pushendpointsReadOneOfCurrentUserByUuid(uuid: string ).subscribe(
+    this.apiInstance.pushendpointsReadOneOfCurrentUserByUuid(uuid: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -865,7 +865,7 @@ Name | Type | Description  | Notes
 
 <a name="sendEmailVerification"></a>
 # **sendEmailVerification**
-> models.SendVerificationEmailResponse sendEmailVerification(sendVerificationEmailRequest)
+> models.SendVerificationEmailResponse sendEmailVerification
 
 Trigger email verification for current user
 
@@ -882,7 +882,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.sendEmailVerification(sendVerificationEmailRequest: models.SendVerificationEmailRequest ).subscribe(
+    this.apiInstance.sendEmailVerification(sendVerificationEmailRequest: models.SendVerificationEmailRequest).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -911,7 +911,7 @@ Name | Type | Description  | Notes
 
 <a name="sendEmailVerificationByUser"></a>
 # **sendEmailVerificationByUser**
-> models.SendVerificationEmailResponse sendEmailVerificationByUser(userIdsendVerificationEmailRequest)
+> models.SendVerificationEmailResponse sendEmailVerificationByUser
 
 Trigger email verification for a user
 
@@ -928,7 +928,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.sendEmailVerificationByUser(userId: string sendVerificationEmailRequest: models.SendVerificationEmailRequest ).subscribe(
+    this.apiInstance.sendEmailVerificationByUser(userId: string, sendVerificationEmailRequest: models.SendVerificationEmailRequest).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -958,7 +958,7 @@ Name | Type | Description  | Notes
 
 <a name="usersChangeMyPassword"></a>
 # **usersChangeMyPassword**
-> models.ChangePasswordResponse usersChangeMyPassword(changePasswordRequest)
+> models.ChangePasswordResponse usersChangeMyPassword
 
 change user password
 
@@ -975,7 +975,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersChangeMyPassword(changePasswordRequest: models.ChangePasswordRequest ).subscribe(
+    this.apiInstance.usersChangeMyPassword(changePasswordRequest: models.ChangePasswordRequest).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1004,7 +1004,7 @@ Name | Type | Description  | Notes
 
 <a name="usersQuery"></a>
 # **usersQuery**
-> models.UserPage usersQuery(opts)
+> models.UserPage usersQuery
 
 Returns users
 
@@ -1021,7 +1021,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersQuery(pageSize?: number pageNumber?: number filter?: string sort?: string select?: string ).subscribe(
+    this.apiInstance.usersQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1054,7 +1054,7 @@ Name | Type | Description  | Notes
 
 <a name="usersReadCurrent"></a>
 # **usersReadCurrent**
-> models.User usersReadCurrent()
+> models.User usersReadCurrent
 
 Get one existing users
 
@@ -1097,7 +1097,7 @@ This endpoint does not need any parameter.
 
 <a name="usersReadOne"></a>
 # **usersReadOne**
-> models.User usersReadOne(userId)
+> models.User usersReadOne
 
 Get one user
 
@@ -1114,7 +1114,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersReadOne(userId: string ).subscribe(
+    this.apiInstance.usersReadOne(userId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1143,7 +1143,7 @@ Name | Type | Description  | Notes
 
 <a name="usersRemoveCurrentFromAllOrganizations"></a>
 # **usersRemoveCurrentFromAllOrganizations**
-> usersRemoveCurrentFromAllOrganizations()
+> usersRemoveCurrentFromAllOrganizations
 
 remove user from all organizations
 
@@ -1186,7 +1186,7 @@ null (empty response body)
 
 <a name="usersRemoveOneFromAllOrganizations"></a>
 # **usersRemoveOneFromAllOrganizations**
-> usersRemoveOneFromAllOrganizations(userId)
+> usersRemoveOneFromAllOrganizations
 
 remove user from all organizations
 
@@ -1203,7 +1203,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersRemoveOneFromAllOrganizations(userId: string ).subscribe(
+    this.apiInstance.usersRemoveOneFromAllOrganizations(userId: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1232,7 +1232,7 @@ null (empty response body)
 
 <a name="usersUpdateCurrent"></a>
 # **usersUpdateCurrent**
-> models.User usersUpdateCurrent(updatedUser)
+> models.User usersUpdateCurrent
 
 update current user
 
@@ -1249,7 +1249,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersUpdateCurrent(updatedUser: models.UserUpdate ).subscribe(
+    this.apiInstance.usersUpdateCurrent(updatedUser: models.UserUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -1278,7 +1278,7 @@ Name | Type | Description  | Notes
 
 <a name="usersUpdateOne"></a>
 # **usersUpdateOne**
-> models.User usersUpdateOne(userIdupdatedUser)
+> models.User usersUpdateOne
 
 update a user
 
@@ -1295,7 +1295,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.usersUpdateOne(userId: string updatedUser: models.UserUpdate ).subscribe(
+    this.apiInstance.usersUpdateOne(userId: string, updatedUser: models.UserUpdate).subscribe(
       data => console.log(data),
       err => console.log(err)
     )

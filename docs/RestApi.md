@@ -33,7 +33,7 @@ Method | HTTP request | Description
 
 <a name="_delete"></a>
 # **_delete**
-> models.RestEndpointExecutionResponse _delete(stageresource)
+> models.RestEndpointExecutionResponse _delete
 
 Execute a REST request to a deployed REST API
 
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance._delete(stage: string resource: string ).subscribe(
+    this.apiInstance._delete(stage: string, resource: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 <a name="get"></a>
 # **get**
-> models.RestEndpointExecutionResponse get(stageresource)
+> models.RestEndpointExecutionResponse get
 
 Execute a REST request to a deployed REST API
 
@@ -97,7 +97,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.get(stage: string resource: string ).subscribe(
+    this.apiInstance.get(stage: string, resource: string).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 <a name="post"></a>
 # **post**
-> models.RestEndpointExecutionResponse post(stageresourceopts)
+> models.RestEndpointExecutionResponse post
 
 Execute a REST request to a deployed REST API
 
@@ -144,7 +144,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.post(stage: string resource: string payload?: models.RestEndpointExecutionRequestPayload ).subscribe(
+    this.apiInstance.post(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 <a name="put"></a>
 # **put**
-> models.RestEndpointExecutionResponse put(stageresourceopts)
+> models.RestEndpointExecutionResponse put
 
 Execute a REST request to a deployed REST API
 
@@ -192,7 +192,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.put(stage: string resource: string payload?: models.RestEndpointExecutionRequestPayload ).subscribe(
+    this.apiInstance.put(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
