@@ -22,18 +22,22 @@ var FilesApi = (function () {
         this.http = http;
         this.configuration = new configuration_1.Configuration();
         this.defaultHeaders = new http_1.Headers();
+        this.sbClientId = null;
+        this.sbClientSecret = null;
         if (configuration) {
             this.configuration = configuration;
+            this.sbClientId = this.configuration.sbClientId;
+            this.sbClientSecret = this.configuration.sbClientSecret;
             this.defaultHeaders = new http_1.Headers({ 'Authorization': this.configuration.apiKey });
         }
     }
     /**
      * browse file path
      * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
+     * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
      */
-    FilesApi.prototype.browse = function (filePath, extraHttpRequestParams) {
-        return this.browseWithHttpInfo(filePath, extraHttpRequestParams)
+    FilesApi.prototype.browsePrivateByPath = function (filePath, extraHttpRequestParams) {
+        return this.browsePrivateByPathWithHttpInfo(filePath, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -46,10 +50,10 @@ var FilesApi = (function () {
     /**
      * browse file path
      * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
+     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
      */
-    FilesApi.prototype.browse_1 = function (filePath, extraHttpRequestParams) {
-        return this.browse_1WithHttpInfo(filePath, extraHttpRequestParams)
+    FilesApi.prototype.browsePublicByPath = function (filePath, extraHttpRequestParams) {
+        return this.browsePublicByPathWithHttpInfo(filePath, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -76,12 +80,46 @@ var FilesApi = (function () {
         });
     };
     /**
+     * initialize private file upload
+     * Initialize new private file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    FilesApi.prototype.createPrivateOrganizationFile = function (organizationId, file, extraHttpRequestParams) {
+        return this.createPrivateOrganizationFileWithHttpInfo(organizationId, file, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
      * initialize public file upload
      * Initialize new public file upload
      * @param file Your new file
      */
     FilesApi.prototype.createPublic = function (file, extraHttpRequestParams) {
         return this.createPublicWithHttpInfo(file, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * initialize public file upload
+     * Initialize new public file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    FilesApi.prototype.createPublicOrganizationFile = function (organizationId, file, extraHttpRequestParams) {
+        return this.createPublicOrganizationFileWithHttpInfo(organizationId, file, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -179,17 +217,35 @@ var FilesApi = (function () {
         });
     };
     /**
+     * verify the successful file upload
+     * verify the successful file upload using the ETag header value
+     * @param organizationId The target organization
+     * @param fileId The target file you want to verify
+     * @param etagObject The etag response header of the successful file upload
+     */
+    FilesApi.prototype.verifyUploadOfOrganizationFile = function (organizationId, fileId, etagObject, extraHttpRequestParams) {
+        return this.verifyUploadOfOrganizationFileWithHttpInfo(organizationId, fileId, etagObject, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
      * browse file path
      * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
+     * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
      */
-    FilesApi.prototype.browseWithHttpInfo = function (filePath, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/files/browse/public';
+    FilesApi.prototype.browsePrivateByPathWithHttpInfo = function (filePath, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/files/browse/private';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'filePath' is not null or undefined
         if (filePath === null || filePath === undefined) {
-            throw new Error('Required parameter filePath was null or undefined when calling browse.');
+            throw new Error('Required parameter filePath was null or undefined when calling browsePrivateByPath.');
         }
         if (filePath !== undefined) {
             queryParameters.set('filePath', filePath);
@@ -218,15 +274,15 @@ var FilesApi = (function () {
     /**
      * browse file path
      * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
+     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
      */
-    FilesApi.prototype.browse_1WithHttpInfo = function (filePath, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/files/browse/private';
+    FilesApi.prototype.browsePublicByPathWithHttpInfo = function (filePath, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/files/browse/public';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'filePath' is not null or undefined
         if (filePath === null || filePath === undefined) {
-            throw new Error('Required parameter filePath was null or undefined when calling browse_1.');
+            throw new Error('Required parameter filePath was null or undefined when calling browsePublicByPath.');
         }
         if (filePath !== undefined) {
             queryParameters.set('filePath', filePath);
@@ -285,6 +341,44 @@ var FilesApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
+     * initialize private file upload
+     * Initialize new private file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    FilesApi.prototype.createPrivateOrganizationFileWithHttpInfo = function (organizationId, file, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organization/${organizationId}/files/private'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling createPrivateOrganizationFile.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            body: file == null ? '' : JSON.stringify(file),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
      * initialize public file upload
      * Initialize new public file upload
      * @param file Your new file
@@ -293,6 +387,44 @@ var FilesApi = (function () {
         var path = this.configuration.basePath + '/files/public';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            body: file == null ? '' : JSON.stringify(file),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * initialize public file upload
+     * Initialize new public file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    FilesApi.prototype.createPublicOrganizationFileWithHttpInfo = function (organizationId, file, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organization/${organizationId}/files/public'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling createPublicOrganizationFile.');
+        }
         // to determine the Content-Type header
         var consumes = [];
         // to determine the Accept header
@@ -497,6 +629,54 @@ var FilesApi = (function () {
         // verify required parameter 'etagObject' is not null or undefined
         if (etagObject === null || etagObject === undefined) {
             throw new Error('Required parameter etagObject was null or undefined when calling verifyUpload.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            body: etagObject == null ? '' : JSON.stringify(etagObject),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * verify the successful file upload
+     * verify the successful file upload using the ETag header value
+     * @param organizationId The target organization
+     * @param fileId The target file you want to verify
+     * @param etagObject The etag response header of the successful file upload
+     */
+    FilesApi.prototype.verifyUploadOfOrganizationFileWithHttpInfo = function (organizationId, fileId, etagObject, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organization/${organizationId}/files/${fileId}/verify'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'fileId' + '}', String(fileId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling verifyUploadOfOrganizationFile.');
+        }
+        // verify required parameter 'fileId' is not null or undefined
+        if (fileId === null || fileId === undefined) {
+            throw new Error('Required parameter fileId was null or undefined when calling verifyUploadOfOrganizationFile.');
+        }
+        // verify required parameter 'etagObject' is not null or undefined
+        if (etagObject === null || etagObject === undefined) {
+            throw new Error('Required parameter etagObject was null or undefined when calling verifyUploadOfOrganizationFile.');
         }
         // to determine the Content-Type header
         var consumes = [];

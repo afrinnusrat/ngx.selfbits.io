@@ -1,12 +1,12 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "jsRules": {},
-    "rules": {
-		"interface-name": [false],
-		"quotemark": [false, "single", "avoid-escape"]
+	"jsRules": {},
+	"rules": {
+		"no-duplicate-variable": true,
+		"no-unused-variable": [
+			true
+		]
 	},
-    "rulesDirectory": []
+	"rulesDirectory": [
+		"node_modules/tslint-eslint-rules/dist/rules"
+	]
 }

@@ -29,6 +29,8 @@ export interface Consumer {
 
     accountEmailVerified?: boolean;
 
+    lastLogin?: Date;
+
     customData?: any;
 
 }

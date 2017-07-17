@@ -1,7 +1,9 @@
 export interface NewDevice {
-    id?: string;
-    name: string;
-    description?: string;
-    isBaseDevice?: boolean;
+    uuid?: string;
+    model?: string;
+    platform?: string;
+    version?: string;
+    manufacturer?: string;
+    serial?: string;
     customData?: any;
 }

@@ -1,8 +1,8 @@
 export interface Application {
-    id: string;
-    name: string;
+    id?: string;
+    name?: string;
     description?: string;
-    tenantId?: string;
+    organizationId?: string;
     apiAdminPath?: string;
     apiBasePath?: string;
     active?: boolean;

@@ -7,5 +7,6 @@ export interface Consumer {
     accountPassword?: string;
     accountEmail?: string;
     accountEmailVerified?: boolean;
+    lastLogin?: Date;
     customData?: any;
 }

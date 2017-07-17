@@ -17,5 +17,7 @@ export interface UserLoginResponse {
 
     authorization: models.AuthorizationResponse;
 
+    organizations?: models.UserOrganizationListResponse;
+
 }
 

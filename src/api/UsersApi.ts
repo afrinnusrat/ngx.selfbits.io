@@ -29,21 +29,357 @@ import { Configuration }                                     from '../configurat
 export class UsersApi {
     public configuration: Configuration = new Configuration();
     public defaultHeaders: Headers = new Headers();
+	public sbClientId: string = null;
+	public sbClientSecret: string = null;
 
     constructor(protected http: Http, @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
+			this.sbClientId = this.configuration.sbClientId;
+			this.sbClientSecret = this.configuration.sbClientSecret;
             this.defaultHeaders = new Headers({'Authorization': this.configuration.apiKey});
         }
     }
 
     /**
-     * 
+     * Create or update device based on submitted uuid
+     * Create or update device based on submitted uuid
+     * @param userId The user identifier or me
+     * @param device New or existing device
+     */
+    public devicesCreateOneByUser(userId: string, device?: models.NewDevice, extraHttpRequestParams?: any): Observable<models.Device> {
+        return this.devicesCreateOneByUserWithHttpInfo(userId, device, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * delete existing device
+     * delete existing device
+     * @param userId The user identifier or me
+     * @param deviceId The device identifier
+     */
+    public devicesDeleteOneByUser(userId: string, deviceId: string, extraHttpRequestParams?: any): Observable<{}> {
+        return this.devicesDeleteOneByUserWithHttpInfo(userId, deviceId, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Return the devices of the user
+     * Return the devices of the user
+     * @param userId The user identifier or me
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;sbcloud\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public devicesQueryByUser(userId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.DevicePage> {
+        return this.devicesQueryByUserWithHttpInfo(userId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Get one existing device
+     * Get one existing device
+     * @param userId The user identifier or me
+     * @param deviceId The device identifier
+     */
+    public devicesReadOneByUser(userId: string, deviceId: string, extraHttpRequestParams?: any): Observable<models.Device> {
+        return this.devicesReadOneByUserWithHttpInfo(userId, deviceId, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * update existing device
+     * update existing device
+     * @param userId The user identifier or me
+     * @param deviceId The user identifier
+     * @param updatedDevice updated device
+     */
+    public devicesUpdateOneByUser(userId: string, deviceId: string, updatedDevice: models.DeviceUpdate, extraHttpRequestParams?: any): Observable<models.Device> {
+        return this.devicesUpdateOneByUserWithHttpInfo(userId, deviceId, updatedDevice, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Query user invites
+     * Query user invites
+     * @param userId The user identifier
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public invitesQueryByUser(userId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.OrganizationInvitePage> {
+        return this.invitesQueryByUserWithHttpInfo(userId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Query current user invites
+     * Query current user invites
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public invitesQueryOfCurrentUser(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.OrganizationInvitePage> {
+        return this.invitesQueryOfCurrentUserWithHttpInfo(pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Reject an organization invite
+     * Reject an organization invite
+     * @param userId The user identifier
+     * @param inviteId The invite identifier
+     */
+    public invitesReadOneByUser(userId: string, inviteId: string, extraHttpRequestParams?: any): Observable<models.Organization> {
+        return this.invitesReadOneByUserWithHttpInfo(userId, inviteId, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Query user organizations
+     * Query user organizations
+     * @param userId The user identifier
+     */
+    public organizationsQueryByUser(userId: string, extraHttpRequestParams?: any): Observable<models.OrganizationPage> {
+        return this.organizationsQueryByUserWithHttpInfo(userId, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Get one organization of a user
+     * Get one organization of a user
+     * @param userId The user identifier
+     * @param organizationId The organization identifier
+     */
+    public organizationsReadOneByUser(userId: string, organizationId: string, extraHttpRequestParams?: any): Observable<models.Organization> {
+        return this.organizationsReadOneByUserWithHttpInfo(userId, organizationId, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Create or update push endpoint based on submitted uuid
+     * Create or update push endpoint based on submitted uuid
+     * @param pushEndpoint device push endpoint
+     */
+    public pushendpointsCreateOneOfCurrentUser(pushEndpoint: models.NewDevicePushEndpoint, extraHttpRequestParams?: any): Observable<models.DevicePushEndpoint> {
+        return this.pushendpointsCreateOneOfCurrentUserWithHttpInfo(pushEndpoint, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Bulk delete existing push endpoints
+     * Bulk delete existing push endpoints
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     */
+    public pushendpointsDeleteManyOfCurrentUser(filter: string, extraHttpRequestParams?: any): Observable<models.BulkDeleteResponse> {
+        return this.pushendpointsDeleteManyOfCurrentUserWithHttpInfo(filter, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * delete existing device
+     * delete existing device
+     * @param uuid The device uuid
+     */
+    public pushendpointsDeleteOneOfCurrentUserByUuid(uuid: string, extraHttpRequestParams?: any): Observable<{}> {
+        return this.pushendpointsDeleteOneOfCurrentUserByUuidWithHttpInfo(uuid, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Disable receiving push notifications on the given endpoint
+     * Disable receiving push notifications on the given endpoint
+     * @param uuid The device uuid
+     * @param pushEndpoint device push endpoint
+     */
+    public pushendpointsDisableOneOfCurrentUserByUuid(uuid: string, pushEndpoint: models.NewDevicePushEndpoint, extraHttpRequestParams?: any): Observable<models.DevicePushEndpoint> {
+        return this.pushendpointsDisableOneOfCurrentUserByUuidWithHttpInfo(uuid, pushEndpoint, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Enable receiving push notifications on the given endpoint
+     * Enable receiving push notifications on the given endpoint
+     * @param uuid The device uuid
+     * @param pushEndpoint device push endpoint
+     */
+    public pushendpointsEnableOneOfCurrentUserByUuid(uuid: string, pushEndpoint: models.NewDevicePushEndpoint, extraHttpRequestParams?: any): Observable<models.DevicePushEndpoint> {
+        return this.pushendpointsEnableOneOfCurrentUserByUuidWithHttpInfo(uuid, pushEndpoint, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Return the push endpoints of the user
+     * Return the push endpoints of the user
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;sbcloud\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public pushendpointsQueryOfCurrentUser(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.DevicePushEndpointPage> {
+        return this.pushendpointsQueryOfCurrentUserWithHttpInfo(pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Get one existing device
+     * Get one existing device
+     * @param uuid The device uuid
+     */
+    public pushendpointsReadOneOfCurrentUserByUuid(uuid: string, extraHttpRequestParams?: any): Observable<models.DevicePushEndpoint> {
+        return this.pushendpointsReadOneOfCurrentUserByUuidWithHttpInfo(uuid, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Trigger email verification for current user
+     * Trigger email verification for current user
+     * @param sendVerificationEmailRequest Email you want to verifiy
+     */
+    public sendEmailVerification(sendVerificationEmailRequest: models.SendVerificationEmailRequest, extraHttpRequestParams?: any): Observable<models.SendVerificationEmailResponse> {
+        return this.sendEmailVerificationWithHttpInfo(sendVerificationEmailRequest, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Trigger email verification for a user
+     * Trigger email verification for a user
+     * @param userId The user identifier or me
+     * @param sendVerificationEmailRequest Email you want to verifiy
+     */
+    public sendEmailVerificationByUser(userId: string, sendVerificationEmailRequest: models.SendVerificationEmailRequest, extraHttpRequestParams?: any): Observable<models.SendVerificationEmailResponse> {
+        return this.sendEmailVerificationByUserWithHttpInfo(userId, sendVerificationEmailRequest, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * change user password
      * change user password
      * @param changePasswordRequest change password request
      */
-    public changePassword(changePasswordRequest: models.ChangePasswordRequest, extraHttpRequestParams?: any): Observable<models.ChangePasswordResponse> {
-        return this.changePasswordWithHttpInfo(changePasswordRequest, extraHttpRequestParams)
+    public usersChangeMyPassword(changePasswordRequest: models.ChangePasswordRequest, extraHttpRequestParams?: any): Observable<models.ChangePasswordResponse> {
+        return this.usersChangeMyPasswordWithHttpInfo(changePasswordRequest, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -54,39 +390,7 @@ export class UsersApi {
     }
 
     /**
-     * 
-     * Create multiple new users
-     * @param users Multiple users
-     */
-    public usersBulkPost(users: models.NewUserArray, extraHttpRequestParams?: any): Observable<models.UserArray> {
-        return this.usersBulkPostWithHttpInfo(users, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
-    }
-
-    /**
-     * 
-     * Bulk delete existing users
-     * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
-     */
-    public usersDelete(filter: string, extraHttpRequestParams?: any): Observable<models.BulkDeleteResponse> {
-        return this.usersDeleteWithHttpInfo(filter, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
-    }
-
-    /**
-     * 
+     * Returns users
      * Returns users
      * @param pageSize Items per page
      * @param pageNumber The page index (starting from 1)
@@ -94,8 +398,8 @@ export class UsersApi {
      * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
      * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
      */
-    public usersGet(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.UserPage> {
-        return this.usersGetWithHttpInfo(pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+    public usersQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.UserPage> {
+        return this.usersQueryWithHttpInfo(pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -106,61 +410,11 @@ export class UsersApi {
     }
 
     /**
-     * 
-     * Create new user
-     * @param user Your new user
-     */
-    public usersPost(user: models.NewUser, extraHttpRequestParams?: any): Observable<models.User> {
-        return this.usersPostWithHttpInfo(user, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
-    }
-
-    /**
-     * 
-     * Bulk update existing users
-     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;xyz\&quot;}
-     * @param userBulkUpdate Use filter to find the users and do a bulk update
-     */
-    public usersPut(filter: string, userBulkUpdate: models.UserBulkUpdate, extraHttpRequestParams?: any): Observable<models.BulkUpdateResponse> {
-        return this.usersPutWithHttpInfo(filter, userBulkUpdate, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
-    }
-
-    /**
-     * 
-     * delete existing user
-     * @param userId The user identifier
-     */
-    public usersUserIdDelete(userId: string, extraHttpRequestParams?: any): Observable<{}> {
-        return this.usersUserIdDeleteWithHttpInfo(userId, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
-    }
-
-    /**
-     * 
      * Get one existing users
-     * @param userId The user identifier
+     * Get current user
      */
-    public usersUserIdGet(userId: string, extraHttpRequestParams?: any): Observable<models.User> {
-        return this.usersUserIdGetWithHttpInfo(userId, extraHttpRequestParams)
+    public usersReadCurrent(extraHttpRequestParams?: any): Observable<models.User> {
+        return this.usersReadCurrentWithHttpInfo(extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -171,13 +425,76 @@ export class UsersApi {
     }
 
     /**
-     * 
-     * update existing user
+     * Get one user
+     * Get one user
+     * @param userId The user identifier
+     */
+    public usersReadOne(userId: string, extraHttpRequestParams?: any): Observable<models.User> {
+        return this.usersReadOneWithHttpInfo(userId, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * remove user from all organizations
+     * remove user from all organizations
+     */
+    public usersRemoveCurrentFromAllOrganizations(extraHttpRequestParams?: any): Observable<{}> {
+        return this.usersRemoveCurrentFromAllOrganizationsWithHttpInfo(extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * remove user from all organizations
+     * remove user from all organizations
+     * @param userId The user identifier or me
+     */
+    public usersRemoveOneFromAllOrganizations(userId: string, extraHttpRequestParams?: any): Observable<{}> {
+        return this.usersRemoveOneFromAllOrganizationsWithHttpInfo(userId, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * update current user
+     * update current user
+     * @param updatedUser updated user
+     */
+    public usersUpdateCurrent(updatedUser: models.UserUpdate, extraHttpRequestParams?: any): Observable<models.User> {
+        return this.usersUpdateCurrentWithHttpInfo(updatedUser, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * update a user
+     * update a user
      * @param userId The user identifier
      * @param updatedUser updated user
      */
-    public usersUserIdPut(userId: string, updatedUser: models.UserUpdate, extraHttpRequestParams?: any): Observable<models.User> {
-        return this.usersUserIdPutWithHttpInfo(userId, updatedUser, extraHttpRequestParams)
+    public usersUpdateOne(userId: string, updatedUser: models.UserUpdate, extraHttpRequestParams?: any): Observable<models.User> {
+        return this.usersUpdateOneWithHttpInfo(userId, updatedUser, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -189,18 +506,20 @@ export class UsersApi {
 
 
     /**
-     * 
-     * change user password
-     * @param changePasswordRequest change password request
+     * Create or update device based on submitted uuid
+     * Create or update device based on submitted uuid
+     * @param userId The user identifier or me
+     * @param device New or existing device
      */
-    public changePasswordWithHttpInfo(changePasswordRequest: models.ChangePasswordRequest, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/users/me/changepassword';
+    public devicesCreateOneByUserWithHttpInfo(userId: string, device?: models.NewDevice, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/devices'
+                    .replace('${' + 'userId' + '}', String(userId));
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'changePasswordRequest' is not null or undefined
-        if (changePasswordRequest === null || changePasswordRequest === undefined) {
-            throw new Error('Required parameter changePasswordRequest was null or undefined when calling changePassword.');
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling devicesCreateOneByUser.');
         }
         // to determine the Content-Type header
         let consumes: string[] = [
@@ -221,7 +540,7 @@ export class UsersApi {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Post,
             headers: headers,
-            body: changePasswordRequest == null ? '' : JSON.stringify(changePasswordRequest), // https://github.com/angular/angular/issues/10612
+            body: device == null ? '' : JSON.stringify(device), // https://github.com/angular/angular/issues/10612
             search: queryParameters
         });
 
@@ -234,18 +553,512 @@ export class UsersApi {
     }
 
     /**
-     * 
-     * Create multiple new users
-     * @param users Multiple users
+     * delete existing device
+     * delete existing device
+     * @param userId The user identifier or me
+     * @param deviceId The device identifier
      */
-    public usersBulkPostWithHttpInfo(users: models.NewUserArray, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/users/bulk';
+    public devicesDeleteOneByUserWithHttpInfo(userId: string, deviceId: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/devices/${deviceId}'
+                    .replace('${' + 'userId' + '}', String(userId))
+                    .replace('${' + 'deviceId' + '}', String(deviceId));
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'users' is not null or undefined
-        if (users === null || users === undefined) {
-            throw new Error('Required parameter users was null or undefined when calling usersBulkPost.');
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling devicesDeleteOneByUser.');
+        }
+        // verify required parameter 'deviceId' is not null or undefined
+        if (deviceId === null || deviceId === undefined) {
+            throw new Error('Required parameter deviceId was null or undefined when calling devicesDeleteOneByUser.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Return the devices of the user
+     * Return the devices of the user
+     * @param userId The user identifier or me
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;sbcloud\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public devicesQueryByUserWithHttpInfo(userId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/devices'
+                    .replace('${' + 'userId' + '}', String(userId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling devicesQueryByUser.');
+        }
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', <any>pageSize);
+        }
+
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', <any>pageNumber);
+        }
+
+        if (filter !== undefined) {
+            queryParameters.set('filter', <any>filter);
+        }
+
+        if (sort !== undefined) {
+            queryParameters.set('sort', <any>sort);
+        }
+
+        if (select !== undefined) {
+            queryParameters.set('select', <any>select);
+        }
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Get one existing device
+     * Get one existing device
+     * @param userId The user identifier or me
+     * @param deviceId The device identifier
+     */
+    public devicesReadOneByUserWithHttpInfo(userId: string, deviceId: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/devices/${deviceId}'
+                    .replace('${' + 'userId' + '}', String(userId))
+                    .replace('${' + 'deviceId' + '}', String(deviceId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling devicesReadOneByUser.');
+        }
+        // verify required parameter 'deviceId' is not null or undefined
+        if (deviceId === null || deviceId === undefined) {
+            throw new Error('Required parameter deviceId was null or undefined when calling devicesReadOneByUser.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * update existing device
+     * update existing device
+     * @param userId The user identifier or me
+     * @param deviceId The user identifier
+     * @param updatedDevice updated device
+     */
+    public devicesUpdateOneByUserWithHttpInfo(userId: string, deviceId: string, updatedDevice: models.DeviceUpdate, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/devices/${deviceId}'
+                    .replace('${' + 'userId' + '}', String(userId))
+                    .replace('${' + 'deviceId' + '}', String(deviceId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling devicesUpdateOneByUser.');
+        }
+        // verify required parameter 'deviceId' is not null or undefined
+        if (deviceId === null || deviceId === undefined) {
+            throw new Error('Required parameter deviceId was null or undefined when calling devicesUpdateOneByUser.');
+        }
+        // verify required parameter 'updatedDevice' is not null or undefined
+        if (updatedDevice === null || updatedDevice === undefined) {
+            throw new Error('Required parameter updatedDevice was null or undefined when calling devicesUpdateOneByUser.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Put,
+            headers: headers,
+            body: updatedDevice == null ? '' : JSON.stringify(updatedDevice), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Query user invites
+     * Query user invites
+     * @param userId The user identifier
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public invitesQueryByUserWithHttpInfo(userId: string, pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/invites'
+                    .replace('${' + 'userId' + '}', String(userId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling invitesQueryByUser.');
+        }
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', <any>pageSize);
+        }
+
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', <any>pageNumber);
+        }
+
+        if (filter !== undefined) {
+            queryParameters.set('filter', <any>filter);
+        }
+
+        if (sort !== undefined) {
+            queryParameters.set('sort', <any>sort);
+        }
+
+        if (select !== undefined) {
+            queryParameters.set('select', <any>select);
+        }
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Query current user invites
+     * Query current user invites
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public invitesQueryOfCurrentUserWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/invites';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', <any>pageSize);
+        }
+
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', <any>pageNumber);
+        }
+
+        if (filter !== undefined) {
+            queryParameters.set('filter', <any>filter);
+        }
+
+        if (sort !== undefined) {
+            queryParameters.set('sort', <any>sort);
+        }
+
+        if (select !== undefined) {
+            queryParameters.set('select', <any>select);
+        }
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Reject an organization invite
+     * Reject an organization invite
+     * @param userId The user identifier
+     * @param inviteId The invite identifier
+     */
+    public invitesReadOneByUserWithHttpInfo(userId: string, inviteId: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/invites/${inviteId}'
+                    .replace('${' + 'userId' + '}', String(userId))
+                    .replace('${' + 'inviteId' + '}', String(inviteId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling invitesReadOneByUser.');
+        }
+        // verify required parameter 'inviteId' is not null or undefined
+        if (inviteId === null || inviteId === undefined) {
+            throw new Error('Required parameter inviteId was null or undefined when calling invitesReadOneByUser.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Query user organizations
+     * Query user organizations
+     * @param userId The user identifier
+     */
+    public organizationsQueryByUserWithHttpInfo(userId: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/organizations'
+                    .replace('${' + 'userId' + '}', String(userId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling organizationsQueryByUser.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Get one organization of a user
+     * Get one organization of a user
+     * @param userId The user identifier
+     * @param organizationId The organization identifier
+     */
+    public organizationsReadOneByUserWithHttpInfo(userId: string, organizationId: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/organizations/${organizationId}'
+                    .replace('${' + 'userId' + '}', String(userId))
+                    .replace('${' + 'organizationId' + '}', String(organizationId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling organizationsReadOneByUser.');
+        }
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling organizationsReadOneByUser.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Create or update push endpoint based on submitted uuid
+     * Create or update push endpoint based on submitted uuid
+     * @param pushEndpoint device push endpoint
+     */
+    public pushendpointsCreateOneOfCurrentUserWithHttpInfo(pushEndpoint: models.NewDevicePushEndpoint, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/pushendpoints';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'pushEndpoint' is not null or undefined
+        if (pushEndpoint === null || pushEndpoint === undefined) {
+            throw new Error('Required parameter pushEndpoint was null or undefined when calling pushendpointsCreateOneOfCurrentUser.');
         }
         // to determine the Content-Type header
         let consumes: string[] = [
@@ -266,7 +1079,7 @@ export class UsersApi {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Post,
             headers: headers,
-            body: users == null ? '' : JSON.stringify(users), // https://github.com/angular/angular/issues/10612
+            body: pushEndpoint == null ? '' : JSON.stringify(pushEndpoint), // https://github.com/angular/angular/issues/10612
             search: queryParameters
         });
 
@@ -279,18 +1092,18 @@ export class UsersApi {
     }
 
     /**
-     * 
-     * Bulk delete existing users
+     * Bulk delete existing push endpoints
+     * Bulk delete existing push endpoints
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
      */
-    public usersDeleteWithHttpInfo(filter: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/users';
+    public pushendpointsDeleteManyOfCurrentUserWithHttpInfo(filter: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/pushendpoints';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'filter' is not null or undefined
         if (filter === null || filter === undefined) {
-            throw new Error('Required parameter filter was null or undefined when calling usersDelete.');
+            throw new Error('Required parameter filter was null or undefined when calling pushendpointsDeleteManyOfCurrentUser.');
         }
         if (filter !== undefined) {
             queryParameters.set('filter', <any>filter);
@@ -325,7 +1138,398 @@ export class UsersApi {
     }
 
     /**
-     * 
+     * delete existing device
+     * delete existing device
+     * @param uuid The device uuid
+     */
+    public pushendpointsDeleteOneOfCurrentUserByUuidWithHttpInfo(uuid: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/devices/${uuid}'
+                    .replace('${' + 'uuid' + '}', String(uuid));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'uuid' is not null or undefined
+        if (uuid === null || uuid === undefined) {
+            throw new Error('Required parameter uuid was null or undefined when calling pushendpointsDeleteOneOfCurrentUserByUuid.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Disable receiving push notifications on the given endpoint
+     * Disable receiving push notifications on the given endpoint
+     * @param uuid The device uuid
+     * @param pushEndpoint device push endpoint
+     */
+    public pushendpointsDisableOneOfCurrentUserByUuidWithHttpInfo(uuid: string, pushEndpoint: models.NewDevicePushEndpoint, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/pushendpoints/${uuid}/disable'
+                    .replace('${' + 'uuid' + '}', String(uuid));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'uuid' is not null or undefined
+        if (uuid === null || uuid === undefined) {
+            throw new Error('Required parameter uuid was null or undefined when calling pushendpointsDisableOneOfCurrentUserByUuid.');
+        }
+        // verify required parameter 'pushEndpoint' is not null or undefined
+        if (pushEndpoint === null || pushEndpoint === undefined) {
+            throw new Error('Required parameter pushEndpoint was null or undefined when calling pushendpointsDisableOneOfCurrentUserByUuid.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: pushEndpoint == null ? '' : JSON.stringify(pushEndpoint), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Enable receiving push notifications on the given endpoint
+     * Enable receiving push notifications on the given endpoint
+     * @param uuid The device uuid
+     * @param pushEndpoint device push endpoint
+     */
+    public pushendpointsEnableOneOfCurrentUserByUuidWithHttpInfo(uuid: string, pushEndpoint: models.NewDevicePushEndpoint, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/pushendpoints/${uuid}/enable'
+                    .replace('${' + 'uuid' + '}', String(uuid));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'uuid' is not null or undefined
+        if (uuid === null || uuid === undefined) {
+            throw new Error('Required parameter uuid was null or undefined when calling pushendpointsEnableOneOfCurrentUserByUuid.');
+        }
+        // verify required parameter 'pushEndpoint' is not null or undefined
+        if (pushEndpoint === null || pushEndpoint === undefined) {
+            throw new Error('Required parameter pushEndpoint was null or undefined when calling pushendpointsEnableOneOfCurrentUserByUuid.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: pushEndpoint == null ? '' : JSON.stringify(pushEndpoint), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Return the push endpoints of the user
+     * Return the push endpoints of the user
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;sbcloud\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public pushendpointsQueryOfCurrentUserWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/pushendpoints';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', <any>pageSize);
+        }
+
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', <any>pageNumber);
+        }
+
+        if (filter !== undefined) {
+            queryParameters.set('filter', <any>filter);
+        }
+
+        if (sort !== undefined) {
+            queryParameters.set('sort', <any>sort);
+        }
+
+        if (select !== undefined) {
+            queryParameters.set('select', <any>select);
+        }
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Get one existing device
+     * Get one existing device
+     * @param uuid The device uuid
+     */
+    public pushendpointsReadOneOfCurrentUserByUuidWithHttpInfo(uuid: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/pushendpoints/${uuid}'
+                    .replace('${' + 'uuid' + '}', String(uuid));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'uuid' is not null or undefined
+        if (uuid === null || uuid === undefined) {
+            throw new Error('Required parameter uuid was null or undefined when calling pushendpointsReadOneOfCurrentUserByUuid.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Trigger email verification for current user
+     * Trigger email verification for current user
+     * @param sendVerificationEmailRequest Email you want to verifiy
+     */
+    public sendEmailVerificationWithHttpInfo(sendVerificationEmailRequest: models.SendVerificationEmailRequest, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/email/verification';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'sendVerificationEmailRequest' is not null or undefined
+        if (sendVerificationEmailRequest === null || sendVerificationEmailRequest === undefined) {
+            throw new Error('Required parameter sendVerificationEmailRequest was null or undefined when calling sendEmailVerification.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: sendVerificationEmailRequest == null ? '' : JSON.stringify(sendVerificationEmailRequest), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Trigger email verification for a user
+     * Trigger email verification for a user
+     * @param userId The user identifier or me
+     * @param sendVerificationEmailRequest Email you want to verifiy
+     */
+    public sendEmailVerificationByUserWithHttpInfo(userId: string, sendVerificationEmailRequest: models.SendVerificationEmailRequest, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}/email/verification'
+                    .replace('${' + 'userId' + '}', String(userId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling sendEmailVerificationByUser.');
+        }
+        // verify required parameter 'sendVerificationEmailRequest' is not null or undefined
+        if (sendVerificationEmailRequest === null || sendVerificationEmailRequest === undefined) {
+            throw new Error('Required parameter sendVerificationEmailRequest was null or undefined when calling sendEmailVerificationByUser.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: sendVerificationEmailRequest == null ? '' : JSON.stringify(sendVerificationEmailRequest), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * change user password
+     * change user password
+     * @param changePasswordRequest change password request
+     */
+    public usersChangeMyPasswordWithHttpInfo(changePasswordRequest: models.ChangePasswordRequest, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me/changepassword';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'changePasswordRequest' is not null or undefined
+        if (changePasswordRequest === null || changePasswordRequest === undefined) {
+            throw new Error('Required parameter changePasswordRequest was null or undefined when calling usersChangeMyPassword.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: changePasswordRequest == null ? '' : JSON.stringify(changePasswordRequest), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Returns users
      * Returns users
      * @param pageSize Items per page
      * @param pageNumber The page index (starting from 1)
@@ -333,7 +1537,7 @@ export class UsersApi {
      * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
      * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
      */
-    public usersGetWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public usersQueryWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.configuration.basePath + '/users';
 
         let queryParameters = new URLSearchParams();
@@ -387,153 +1591,48 @@ export class UsersApi {
     }
 
     /**
-     * 
-     * Create new user
-     * @param user Your new user
-     */
-    public usersPostWithHttpInfo(user: models.NewUser, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/users';
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'user' is not null or undefined
-        if (user === null || user === undefined) {
-            throw new Error('Required parameter user was null or undefined when calling usersPost.');
-        }
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-
-        headers.set('Content-Type', 'application/json');
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Post,
-            headers: headers,
-            body: user == null ? '' : JSON.stringify(user), // https://github.com/angular/angular/issues/10612
-            search: queryParameters
-        });
-
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * 
-     * Bulk update existing users
-     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;xyz\&quot;}
-     * @param userBulkUpdate Use filter to find the users and do a bulk update
-     */
-    public usersPutWithHttpInfo(filter: string, userBulkUpdate: models.UserBulkUpdate, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/users';
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'filter' is not null or undefined
-        if (filter === null || filter === undefined) {
-            throw new Error('Required parameter filter was null or undefined when calling usersPut.');
-        }
-        // verify required parameter 'userBulkUpdate' is not null or undefined
-        if (userBulkUpdate === null || userBulkUpdate === undefined) {
-            throw new Error('Required parameter userBulkUpdate was null or undefined when calling usersPut.');
-        }
-        if (filter !== undefined) {
-            queryParameters.set('filter', <any>filter);
-        }
-
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-
-        headers.set('Content-Type', 'application/json');
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Put,
-            headers: headers,
-            body: userBulkUpdate == null ? '' : JSON.stringify(userBulkUpdate), // https://github.com/angular/angular/issues/10612
-            search: queryParameters
-        });
-
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * 
-     * delete existing user
-     * @param userId The user identifier
-     */
-    public usersUserIdDeleteWithHttpInfo(userId: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/users/${userId}'
-                    .replace('${' + 'userId' + '}', String(userId));
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'userId' is not null or undefined
-        if (userId === null || userId === undefined) {
-            throw new Error('Required parameter userId was null or undefined when calling usersUserIdDelete.');
-        }
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Delete,
-            headers: headers,
-            search: queryParameters
-        });
-
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * 
      * Get one existing users
+     * Get current user
+     */
+    public usersReadCurrentWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Get one user
+     * Get one user
      * @param userId The user identifier
      */
-    public usersUserIdGetWithHttpInfo(userId: string, extraHttpRequestParams?: any): Observable<Response> {
+    public usersReadOneWithHttpInfo(userId: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.configuration.basePath + '/users/${userId}'
                     .replace('${' + 'userId' + '}', String(userId));
 
@@ -541,7 +1640,7 @@ export class UsersApi {
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
-            throw new Error('Required parameter userId was null or undefined when calling usersUserIdGet.');
+            throw new Error('Required parameter userId was null or undefined when calling usersReadOne.');
         }
         // to determine the Content-Type header
         let consumes: string[] = [
@@ -572,12 +1671,48 @@ export class UsersApi {
     }
 
     /**
-     * 
-     * update existing user
-     * @param userId The user identifier
-     * @param updatedUser updated user
+     * remove user from all organizations
+     * remove user from all organizations
      */
-    public usersUserIdPutWithHttpInfo(userId: string, updatedUser: models.UserUpdate, extraHttpRequestParams?: any): Observable<Response> {
+    public usersRemoveCurrentFromAllOrganizationsWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * remove user from all organizations
+     * remove user from all organizations
+     * @param userId The user identifier or me
+     */
+    public usersRemoveOneFromAllOrganizationsWithHttpInfo(userId: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.configuration.basePath + '/users/${userId}'
                     .replace('${' + 'userId' + '}', String(userId));
 
@@ -585,11 +1720,100 @@ export class UsersApi {
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
-            throw new Error('Required parameter userId was null or undefined when calling usersUserIdPut.');
+            throw new Error('Required parameter userId was null or undefined when calling usersRemoveOneFromAllOrganizations.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * update current user
+     * update current user
+     * @param updatedUser updated user
+     */
+    public usersUpdateCurrentWithHttpInfo(updatedUser: models.UserUpdate, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/me';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'updatedUser' is not null or undefined
+        if (updatedUser === null || updatedUser === undefined) {
+            throw new Error('Required parameter updatedUser was null or undefined when calling usersUpdateCurrent.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Put,
+            headers: headers,
+            body: updatedUser == null ? '' : JSON.stringify(updatedUser), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * update a user
+     * update a user
+     * @param userId The user identifier
+     * @param updatedUser updated user
+     */
+    public usersUpdateOneWithHttpInfo(userId: string, updatedUser: models.UserUpdate, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users/${userId}'
+                    .replace('${' + 'userId' + '}', String(userId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling usersUpdateOne.');
         }
         // verify required parameter 'updatedUser' is not null or undefined
         if (updatedUser === null || updatedUser === undefined) {
-            throw new Error('Required parameter updatedUser was null or undefined when calling usersUserIdPut.');
+            throw new Error('Required parameter updatedUser was null or undefined when calling usersUpdateOne.');
         }
         // to determine the Content-Type header
         let consumes: string[] = [

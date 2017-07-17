@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**update** | **any** |  | [default to null]
+**update** | [**models.ApplicationUpdate**](models.ApplicationUpdate.md) |  | [default to null]
 
 

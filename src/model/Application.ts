@@ -13,13 +13,13 @@
 import * as models from './models';
 
 export interface Application {
-    id: string;
+    id?: string;
 
-    name: string;
+    name?: string;
 
     description?: string;
 
-    tenantId?: string;
+    organizationId?: string;
 
     apiAdminPath?: string;
 

@@ -3,10 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [default to null]
-**name** | **string** |  | [default to null]
-**description** | **string** |  | [optional] [default to null]
-**isBaseDevice** | **boolean** |  | [optional] [default to null]
+**uuid** | **string** |  | [optional] [default to null]
+**model** | **string** |  | [optional] [default to null]
+**platform** | **string** |  | [optional] [default to null]
+**version** | **string** |  | [optional] [default to null]
+**manufacturer** | **string** |  | [optional] [default to null]
+**serial** | **string** |  | [optional] [default to null]
 **customData** | **any** |  | [optional] [default to null]
 
 

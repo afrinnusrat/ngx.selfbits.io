@@ -13,9 +13,5 @@
 import * as models from './models';
 
 export interface ActionExecutionRequestPayload {
-    key1?: string;
-
-    key2?: string;
-
 }
 

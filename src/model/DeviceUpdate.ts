@@ -13,11 +13,15 @@
 import * as models from './models';
 
 export interface DeviceUpdate {
-    name?: string;
+    model?: string;
 
-    description?: string;
+    platform?: string;
 
-    isBaseDevice?: boolean;
+    version?: string;
+
+    manufacturer?: string;
+
+    serial?: string;
 
     customData?: any;
 

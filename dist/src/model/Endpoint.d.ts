@@ -4,6 +4,7 @@ export interface Endpoint {
     resourcePath?: string;
     method?: Endpoint.MethodEnum;
     description?: string;
+    config?: any;
     actionId?: string;
     customData?: any;
 }

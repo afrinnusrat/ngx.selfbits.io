@@ -8,6 +8,8 @@ export declare class JoinApi {
     protected http: Http;
     configuration: Configuration;
     defaultHeaders: Headers;
+    sbClientId: string;
+    sbClientSecret: string;
     constructor(http: Http, configuration: Configuration);
     /**
      * Join a specific organization
@@ -29,11 +31,11 @@ export declare class JoinApi {
      * Signup with specific organization and directory that belongs to a specific provider
      * User join with specific organization and a directory that belongs to a specific provider. The attributes that are used as credentials to login the user depend on the directory type:  | directoryType | accountId | accountPassword | |----------|----------|----------| | sbcloud | email | password | | anonymouscloud | username (random if empty) | password (random if empty) | | ldap | username | password |
      * @param organizationId the organization of the new user
-     * @param directoryId the directory of the new user
+     * @param providerId the target provider
      * @param userSignupRequest User signup request
      * @param invite Optional invite code
      */
-    joinOrganizationByProvider(organizationId: string, directoryId: string, userSignupRequest: models.UserSignupRequest, invite?: string, extraHttpRequestParams?: any): Observable<models.UserSignupResponse>;
+    joinOrganizationByProvider(organizationId: string, providerId: string, userSignupRequest: models.UserSignupRequest, invite?: string, extraHttpRequestParams?: any): Observable<models.UserSignupResponse>;
     /**
      * Join a specific organization
      * User join with specific organization. The login credentials will be copied from existing organization account credentials.
@@ -54,9 +56,9 @@ export declare class JoinApi {
      * Signup with specific organization and directory that belongs to a specific provider
      * User join with specific organization and a directory that belongs to a specific provider. The attributes that are used as credentials to login the user depend on the directory type:  | directoryType | accountId | accountPassword | |----------|----------|----------| | sbcloud | email | password | | anonymouscloud | username (random if empty) | password (random if empty) | | ldap | username | password |
      * @param organizationId the organization of the new user
-     * @param directoryId the directory of the new user
+     * @param providerId the target provider
      * @param userSignupRequest User signup request
      * @param invite Optional invite code
      */
-    joinOrganizationByProviderWithHttpInfo(organizationId: string, directoryId: string, userSignupRequest: models.UserSignupRequest, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
+    joinOrganizationByProviderWithHttpInfo(organizationId: string, providerId: string, userSignupRequest: models.UserSignupRequest, invite?: string, extraHttpRequestParams?: any): Observable<Response>;
 }

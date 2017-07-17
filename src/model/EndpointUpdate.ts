@@ -19,6 +19,8 @@ export interface EndpointUpdate {
 
     actionId?: string;
 
+    config?: any;
+
     customData?: any;
 
 }

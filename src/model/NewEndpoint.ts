@@ -25,6 +25,8 @@ export interface NewEndpoint {
 
     actionId?: string;
 
+    config?: any;
+
     customData?: any;
 
 }

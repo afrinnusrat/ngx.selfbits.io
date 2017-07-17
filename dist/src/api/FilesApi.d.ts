@@ -8,19 +8,21 @@ export declare class FilesApi {
     protected http: Http;
     configuration: Configuration;
     defaultHeaders: Headers;
+    sbClientId: string;
+    sbClientSecret: string;
     constructor(http: Http, configuration: Configuration);
-    /**
-     * browse file path
-     * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
-     */
-    browse(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs>;
     /**
      * browse file path
      * browse file folder structure
      * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
      */
-    browse_1(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs>;
+    browsePrivateByPath(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs>;
+    /**
+     * browse file path
+     * browse file folder structure
+     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
+     */
+    browsePublicByPath(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs>;
     /**
      * initialize private file upload
      * Initialize new private file upload
@@ -28,11 +30,25 @@ export declare class FilesApi {
      */
     createPrivate(file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse>;
     /**
+     * initialize private file upload
+     * Initialize new private file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    createPrivateOrganizationFile(organizationId: string, file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse>;
+    /**
      * initialize public file upload
      * Initialize new public file upload
      * @param file Your new file
      */
     createPublic(file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse>;
+    /**
+     * initialize public file upload
+     * Initialize new public file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    createPublicOrganizationFile(organizationId: string, file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse>;
     /**
      * delete existing file
      * delete existing file
@@ -71,17 +87,25 @@ export declare class FilesApi {
      */
     verifyUpload(fileId: string, etagObject: models.FileVerificationRequest, extraHttpRequestParams?: any): Observable<models.File>;
     /**
-     * browse file path
-     * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
+     * verify the successful file upload
+     * verify the successful file upload using the ETag header value
+     * @param organizationId The target organization
+     * @param fileId The target file you want to verify
+     * @param etagObject The etag response header of the successful file upload
      */
-    browseWithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response>;
+    verifyUploadOfOrganizationFile(organizationId: string, fileId: string, etagObject: models.FileVerificationRequest, extraHttpRequestParams?: any): Observable<models.File>;
     /**
      * browse file path
      * browse file folder structure
      * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
      */
-    browse_1WithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response>;
+    browsePrivateByPathWithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response>;
+    /**
+     * browse file path
+     * browse file folder structure
+     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
+     */
+    browsePublicByPathWithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * initialize private file upload
      * Initialize new private file upload
@@ -89,11 +113,25 @@ export declare class FilesApi {
      */
     createPrivateWithHttpInfo(file?: models.NewFile, extraHttpRequestParams?: any): Observable<Response>;
     /**
+     * initialize private file upload
+     * Initialize new private file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    createPrivateOrganizationFileWithHttpInfo(organizationId: string, file?: models.NewFile, extraHttpRequestParams?: any): Observable<Response>;
+    /**
      * initialize public file upload
      * Initialize new public file upload
      * @param file Your new file
      */
     createPublicWithHttpInfo(file?: models.NewFile, extraHttpRequestParams?: any): Observable<Response>;
+    /**
+     * initialize public file upload
+     * Initialize new public file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    createPublicOrganizationFileWithHttpInfo(organizationId: string, file?: models.NewFile, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * delete existing file
      * delete existing file
@@ -131,4 +169,12 @@ export declare class FilesApi {
      * @param etagObject The etag response header of the successful file upload
      */
     verifyUploadWithHttpInfo(fileId: string, etagObject: models.FileVerificationRequest, extraHttpRequestParams?: any): Observable<Response>;
+    /**
+     * verify the successful file upload
+     * verify the successful file upload using the ETag header value
+     * @param organizationId The target organization
+     * @param fileId The target file you want to verify
+     * @param etagObject The etag response header of the successful file upload
+     */
+    verifyUploadOfOrganizationFileWithHttpInfo(organizationId: string, fileId: string, etagObject: models.FileVerificationRequest, extraHttpRequestParams?: any): Observable<Response>;
 }

@@ -29,27 +29,16 @@ import { Configuration }                                     from '../configurat
 export class TenantsApi {
     public configuration: Configuration = new Configuration();
     public defaultHeaders: Headers = new Headers();
+	public sbClientId: string = null;
+	public sbClientSecret: string = null;
 
     constructor(protected http: Http, @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
+			this.sbClientId = this.configuration.sbClientId;
+			this.sbClientSecret = this.configuration.sbClientSecret;
             this.defaultHeaders = new Headers({'Authorization': this.configuration.apiKey});
         }
-    }
-
-    /**
-     * 
-     * Returns tenants of the logged in user
-     */
-    public tenantsGet(extraHttpRequestParams?: any): Observable<models.TenantCredentialArray> {
-        return this.tenantsGetWithHttpInfo(extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
     }
 
     /**
@@ -59,56 +48,6 @@ export class TenantsApi {
      */
     public tenantsPost(tenant: models.NewTenant, extraHttpRequestParams?: any): Observable<models.TenantCreateResponse> {
         return this.tenantsPostWithHttpInfo(tenant, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
-    }
-
-    /**
-     * 
-     * Delete existing SELFBITS CLOUD PLATFORM application
-     * @param tenantId The tenant identifier
-     * @param applicationId The tenant application identifier
-     */
-    public tenantsTenantIdApplicationsApplicationIdDelete(tenantId: string, applicationId: string, extraHttpRequestParams?: any): Observable<{}> {
-        return this.tenantsTenantIdApplicationsApplicationIdDeleteWithHttpInfo(tenantId, applicationId, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
-    }
-
-    /**
-     * 
-     * Returns tenant applications
-     * @param tenantId Your Selfbits Tenant
-     */
-    public tenantsTenantIdApplicationsGet(tenantId: string, extraHttpRequestParams?: any): Observable<models.ApplicationArray> {
-        return this.tenantsTenantIdApplicationsGetWithHttpInfo(tenantId, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json();
-                }
-            });
-    }
-
-    /**
-     * 
-     * Create new application
-     * @param tenantId Your Selfbits Tenant ID
-     * @param application Your new application
-     */
-    public tenantsTenantIdApplicationsPost(tenantId: string, application: models.NewApplication, extraHttpRequestParams?: any): Observable<models.Application> {
-        return this.tenantsTenantIdApplicationsPostWithHttpInfo(tenantId, application, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -134,43 +73,6 @@ export class TenantsApi {
             });
     }
 
-
-    /**
-     * 
-     * Returns tenants of the logged in user
-     */
-    public tenantsGetWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/tenants';
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Get,
-            headers: headers,
-            search: queryParameters
-        });
-
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
 
     /**
      * 
@@ -206,149 +108,6 @@ export class TenantsApi {
             method: RequestMethod.Post,
             headers: headers,
             body: tenant == null ? '' : JSON.stringify(tenant), // https://github.com/angular/angular/issues/10612
-            search: queryParameters
-        });
-
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * 
-     * Delete existing SELFBITS CLOUD PLATFORM application
-     * @param tenantId The tenant identifier
-     * @param applicationId The tenant application identifier
-     */
-    public tenantsTenantIdApplicationsApplicationIdDeleteWithHttpInfo(tenantId: string, applicationId: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/tenants/${tenantId}/applications/${applicationId}'
-                    .replace('${' + 'tenantId' + '}', String(tenantId))
-                    .replace('${' + 'applicationId' + '}', String(applicationId));
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'tenantId' is not null or undefined
-        if (tenantId === null || tenantId === undefined) {
-            throw new Error('Required parameter tenantId was null or undefined when calling tenantsTenantIdApplicationsApplicationIdDelete.');
-        }
-        // verify required parameter 'applicationId' is not null or undefined
-        if (applicationId === null || applicationId === undefined) {
-            throw new Error('Required parameter applicationId was null or undefined when calling tenantsTenantIdApplicationsApplicationIdDelete.');
-        }
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Delete,
-            headers: headers,
-            search: queryParameters
-        });
-
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * 
-     * Returns tenant applications
-     * @param tenantId Your Selfbits Tenant
-     */
-    public tenantsTenantIdApplicationsGetWithHttpInfo(tenantId: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/tenants/${tenantId}/applications'
-                    .replace('${' + 'tenantId' + '}', String(tenantId));
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'tenantId' is not null or undefined
-        if (tenantId === null || tenantId === undefined) {
-            throw new Error('Required parameter tenantId was null or undefined when calling tenantsTenantIdApplicationsGet.');
-        }
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Get,
-            headers: headers,
-            search: queryParameters
-        });
-
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * 
-     * Create new application
-     * @param tenantId Your Selfbits Tenant ID
-     * @param application Your new application
-     */
-    public tenantsTenantIdApplicationsPostWithHttpInfo(tenantId: string, application: models.NewApplication, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/tenants/${tenantId}/applications'
-                    .replace('${' + 'tenantId' + '}', String(tenantId));
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'tenantId' is not null or undefined
-        if (tenantId === null || tenantId === undefined) {
-            throw new Error('Required parameter tenantId was null or undefined when calling tenantsTenantIdApplicationsPost.');
-        }
-        // verify required parameter 'application' is not null or undefined
-        if (application === null || application === undefined) {
-            throw new Error('Required parameter application was null or undefined when calling tenantsTenantIdApplicationsPost.');
-        }
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-
-        headers.set('Content-Type', 'application/json');
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Post,
-            headers: headers,
-            body: application == null ? '' : JSON.stringify(application), // https://github.com/angular/angular/issues/10612
             search: queryParameters
         });
 

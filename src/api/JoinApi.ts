@@ -29,10 +29,14 @@ import { Configuration }                                     from '../configurat
 export class JoinApi {
     public configuration: Configuration = new Configuration();
     public defaultHeaders: Headers = new Headers();
+	public sbClientId: string = null;
+	public sbClientSecret: string = null;
 
     constructor(protected http: Http, @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
+			this.sbClientId = this.configuration.sbClientId;
+			this.sbClientSecret = this.configuration.sbClientSecret;
             this.defaultHeaders = new Headers({'Authorization': this.configuration.apiKey});
         }
     }
@@ -77,12 +81,12 @@ export class JoinApi {
      * Signup with specific organization and directory that belongs to a specific provider
      * User join with specific organization and a directory that belongs to a specific provider. The attributes that are used as credentials to login the user depend on the directory type:  | directoryType | accountId | accountPassword | |----------|----------|----------| | sbcloud | email | password | | anonymouscloud | username (random if empty) | password (random if empty) | | ldap | username | password | 
      * @param organizationId the organization of the new user
-     * @param directoryId the directory of the new user
+     * @param providerId the target provider
      * @param userSignupRequest User signup request
      * @param invite Optional invite code
      */
-    public joinOrganizationByProvider(organizationId: string, directoryId: string, userSignupRequest: models.UserSignupRequest, invite?: string, extraHttpRequestParams?: any): Observable<models.UserSignupResponse> {
-        return this.joinOrganizationByProviderWithHttpInfo(organizationId, directoryId, userSignupRequest, invite, extraHttpRequestParams)
+    public joinOrganizationByProvider(organizationId: string, providerId: string, userSignupRequest: models.UserSignupRequest, invite?: string, extraHttpRequestParams?: any): Observable<models.UserSignupResponse> {
+        return this.joinOrganizationByProviderWithHttpInfo(organizationId, providerId, userSignupRequest, invite, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -207,14 +211,14 @@ export class JoinApi {
      * Signup with specific organization and directory that belongs to a specific provider
      * User join with specific organization and a directory that belongs to a specific provider. The attributes that are used as credentials to login the user depend on the directory type:  | directoryType | accountId | accountPassword | |----------|----------|----------| | sbcloud | email | password | | anonymouscloud | username (random if empty) | password (random if empty) | | ldap | username | password | 
      * @param organizationId the organization of the new user
-     * @param directoryId the directory of the new user
+     * @param providerId the target provider
      * @param userSignupRequest User signup request
      * @param invite Optional invite code
      */
-    public joinOrganizationByProviderWithHttpInfo(organizationId: string, directoryId: string, userSignupRequest: models.UserSignupRequest, invite?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public joinOrganizationByProviderWithHttpInfo(organizationId: string, providerId: string, userSignupRequest: models.UserSignupRequest, invite?: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.configuration.basePath + '/join/organization/${organizationId}/provider/${providerId}'
                     .replace('${' + 'organizationId' + '}', String(organizationId))
-                    .replace('${' + 'directoryId' + '}', String(directoryId));
+                    .replace('${' + 'providerId' + '}', String(providerId));
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -222,9 +226,9 @@ export class JoinApi {
         if (organizationId === null || organizationId === undefined) {
             throw new Error('Required parameter organizationId was null or undefined when calling joinOrganizationByProvider.');
         }
-        // verify required parameter 'directoryId' is not null or undefined
-        if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling joinOrganizationByProvider.');
+        // verify required parameter 'providerId' is not null or undefined
+        if (providerId === null || providerId === undefined) {
+            throw new Error('Required parameter providerId was null or undefined when calling joinOrganizationByProvider.');
         }
         // verify required parameter 'userSignupRequest' is not null or undefined
         if (userSignupRequest === null || userSignupRequest === undefined) {

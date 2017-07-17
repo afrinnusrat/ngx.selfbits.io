@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **accountPassword** | **string** |  | [optional] [default to null]
 **accountEmail** | **string** |  | [optional] [default to null]
 **accountEmailVerified** | **boolean** |  | [optional] [default to null]
+**lastLogin** | **Date** |  | [optional] [default to null]
 **customData** | **any** |  | [optional] [default to null]
 
 

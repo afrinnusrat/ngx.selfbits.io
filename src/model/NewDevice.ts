@@ -13,13 +13,17 @@
 import * as models from './models';
 
 export interface NewDevice {
-    id?: string;
+    uuid?: string;
 
-    name: string;
+    model?: string;
 
-    description?: string;
+    platform?: string;
 
-    isBaseDevice?: boolean;
+    version?: string;
+
+    manufacturer?: string;
+
+    serial?: string;
 
     customData?: any;
 

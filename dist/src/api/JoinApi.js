@@ -22,8 +22,12 @@ var JoinApi = (function () {
         this.http = http;
         this.configuration = new configuration_1.Configuration();
         this.defaultHeaders = new http_1.Headers();
+        this.sbClientId = null;
+        this.sbClientSecret = null;
         if (configuration) {
             this.configuration = configuration;
+            this.sbClientId = this.configuration.sbClientId;
+            this.sbClientSecret = this.configuration.sbClientSecret;
             this.defaultHeaders = new http_1.Headers({ 'Authorization': this.configuration.apiKey });
         }
     }
@@ -67,12 +71,12 @@ var JoinApi = (function () {
      * Signup with specific organization and directory that belongs to a specific provider
      * User join with specific organization and a directory that belongs to a specific provider. The attributes that are used as credentials to login the user depend on the directory type:  | directoryType | accountId | accountPassword | |----------|----------|----------| | sbcloud | email | password | | anonymouscloud | username (random if empty) | password (random if empty) | | ldap | username | password |
      * @param organizationId the organization of the new user
-     * @param directoryId the directory of the new user
+     * @param providerId the target provider
      * @param userSignupRequest User signup request
      * @param invite Optional invite code
      */
-    JoinApi.prototype.joinOrganizationByProvider = function (organizationId, directoryId, userSignupRequest, invite, extraHttpRequestParams) {
-        return this.joinOrganizationByProviderWithHttpInfo(organizationId, directoryId, userSignupRequest, invite, extraHttpRequestParams)
+    JoinApi.prototype.joinOrganizationByProvider = function (organizationId, providerId, userSignupRequest, invite, extraHttpRequestParams) {
+        return this.joinOrganizationByProviderWithHttpInfo(organizationId, providerId, userSignupRequest, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -177,23 +181,23 @@ var JoinApi = (function () {
      * Signup with specific organization and directory that belongs to a specific provider
      * User join with specific organization and a directory that belongs to a specific provider. The attributes that are used as credentials to login the user depend on the directory type:  | directoryType | accountId | accountPassword | |----------|----------|----------| | sbcloud | email | password | | anonymouscloud | username (random if empty) | password (random if empty) | | ldap | username | password |
      * @param organizationId the organization of the new user
-     * @param directoryId the directory of the new user
+     * @param providerId the target provider
      * @param userSignupRequest User signup request
      * @param invite Optional invite code
      */
-    JoinApi.prototype.joinOrganizationByProviderWithHttpInfo = function (organizationId, directoryId, userSignupRequest, invite, extraHttpRequestParams) {
+    JoinApi.prototype.joinOrganizationByProviderWithHttpInfo = function (organizationId, providerId, userSignupRequest, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/join/organization/${organizationId}/provider/${providerId}'
             .replace('${' + 'organizationId' + '}', String(organizationId))
-            .replace('${' + 'directoryId' + '}', String(directoryId));
+            .replace('${' + 'providerId' + '}', String(providerId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'organizationId' is not null or undefined
         if (organizationId === null || organizationId === undefined) {
             throw new Error('Required parameter organizationId was null or undefined when calling joinOrganizationByProvider.');
         }
-        // verify required parameter 'directoryId' is not null or undefined
-        if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling joinOrganizationByProvider.');
+        // verify required parameter 'providerId' is not null or undefined
+        if (providerId === null || providerId === undefined) {
+            throw new Error('Required parameter providerId was null or undefined when calling joinOrganizationByProvider.');
         }
         // verify required parameter 'userSignupRequest' is not null or undefined
         if (userSignupRequest === null || userSignupRequest === undefined) {

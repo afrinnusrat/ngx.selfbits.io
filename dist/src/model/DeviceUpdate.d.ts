@@ -1,6 +1,8 @@
 export interface DeviceUpdate {
-    name?: string;
-    description?: string;
-    isBaseDevice?: boolean;
+    model?: string;
+    platform?: string;
+    version?: string;
+    manufacturer?: string;
+    serial?: string;
     customData?: any;
 }

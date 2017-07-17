@@ -23,6 +23,8 @@ export interface Endpoint {
 
     description?: string;
 
+    config?: any;
+
     actionId?: string;
 
     customData?: any;

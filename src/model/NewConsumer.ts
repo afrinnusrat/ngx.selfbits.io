@@ -13,10 +13,6 @@
 import * as models from './models';
 
 export interface NewConsumer {
-    id?: string;
-
-    userId: string;
-
     directoryId: string;
 
     accountId: string;
@@ -24,6 +20,8 @@ export interface NewConsumer {
     accountPassword: string;
 
     accountEmail?: string;
+
+    accountEmailVerified?: string;
 
     customData?: any;
 

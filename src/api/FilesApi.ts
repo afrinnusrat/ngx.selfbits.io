@@ -29,10 +29,14 @@ import { Configuration }                                     from '../configurat
 export class FilesApi {
     public configuration: Configuration = new Configuration();
     public defaultHeaders: Headers = new Headers();
+	public sbClientId: string = null;
+	public sbClientSecret: string = null;
 
     constructor(protected http: Http, @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
+			this.sbClientId = this.configuration.sbClientId;
+			this.sbClientSecret = this.configuration.sbClientSecret;
             this.defaultHeaders = new Headers({'Authorization': this.configuration.apiKey});
         }
     }
@@ -40,10 +44,10 @@ export class FilesApi {
     /**
      * browse file path
      * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
+     * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
      */
-    public browse(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs> {
-        return this.browseWithHttpInfo(filePath, extraHttpRequestParams)
+    public browsePrivateByPath(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs> {
+        return this.browsePrivateByPathWithHttpInfo(filePath, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -56,10 +60,10 @@ export class FilesApi {
     /**
      * browse file path
      * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
+     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
      */
-    public browse_1(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs> {
-        return this.browse_1WithHttpInfo(filePath, extraHttpRequestParams)
+    public browsePublicByPath(filePath: string, extraHttpRequestParams?: any): Observable<models.FileBrowserDocs> {
+        return this.browsePublicByPathWithHttpInfo(filePath, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -86,12 +90,46 @@ export class FilesApi {
     }
 
     /**
+     * initialize private file upload
+     * Initialize new private file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    public createPrivateOrganizationFile(organizationId: string, file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse> {
+        return this.createPrivateOrganizationFileWithHttpInfo(organizationId, file, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
      * initialize public file upload
      * Initialize new public file upload
      * @param file Your new file
      */
     public createPublic(file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse> {
         return this.createPublicWithHttpInfo(file, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * initialize public file upload
+     * Initialize new public file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    public createPublicOrganizationFile(organizationId: string, file?: models.NewFile, extraHttpRequestParams?: any): Observable<models.NewFileResponse> {
+        return this.createPublicOrganizationFileWithHttpInfo(organizationId, file, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -188,20 +226,38 @@ export class FilesApi {
             });
     }
 
+    /**
+     * verify the successful file upload
+     * verify the successful file upload using the ETag header value
+     * @param organizationId The target organization
+     * @param fileId The target file you want to verify
+     * @param etagObject The etag response header of the successful file upload
+     */
+    public verifyUploadOfOrganizationFile(organizationId: string, fileId: string, etagObject: models.FileVerificationRequest, extraHttpRequestParams?: any): Observable<models.File> {
+        return this.verifyUploadOfOrganizationFileWithHttpInfo(organizationId, fileId, etagObject, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
 
     /**
      * browse file path
      * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
+     * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
      */
-    public browseWithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/files/browse/public';
+    public browsePrivateByPathWithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/files/browse/private';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'filePath' is not null or undefined
         if (filePath === null || filePath === undefined) {
-            throw new Error('Required parameter filePath was null or undefined when calling browse.');
+            throw new Error('Required parameter filePath was null or undefined when calling browsePrivateByPath.');
         }
         if (filePath !== undefined) {
             queryParameters.set('filePath', <any>filePath);
@@ -238,16 +294,16 @@ export class FilesApi {
     /**
      * browse file path
      * browse file folder structure
-     * @param filePath The path to the folder you want to browse (f.e. private/myfolder/)
+     * @param filePath The path to the folder you want to browse (f.e. public/myfolder/)
      */
-    public browse_1WithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.configuration.basePath + '/files/browse/private';
+    public browsePublicByPathWithHttpInfo(filePath: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/files/browse/public';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'filePath' is not null or undefined
         if (filePath === null || filePath === undefined) {
-            throw new Error('Required parameter filePath was null or undefined when calling browse_1.');
+            throw new Error('Required parameter filePath was null or undefined when calling browsePublicByPath.');
         }
         if (filePath !== undefined) {
             queryParameters.set('filePath', <any>filePath);
@@ -323,6 +379,53 @@ export class FilesApi {
     }
 
     /**
+     * initialize private file upload
+     * Initialize new private file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    public createPrivateOrganizationFileWithHttpInfo(organizationId: string, file?: models.NewFile, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/organization/${organizationId}/files/private'
+                    .replace('${' + 'organizationId' + '}', String(organizationId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling createPrivateOrganizationFile.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: file == null ? '' : JSON.stringify(file), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * initialize public file upload
      * Initialize new public file upload
      * @param file Your new file
@@ -332,6 +435,53 @@ export class FilesApi {
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: file == null ? '' : JSON.stringify(file), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * initialize public file upload
+     * Initialize new public file upload
+     * @param organizationId The target organization
+     * @param file Your new file
+     */
+    public createPublicOrganizationFileWithHttpInfo(organizationId: string, file?: models.NewFile, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/organization/${organizationId}/files/public'
+                    .replace('${' + 'organizationId' + '}', String(organizationId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling createPublicOrganizationFile.');
+        }
         // to determine the Content-Type header
         let consumes: string[] = [
         ];
@@ -585,6 +735,63 @@ export class FilesApi {
         // verify required parameter 'etagObject' is not null or undefined
         if (etagObject === null || etagObject === undefined) {
             throw new Error('Required parameter etagObject was null or undefined when calling verifyUpload.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: etagObject == null ? '' : JSON.stringify(etagObject), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * verify the successful file upload
+     * verify the successful file upload using the ETag header value
+     * @param organizationId The target organization
+     * @param fileId The target file you want to verify
+     * @param etagObject The etag response header of the successful file upload
+     */
+    public verifyUploadOfOrganizationFileWithHttpInfo(organizationId: string, fileId: string, etagObject: models.FileVerificationRequest, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/organization/${organizationId}/files/${fileId}/verify'
+                    .replace('${' + 'organizationId' + '}', String(organizationId))
+                    .replace('${' + 'fileId' + '}', String(fileId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling verifyUploadOfOrganizationFile.');
+        }
+        // verify required parameter 'fileId' is not null or undefined
+        if (fileId === null || fileId === undefined) {
+            throw new Error('Required parameter fileId was null or undefined when calling verifyUploadOfOrganizationFile.');
+        }
+        // verify required parameter 'etagObject' is not null or undefined
+        if (etagObject === null || etagObject === undefined) {
+            throw new Error('Required parameter etagObject was null or undefined when calling verifyUploadOfOrganizationFile.');
         }
         // to determine the Content-Type header
         let consumes: string[] = [

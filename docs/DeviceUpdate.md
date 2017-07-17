@@ -3,9 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  | [optional] [default to null]
-**description** | **string** |  | [optional] [default to null]
-**isBaseDevice** | **boolean** |  | [optional] [default to null]
+**model** | **string** |  | [optional] [default to null]
+**platform** | **string** |  | [optional] [default to null]
+**version** | **string** |  | [optional] [default to null]
+**manufacturer** | **string** |  | [optional] [default to null]
+**serial** | **string** |  | [optional] [default to null]
 **customData** | **any** |  | [optional] [default to null]
 
 

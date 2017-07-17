@@ -22,8 +22,12 @@ var InteractiveViewsApi = (function () {
         this.http = http;
         this.configuration = new configuration_1.Configuration();
         this.defaultHeaders = new http_1.Headers();
+        this.sbClientId = null;
+        this.sbClientSecret = null;
         if (configuration) {
             this.configuration = configuration;
+            this.sbClientId = this.configuration.sbClientId;
+            this.sbClientSecret = this.configuration.sbClientSecret;
             this.defaultHeaders = new http_1.Headers({ 'Authorization': this.configuration.apiKey });
         }
     }
@@ -35,8 +39,8 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authDirectoryDirectoryIdGet = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
-        return this.authDirectoryDirectoryIdGetWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openAuthViewByDirectory = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+        return this.openAuthViewByDirectoryWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -50,12 +54,13 @@ var InteractiveViewsApi = (function () {
      * Interactive user authentication using specific organization and directory
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
+     * @param organizationId the target organization
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authOrganizationOrganizationIdDirectoryDirectoryIdGet = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
-        return this.authOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openAuthViewByOrganizationAndDirectory = function (sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams) {
+        return this.openAuthViewByOrganizationAndDirectoryWithHttpInfo(sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -69,12 +74,13 @@ var InteractiveViewsApi = (function () {
      * Interactive user authentication using specific organization and a specific provider
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
-     * @param directoryId the directory of the new user
+     * @param organizationId the target organization
+     * @param providerId the target provider
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authOrganizationOrganizationIdProviderProviderIdGet = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
-        return this.authOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openAuthViewByOrganizationAndProvider = function (sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams) {
+        return this.openAuthViewByOrganizationAndProviderWithHttpInfo(sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -92,8 +98,8 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authProviderProviderIdGet = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
-        return this.authProviderProviderIdGetWithHttpInfo(sbClientId, providerId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openAuthViewByProvider = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
+        return this.openAuthViewByProviderWithHttpInfo(sbClientId, providerId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -104,13 +110,13 @@ var InteractiveViewsApi = (function () {
         });
     };
     /**
-     *
+     * Verify email
      * Verify email
      * @param email Email you want to verifiy
      * @param code Code that was generated for the email verification
      */
-    InteractiveViewsApi.prototype.emailsVerifyGet = function (email, code, extraHttpRequestParams) {
-        return this.emailsVerifyGetWithHttpInfo(email, code, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openEmailVerificationViewByEmailAndCode = function (email, code, extraHttpRequestParams) {
+        return this.openEmailVerificationViewByEmailAndCodeWithHttpInfo(email, code, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -121,32 +127,49 @@ var InteractiveViewsApi = (function () {
         });
     };
     /**
-     *
-     * Interactive user login with specific directory
-     * @param sbClientId Your application client id
-     * @param directoryId the directory where the user wants to log in
-     * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param randomState2 Random string to identifiy the account after the successful interactive authentication
-     */
-    InteractiveViewsApi.prototype.loginDirectoryDirectoryIdGet = function (sbClientId, directoryId, randomState, randomState2, extraHttpRequestParams) {
-        return this.loginDirectoryDirectoryIdGetWithHttpInfo(sbClientId, directoryId, randomState, randomState2, extraHttpRequestParams)
-            .map(function (response) {
-            if (response.status === 204) {
-                return undefined;
-            }
-            else {
-                return response.json();
-            }
-        });
-    };
-    /**
-     *
+     * Interactive user login with default directory
      * Interactive user login with default directory
      * @param sbClientId Your application client id
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      */
-    InteractiveViewsApi.prototype.loginGet = function (sbClientId, randomState, extraHttpRequestParams) {
-        return this.loginGetWithHttpInfo(sbClientId, randomState, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openLoginView = function (sbClientId, randomState, extraHttpRequestParams) {
+        return this.openLoginViewWithHttpInfo(sbClientId, randomState, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Interactive user login with specific directory
+     * Interactive user login with specific directory
+     * @param sbClientId Your application client id
+     * @param directoryId the directory where the user wants to log in
+     * @param randomState Random string to identifiy the account after the successful interactive authentication
+     */
+    InteractiveViewsApi.prototype.openLoginViewByDirectory = function (sbClientId, directoryId, randomState, extraHttpRequestParams) {
+        return this.openLoginViewByDirectoryWithHttpInfo(sbClientId, directoryId, randomState, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Interactive user login with default organization and its default directory
+     * Interactive user login with specific organization
+     * @param sbClientId Your application client id
+     * @param organizationId the organization of the new user
+     * @param randomState Random string to identifiy the account after the successful interactive authentication
+     */
+    InteractiveViewsApi.prototype.openLoginViewByOrganization = function (sbClientId, organizationId, randomState, extraHttpRequestParams) {
+        return this.openLoginViewByOrganizationWithHttpInfo(sbClientId, organizationId, randomState, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -164,26 +187,8 @@ var InteractiveViewsApi = (function () {
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      */
-    InteractiveViewsApi.prototype.loginOrganizationOrganizationIdDirectoryDirectoryIdGet = function (sbClientId, organizationId, directoryId, randomState, extraHttpRequestParams) {
-        return this.loginOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo(sbClientId, organizationId, directoryId, randomState, extraHttpRequestParams)
-            .map(function (response) {
-            if (response.status === 204) {
-                return undefined;
-            }
-            else {
-                return response.json();
-            }
-        });
-    };
-    /**
-     * Interactive user login with default organization and its default directory
-     * Interactive user login with specific organization
-     * @param sbClientId Your application client id
-     * @param organizationId the organization of the new user
-     * @param randomState Random string to identifiy the account after the successful interactive authentication
-     */
-    InteractiveViewsApi.prototype.loginOrganizationOrganizationIdGet = function (sbClientId, organizationId, randomState, extraHttpRequestParams) {
-        return this.loginOrganizationOrganizationIdGetWithHttpInfo(sbClientId, organizationId, randomState, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openLoginViewByOrganizationAndDirectory = function (sbClientId, organizationId, directoryId, randomState, extraHttpRequestParams) {
+        return this.openLoginViewByOrganizationAndDirectoryWithHttpInfo(sbClientId, organizationId, directoryId, randomState, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -201,8 +206,8 @@ var InteractiveViewsApi = (function () {
      * @param providerId the provider of the user directory
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      */
-    InteractiveViewsApi.prototype.loginOrganizationOrganizationIdProviderProviderIdGet = function (sbClientId, organizationId, providerId, randomState, extraHttpRequestParams) {
-        return this.loginOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo(sbClientId, organizationId, providerId, randomState, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openLoginViewByOrganizationAndProvider = function (sbClientId, organizationId, providerId, randomState, extraHttpRequestParams) {
+        return this.openLoginViewByOrganizationAndProviderWithHttpInfo(sbClientId, organizationId, providerId, randomState, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -213,12 +218,12 @@ var InteractiveViewsApi = (function () {
         });
     };
     /**
-     *
-     * Reset password callback
+     * Reset password callback view
+     * Reset password callback view
      * @param error Password reset error message
      */
-    InteractiveViewsApi.prototype.passwordResetCallbackGet = function (error, extraHttpRequestParams) {
-        return this.passwordResetCallbackGetWithHttpInfo(error, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openPasswordResetCallbackView = function (error, extraHttpRequestParams) {
+        return this.openPasswordResetCallbackViewWithHttpInfo(error, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -229,13 +234,31 @@ var InteractiveViewsApi = (function () {
         });
     };
     /**
-     *
-     * Reset password
+     * Reset password view
+     * Reset password view
      * @param email Target email of a password reset
      * @param code Code that was generated for the password reset process
      */
-    InteractiveViewsApi.prototype.passwordResetGet = function (email, code, extraHttpRequestParams) {
-        return this.passwordResetGetWithHttpInfo(email, code, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openPasswordResetView = function (email, code, extraHttpRequestParams) {
+        return this.openPasswordResetViewWithHttpInfo(email, code, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Interactive user signup with default organization and its default directory
+     * Interactive user signup with default organization and its default directory
+     * @param sbClientId Your application client id
+     * @param randomState Random string to identifiy the account after the successful interactive signup
+     * @param invite Optional invite code
+     */
+    InteractiveViewsApi.prototype.openSignupView = function (sbClientId, randomState, invite, extraHttpRequestParams) {
+        return this.openSignupViewWithHttpInfo(sbClientId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -253,8 +276,8 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupDirectoryDirectoryIdGet = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
-        return this.signupDirectoryDirectoryIdGetWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openSignupViewByDirectory = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+        return this.openSignupViewByDirectoryWithHttpInfo(sbClientId, directoryId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -265,14 +288,15 @@ var InteractiveViewsApi = (function () {
         });
     };
     /**
-     * Interactive user signup with default organization and its default directory
-     * Interactive user signup with default organization and its default directory
+     * Interactive user signup with specified organization and its default directory
+     * Interactive user signup with specified organization and its default directory
      * @param sbClientId Your application client id
+     * @param organizationId the organization of the new user
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupGet = function (sbClientId, randomState, invite, extraHttpRequestParams) {
-        return this.signupGetWithHttpInfo(sbClientId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openSignupViewByOrganization = function (sbClientId, organizationId, randomState, invite, extraHttpRequestParams) {
+        return this.openSignupViewByOrganizationWithHttpInfo(sbClientId, organizationId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -291,27 +315,8 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupOrganizationOrganizationIdDirectoryDirectoryIdGet = function (sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams) {
-        return this.signupOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo(sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams)
-            .map(function (response) {
-            if (response.status === 204) {
-                return undefined;
-            }
-            else {
-                return response.json();
-            }
-        });
-    };
-    /**
-     * Interactive user signup with specified organization and its default directory
-     * Interactive user signup with specified organization and its default directory
-     * @param sbClientId Your application client id
-     * @param organizationId the organization of the new user
-     * @param randomState Random string to identifiy the account after the successful interactive signup
-     * @param invite Optional invite code
-     */
-    InteractiveViewsApi.prototype.signupOrganizationOrganizationIdGet = function (sbClientId, organizationId, randomState, invite, extraHttpRequestParams) {
-        return this.signupOrganizationOrganizationIdGetWithHttpInfo(sbClientId, organizationId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openSignupViewByOrganizationAndDirectory = function (sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams) {
+        return this.openSignupViewByOrganizationAndDirectoryWithHttpInfo(sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -330,8 +335,8 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupOrganizationOrganizationIdProviderProviderIdGet = function (sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams) {
-        return this.signupOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo(sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openSignupViewByOrganizationAndProvider = function (sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams) {
+        return this.openSignupViewByOrganizationAndProviderWithHttpInfo(sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -349,8 +354,8 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupProviderProviderIdGet = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
-        return this.signupProviderProviderIdGetWithHttpInfo(sbClientId, providerId, randomState, invite, extraHttpRequestParams)
+    InteractiveViewsApi.prototype.openSignupViewByProvider = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
+        return this.openSignupViewByProviderWithHttpInfo(sbClientId, providerId, randomState, invite, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -368,22 +373,22 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openAuthViewByDirectoryWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/auth/directory/${directoryId}'
             .replace('${' + 'directoryId' + '}', String(directoryId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling authDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openAuthViewByDirectory.');
         }
         // verify required parameter 'directoryId' is not null or undefined
         if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling authDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter directoryId was null or undefined when calling openAuthViewByDirectory.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling authDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openAuthViewByDirectory.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -419,26 +424,32 @@ var InteractiveViewsApi = (function () {
      * Interactive user authentication using specific organization and directory
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
+     * @param organizationId the target organization
      * @param directoryId the directory of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openAuthViewByOrganizationAndDirectoryWithHttpInfo = function (sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/auth/organization/${organizationId}/directory/${directoryId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
             .replace('${' + 'directoryId' + '}', String(directoryId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling authOrganizationOrganizationIdDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openAuthViewByOrganizationAndDirectory.');
+        }
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling openAuthViewByOrganizationAndDirectory.');
         }
         // verify required parameter 'directoryId' is not null or undefined
         if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling authOrganizationOrganizationIdDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter directoryId was null or undefined when calling openAuthViewByOrganizationAndDirectory.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling authOrganizationOrganizationIdDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openAuthViewByOrganizationAndDirectory.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -474,26 +485,32 @@ var InteractiveViewsApi = (function () {
      * Interactive user authentication using specific organization and a specific provider
      * Interactive user authentication with external authentication provider. If the authentication is successful, the client is redirected to /auth/provider/[providerId]/callback.
      * @param sbClientId Your application client id
-     * @param directoryId the directory of the new user
+     * @param organizationId the target organization
+     * @param providerId the target provider
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openAuthViewByOrganizationAndProviderWithHttpInfo = function (sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/auth/organization/${organizationId}/provider/${providerId}'
-            .replace('${' + 'directoryId' + '}', String(directoryId));
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'providerId' + '}', String(providerId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling authOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openAuthViewByOrganizationAndProvider.');
         }
-        // verify required parameter 'directoryId' is not null or undefined
-        if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling authOrganizationOrganizationIdProviderProviderIdGet.');
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling openAuthViewByOrganizationAndProvider.');
+        }
+        // verify required parameter 'providerId' is not null or undefined
+        if (providerId === null || providerId === undefined) {
+            throw new Error('Required parameter providerId was null or undefined when calling openAuthViewByOrganizationAndProvider.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling authOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openAuthViewByOrganizationAndProvider.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -533,22 +550,22 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.authProviderProviderIdGetWithHttpInfo = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openAuthViewByProviderWithHttpInfo = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/auth/provider/${providerId}'
             .replace('${' + 'providerId' + '}', String(providerId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling authProviderProviderIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openAuthViewByProvider.');
         }
         // verify required parameter 'providerId' is not null or undefined
         if (providerId === null || providerId === undefined) {
-            throw new Error('Required parameter providerId was null or undefined when calling authProviderProviderIdGet.');
+            throw new Error('Required parameter providerId was null or undefined when calling openAuthViewByProvider.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling authProviderProviderIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openAuthViewByProvider.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -581,22 +598,22 @@ var InteractiveViewsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
+     * Verify email
      * Verify email
      * @param email Email you want to verifiy
      * @param code Code that was generated for the email verification
      */
-    InteractiveViewsApi.prototype.emailsVerifyGetWithHttpInfo = function (email, code, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openEmailVerificationViewByEmailAndCodeWithHttpInfo = function (email, code, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/emails/verify';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'email' is not null or undefined
         if (email === null || email === undefined) {
-            throw new Error('Required parameter email was null or undefined when calling emailsVerifyGet.');
+            throw new Error('Required parameter email was null or undefined when calling openEmailVerificationViewByEmailAndCode.');
         }
         // verify required parameter 'code' is not null or undefined
         if (code === null || code === undefined) {
-            throw new Error('Required parameter code was null or undefined when calling emailsVerifyGet.');
+            throw new Error('Required parameter code was null or undefined when calling openEmailVerificationViewByEmailAndCode.');
         }
         if (email !== undefined) {
             queryParameters.set('email', email);
@@ -626,126 +643,69 @@ var InteractiveViewsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
+     * Interactive user login with default directory
+     * Interactive user login with default directory
+     * @param sbClientId Your application client id
+     * @param randomState Random string to identifiy the account after the successful interactive authentication
+     */
+    InteractiveViewsApi.prototype.openLoginViewWithHttpInfo = function (sbClientId, randomState, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/login';
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'sbClientId' is not null or undefined
+        if (sbClientId === null || sbClientId === undefined) {
+            throw new Error('Required parameter sbClientId was null or undefined when calling openLoginView.');
+        }
+        if (sbClientId !== undefined) {
+            queryParameters.set('sb-client-id', sbClientId);
+        }
+        if (randomState !== undefined) {
+            queryParameters.set('randomState', randomState);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'text/html'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Interactive user login with specific directory
      * Interactive user login with specific directory
      * @param sbClientId Your application client id
      * @param directoryId the directory where the user wants to log in
      * @param randomState Random string to identifiy the account after the successful interactive authentication
-     * @param randomState2 Random string to identifiy the account after the successful interactive authentication
      */
-    InteractiveViewsApi.prototype.loginDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, randomState2, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openLoginViewByDirectoryWithHttpInfo = function (sbClientId, directoryId, randomState, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/login/directory/${directoryId}'
             .replace('${' + 'directoryId' + '}', String(directoryId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling loginDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openLoginViewByDirectory.');
         }
         // verify required parameter 'directoryId' is not null or undefined
         if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling loginDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter directoryId was null or undefined when calling openLoginViewByDirectory.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling loginDirectoryDirectoryIdGet.');
-        }
-        if (sbClientId !== undefined) {
-            queryParameters.set('sb-client-id', sbClientId);
-        }
-        if (randomState !== undefined) {
-            queryParameters.set('randomState', randomState);
-        }
-        if (randomState2 !== undefined) {
-            queryParameters.set('randomState', randomState2);
-        }
-        // to determine the Content-Type header
-        var consumes = [];
-        // to determine the Accept header
-        var produces = [
-            'text/html'
-        ];
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-        var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Get,
-            headers: headers,
-            search: queryParameters
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
-        }
-        return this.http.request(path, requestOptions);
-    };
-    /**
-     *
-     * Interactive user login with default directory
-     * @param sbClientId Your application client id
-     * @param randomState Random string to identifiy the account after the successful interactive authentication
-     */
-    InteractiveViewsApi.prototype.loginGetWithHttpInfo = function (sbClientId, randomState, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/login';
-        var queryParameters = new http_1.URLSearchParams();
-        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'sbClientId' is not null or undefined
-        if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling loginGet.');
-        }
-        if (sbClientId !== undefined) {
-            queryParameters.set('sb-client-id', sbClientId);
-        }
-        if (randomState !== undefined) {
-            queryParameters.set('randomState', randomState);
-        }
-        // to determine the Content-Type header
-        var consumes = [];
-        // to determine the Accept header
-        var produces = [
-            'text/html'
-        ];
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-        var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Get,
-            headers: headers,
-            search: queryParameters
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
-        }
-        return this.http.request(path, requestOptions);
-    };
-    /**
-     * Interactive user login with specific organization and a specific directory
-     * Interactive user login with specific organization and a specific directory
-     * @param sbClientId Your application client id
-     * @param organizationId the organization of the new user
-     * @param directoryId the directory of the new user
-     * @param randomState Random string to identifiy the account after the successful interactive authentication
-     */
-    InteractiveViewsApi.prototype.loginOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, organizationId, directoryId, randomState, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/login/organization/${organizationId}/directory/${directoryId}'
-            .replace('${' + 'organizationId' + '}', String(organizationId))
-            .replace('${' + 'directoryId' + '}', String(directoryId));
-        var queryParameters = new http_1.URLSearchParams();
-        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'sbClientId' is not null or undefined
-        if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling loginOrganizationOrganizationIdDirectoryDirectoryIdGet.');
-        }
-        // verify required parameter 'organizationId' is not null or undefined
-        if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling loginOrganizationOrganizationIdDirectoryDirectoryIdGet.');
-        }
-        // verify required parameter 'directoryId' is not null or undefined
-        if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling loginOrganizationOrganizationIdDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openLoginViewByDirectory.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -781,18 +741,71 @@ var InteractiveViewsApi = (function () {
      * @param organizationId the organization of the new user
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      */
-    InteractiveViewsApi.prototype.loginOrganizationOrganizationIdGetWithHttpInfo = function (sbClientId, organizationId, randomState, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openLoginViewByOrganizationWithHttpInfo = function (sbClientId, organizationId, randomState, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/login/organization/${organizationId}'
             .replace('${' + 'organizationId' + '}', String(organizationId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling loginOrganizationOrganizationIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openLoginViewByOrganization.');
         }
         // verify required parameter 'organizationId' is not null or undefined
         if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling loginOrganizationOrganizationIdGet.');
+            throw new Error('Required parameter organizationId was null or undefined when calling openLoginViewByOrganization.');
+        }
+        if (sbClientId !== undefined) {
+            queryParameters.set('sb-client-id', sbClientId);
+        }
+        if (randomState !== undefined) {
+            queryParameters.set('randomState', randomState);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'text/html'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Interactive user login with specific organization and a specific directory
+     * Interactive user login with specific organization and a specific directory
+     * @param sbClientId Your application client id
+     * @param organizationId the organization of the new user
+     * @param directoryId the directory of the new user
+     * @param randomState Random string to identifiy the account after the successful interactive authentication
+     */
+    InteractiveViewsApi.prototype.openLoginViewByOrganizationAndDirectoryWithHttpInfo = function (sbClientId, organizationId, directoryId, randomState, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/login/organization/${organizationId}/directory/${directoryId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'directoryId' + '}', String(directoryId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'sbClientId' is not null or undefined
+        if (sbClientId === null || sbClientId === undefined) {
+            throw new Error('Required parameter sbClientId was null or undefined when calling openLoginViewByOrganizationAndDirectory.');
+        }
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling openLoginViewByOrganizationAndDirectory.');
+        }
+        // verify required parameter 'directoryId' is not null or undefined
+        if (directoryId === null || directoryId === undefined) {
+            throw new Error('Required parameter directoryId was null or undefined when calling openLoginViewByOrganizationAndDirectory.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -829,7 +842,7 @@ var InteractiveViewsApi = (function () {
      * @param providerId the provider of the user directory
      * @param randomState Random string to identifiy the account after the successful interactive authentication
      */
-    InteractiveViewsApi.prototype.loginOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo = function (sbClientId, organizationId, providerId, randomState, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openLoginViewByOrganizationAndProviderWithHttpInfo = function (sbClientId, organizationId, providerId, randomState, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/login/organization/${organizationId}/provider/${providerId}'
             .replace('${' + 'organizationId' + '}', String(organizationId))
             .replace('${' + 'providerId' + '}', String(providerId));
@@ -837,15 +850,15 @@ var InteractiveViewsApi = (function () {
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling loginOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openLoginViewByOrganizationAndProvider.');
         }
         // verify required parameter 'organizationId' is not null or undefined
         if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling loginOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter organizationId was null or undefined when calling openLoginViewByOrganizationAndProvider.');
         }
         // verify required parameter 'providerId' is not null or undefined
         if (providerId === null || providerId === undefined) {
-            throw new Error('Required parameter providerId was null or undefined when calling loginOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter providerId was null or undefined when calling openLoginViewByOrganizationAndProvider.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -875,17 +888,17 @@ var InteractiveViewsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
-     * Reset password callback
+     * Reset password callback view
+     * Reset password callback view
      * @param error Password reset error message
      */
-    InteractiveViewsApi.prototype.passwordResetCallbackGetWithHttpInfo = function (error, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openPasswordResetCallbackViewWithHttpInfo = function (error, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/password/reset/callback';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'error' is not null or undefined
         if (error === null || error === undefined) {
-            throw new Error('Required parameter error was null or undefined when calling passwordResetCallbackGet.');
+            throw new Error('Required parameter error was null or undefined when calling openPasswordResetCallbackView.');
         }
         if (error !== undefined) {
             queryParameters.set('error', error);
@@ -912,28 +925,77 @@ var InteractiveViewsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
-     * Reset password
+     * Reset password view
+     * Reset password view
      * @param email Target email of a password reset
      * @param code Code that was generated for the password reset process
      */
-    InteractiveViewsApi.prototype.passwordResetGetWithHttpInfo = function (email, code, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openPasswordResetViewWithHttpInfo = function (email, code, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/password/reset';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'email' is not null or undefined
         if (email === null || email === undefined) {
-            throw new Error('Required parameter email was null or undefined when calling passwordResetGet.');
+            throw new Error('Required parameter email was null or undefined when calling openPasswordResetView.');
         }
         // verify required parameter 'code' is not null or undefined
         if (code === null || code === undefined) {
-            throw new Error('Required parameter code was null or undefined when calling passwordResetGet.');
+            throw new Error('Required parameter code was null or undefined when calling openPasswordResetView.');
         }
         if (email !== undefined) {
             queryParameters.set('email', email);
         }
         if (code !== undefined) {
             queryParameters.set('code', code);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'text/html'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Interactive user signup with default organization and its default directory
+     * Interactive user signup with default organization and its default directory
+     * @param sbClientId Your application client id
+     * @param randomState Random string to identifiy the account after the successful interactive signup
+     * @param invite Optional invite code
+     */
+    InteractiveViewsApi.prototype.openSignupViewWithHttpInfo = function (sbClientId, randomState, invite, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/signup';
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'sbClientId' is not null or undefined
+        if (sbClientId === null || sbClientId === undefined) {
+            throw new Error('Required parameter sbClientId was null or undefined when calling openSignupView.');
+        }
+        // verify required parameter 'randomState' is not null or undefined
+        if (randomState === null || randomState === undefined) {
+            throw new Error('Required parameter randomState was null or undefined when calling openSignupView.');
+        }
+        if (sbClientId !== undefined) {
+            queryParameters.set('sb-client-id', sbClientId);
+        }
+        if (randomState !== undefined) {
+            queryParameters.set('randomState', randomState);
+        }
+        if (invite !== undefined) {
+            queryParameters.set('invite', invite);
         }
         // to determine the Content-Type header
         var consumes = [];
@@ -964,22 +1026,22 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openSignupViewByDirectoryWithHttpInfo = function (sbClientId, directoryId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/signup/directory/${directoryId}'
             .replace('${' + 'directoryId' + '}', String(directoryId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling signupDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openSignupViewByDirectory.');
         }
         // verify required parameter 'directoryId' is not null or undefined
         if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling signupDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter directoryId was null or undefined when calling openSignupViewByDirectory.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling signupDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openSignupViewByDirectory.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -1012,23 +1074,29 @@ var InteractiveViewsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     * Interactive user signup with default organization and its default directory
-     * Interactive user signup with default organization and its default directory
+     * Interactive user signup with specified organization and its default directory
+     * Interactive user signup with specified organization and its default directory
      * @param sbClientId Your application client id
+     * @param organizationId the organization of the new user
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupGetWithHttpInfo = function (sbClientId, randomState, invite, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/signup';
+    InteractiveViewsApi.prototype.openSignupViewByOrganizationWithHttpInfo = function (sbClientId, organizationId, randomState, invite, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/signup/organization/${organizationId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling signupGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openSignupViewByOrganization.');
+        }
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling openSignupViewByOrganization.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling signupGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openSignupViewByOrganization.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -1069,7 +1137,7 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupOrganizationOrganizationIdDirectoryDirectoryIdGetWithHttpInfo = function (sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openSignupViewByOrganizationAndDirectoryWithHttpInfo = function (sbClientId, organizationId, directoryId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/signup/organization/${organizationId}/directory/${directoryId}'
             .replace('${' + 'organizationId' + '}', String(organizationId))
             .replace('${' + 'directoryId' + '}', String(directoryId));
@@ -1077,74 +1145,19 @@ var InteractiveViewsApi = (function () {
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling signupOrganizationOrganizationIdDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openSignupViewByOrganizationAndDirectory.');
         }
         // verify required parameter 'organizationId' is not null or undefined
         if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling signupOrganizationOrganizationIdDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter organizationId was null or undefined when calling openSignupViewByOrganizationAndDirectory.');
         }
         // verify required parameter 'directoryId' is not null or undefined
         if (directoryId === null || directoryId === undefined) {
-            throw new Error('Required parameter directoryId was null or undefined when calling signupOrganizationOrganizationIdDirectoryDirectoryIdGet.');
+            throw new Error('Required parameter directoryId was null or undefined when calling openSignupViewByOrganizationAndDirectory.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling signupOrganizationOrganizationIdDirectoryDirectoryIdGet.');
-        }
-        if (sbClientId !== undefined) {
-            queryParameters.set('sb-client-id', sbClientId);
-        }
-        if (randomState !== undefined) {
-            queryParameters.set('randomState', randomState);
-        }
-        if (invite !== undefined) {
-            queryParameters.set('invite', invite);
-        }
-        // to determine the Content-Type header
-        var consumes = [];
-        // to determine the Accept header
-        var produces = [
-            'text/html'
-        ];
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-        var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Get,
-            headers: headers,
-            search: queryParameters
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
-        }
-        return this.http.request(path, requestOptions);
-    };
-    /**
-     * Interactive user signup with specified organization and its default directory
-     * Interactive user signup with specified organization and its default directory
-     * @param sbClientId Your application client id
-     * @param organizationId the organization of the new user
-     * @param randomState Random string to identifiy the account after the successful interactive signup
-     * @param invite Optional invite code
-     */
-    InteractiveViewsApi.prototype.signupOrganizationOrganizationIdGetWithHttpInfo = function (sbClientId, organizationId, randomState, invite, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/signup/organization/${organizationId}'
-            .replace('${' + 'organizationId' + '}', String(organizationId));
-        var queryParameters = new http_1.URLSearchParams();
-        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'sbClientId' is not null or undefined
-        if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling signupOrganizationOrganizationIdGet.');
-        }
-        // verify required parameter 'organizationId' is not null or undefined
-        if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling signupOrganizationOrganizationIdGet.');
-        }
-        // verify required parameter 'randomState' is not null or undefined
-        if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling signupOrganizationOrganizationIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openSignupViewByOrganizationAndDirectory.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -1185,7 +1198,7 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupOrganizationOrganizationIdProviderProviderIdGetWithHttpInfo = function (sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openSignupViewByOrganizationAndProviderWithHttpInfo = function (sbClientId, organizationId, providerId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/signup/organization/${organizationId}/provider/${providerId}'
             .replace('${' + 'organizationId' + '}', String(organizationId))
             .replace('${' + 'providerId' + '}', String(providerId));
@@ -1193,19 +1206,19 @@ var InteractiveViewsApi = (function () {
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling signupOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openSignupViewByOrganizationAndProvider.');
         }
         // verify required parameter 'organizationId' is not null or undefined
         if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling signupOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter organizationId was null or undefined when calling openSignupViewByOrganizationAndProvider.');
         }
         // verify required parameter 'providerId' is not null or undefined
         if (providerId === null || providerId === undefined) {
-            throw new Error('Required parameter providerId was null or undefined when calling signupOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter providerId was null or undefined when calling openSignupViewByOrganizationAndProvider.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling signupOrganizationOrganizationIdProviderProviderIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openSignupViewByOrganizationAndProvider.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);
@@ -1245,22 +1258,22 @@ var InteractiveViewsApi = (function () {
      * @param randomState Random string to identifiy the account after the successful interactive signup
      * @param invite Optional invite code
      */
-    InteractiveViewsApi.prototype.signupProviderProviderIdGetWithHttpInfo = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
+    InteractiveViewsApi.prototype.openSignupViewByProviderWithHttpInfo = function (sbClientId, providerId, randomState, invite, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/signup/provider/${providerId}'
             .replace('${' + 'providerId' + '}', String(providerId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'sbClientId' is not null or undefined
         if (sbClientId === null || sbClientId === undefined) {
-            throw new Error('Required parameter sbClientId was null or undefined when calling signupProviderProviderIdGet.');
+            throw new Error('Required parameter sbClientId was null or undefined when calling openSignupViewByProvider.');
         }
         // verify required parameter 'providerId' is not null or undefined
         if (providerId === null || providerId === undefined) {
-            throw new Error('Required parameter providerId was null or undefined when calling signupProviderProviderIdGet.');
+            throw new Error('Required parameter providerId was null or undefined when calling openSignupViewByProvider.');
         }
         // verify required parameter 'randomState' is not null or undefined
         if (randomState === null || randomState === undefined) {
-            throw new Error('Required parameter randomState was null or undefined when calling signupProviderProviderIdGet.');
+            throw new Error('Required parameter randomState was null or undefined when calling openSignupViewByProvider.');
         }
         if (sbClientId !== undefined) {
             queryParameters.set('sb-client-id', sbClientId);

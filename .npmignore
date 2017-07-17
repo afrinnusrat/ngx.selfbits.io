@@ -9,7 +9,6 @@ build.xml
 node_modules/*
 npm-debug.log
 *.ts
-!*.d.ts
 tests
 examples
 .github
@@ -18,6 +17,11 @@ coverage
 !bundles/*.js
 
 src/
+docs/
+.swagger-codegen-ignore
+banner.png
+git_push.sh
+index.d.ts
 
 /dist/compiled
 

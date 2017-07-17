@@ -25,6 +25,8 @@ export interface UserSignupRequest {
 
     lastName?: string;
 
+    birthday?: Date;
+
     phone?: string;
 
     gender?: string;

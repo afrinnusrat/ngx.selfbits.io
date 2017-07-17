@@ -13,7 +13,7 @@
 import * as models from './models';
 
 export interface ApplicationBulkUpdate {
-    update: any;
+    update: models.ApplicationUpdate;
 
 }
 

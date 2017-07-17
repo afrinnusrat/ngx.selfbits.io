@@ -25,6 +25,8 @@ export interface NewUser {
 
     lastName?: string;
 
+    birthday?: Date;
+
     phone?: string;
 
     gender?: string;

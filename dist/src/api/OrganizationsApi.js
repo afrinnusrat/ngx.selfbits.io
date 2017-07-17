@@ -22,18 +22,364 @@ var OrganizationsApi = (function () {
         this.http = http;
         this.configuration = new configuration_1.Configuration();
         this.defaultHeaders = new http_1.Headers();
+        this.sbClientId = null;
+        this.sbClientSecret = null;
         if (configuration) {
             this.configuration = configuration;
+            this.sbClientId = this.configuration.sbClientId;
+            this.sbClientSecret = this.configuration.sbClientSecret;
             this.defaultHeaders = new http_1.Headers({ 'Authorization': this.configuration.apiKey });
         }
     }
     /**
-     *
+     * Create new application
+     * Create new application
+     * @param organizationId Your Selfbits Organization ID
+     * @param application Your new application
+     */
+    OrganizationsApi.prototype.applicationsCreateOneByOrganization = function (organizationId, application, extraHttpRequestParams) {
+        return this.applicationsCreateOneByOrganizationWithHttpInfo(organizationId, application, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Delete existing SELFBITS CLOUD PLATFORM application
+     * Delete existing SELFBITS CLOUD PLATFORM application
+     * @param organizationId Your Selfbits Organization ID
+     * @param applicationId The tenant application identifier
+     */
+    OrganizationsApi.prototype.applicationsDeleteOneByOrganization = function (organizationId, applicationId, extraHttpRequestParams) {
+        return this.applicationsDeleteOneByOrganizationWithHttpInfo(organizationId, applicationId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Returns applications
+     * Returns applications
+     * @param organizationId The target organization
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;sbcloud\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    OrganizationsApi.prototype.applicationsQueryByOrganization = function (organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        return this.applicationsQueryByOrganizationWithHttpInfo(organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Create new application
+     * Create new application
+     * @param organizationId Your Selfbits Organization ID
+     * @param applicationId The tenant application identifier
+     */
+    OrganizationsApi.prototype.applicationsReadOneByOrganization = function (organizationId, applicationId, extraHttpRequestParams) {
+        return this.applicationsReadOneByOrganizationWithHttpInfo(organizationId, applicationId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Create new directory
+     * Create new directory
+     * @param organizationId The target organization
+     * @param directory Your new directory
+     */
+    OrganizationsApi.prototype.directoriesCreateOneByOrganization = function (organizationId, directory, extraHttpRequestParams) {
+        return this.directoriesCreateOneByOrganizationWithHttpInfo(organizationId, directory, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Bulk delete existing directories
+     * Bulk delete existing directories
+     * @param organizationId The target organization
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     */
+    OrganizationsApi.prototype.directoriesDeleteManyByOrganization = function (organizationId, filter, extraHttpRequestParams) {
+        return this.directoriesDeleteManyByOrganizationWithHttpInfo(organizationId, filter, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * delete existing directory
+     * delete existing directory
+     * @param organizationId The target organization
+     * @param directoryId The directory identifier
+     */
+    OrganizationsApi.prototype.directoriesDeleteOneByOrganization = function (organizationId, directoryId, extraHttpRequestParams) {
+        return this.directoriesDeleteOneByOrganizationWithHttpInfo(organizationId, directoryId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Returns directories
+     * Returns directories
+     * @param organizationId The target organization
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;sbcloud\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    OrganizationsApi.prototype.directoriesQueryByOrganization = function (organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        return this.directoriesQueryByOrganizationWithHttpInfo(organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Get one existing directory
+     * Get one existing directory
+     * @param organizationId The target organization
+     * @param directoryId The directory identifier
+     */
+    OrganizationsApi.prototype.directoriesReadOneByOrganization = function (organizationId, directoryId, extraHttpRequestParams) {
+        return this.directoriesReadOneByOrganizationWithHttpInfo(organizationId, directoryId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Bulk update existing users
+     * Bulk update existing users
+     * @param organizationId The target organization
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;xyz\&quot;}
+     * @param directoryBulkUpdate Use filter to find the directories and do a bulk update
+     */
+    OrganizationsApi.prototype.directoriesUpdateManyByOrganization = function (organizationId, filter, directoryBulkUpdate, extraHttpRequestParams) {
+        return this.directoriesUpdateManyByOrganizationWithHttpInfo(organizationId, filter, directoryBulkUpdate, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * update existing directory
+     * update existing directory
+     * @param organizationId The target organization
+     * @param directoryId The user identifier
+     * @param updatedDirectory updated directory
+     */
+    OrganizationsApi.prototype.directoriesUpdateOneByOrganization = function (organizationId, directoryId, updatedDirectory, extraHttpRequestParams) {
+        return this.directoriesUpdateOneByOrganizationWithHttpInfo(organizationId, directoryId, updatedDirectory, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Create organization invite
+     * Create organization invite
+     * @param organizationId The target organization of your invite
+     */
+    OrganizationsApi.prototype.invitesCreateOneByOrganization = function (organizationId, extraHttpRequestParams) {
+        return this.invitesCreateOneByOrganizationWithHttpInfo(organizationId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Create organization invite
+     * Create organization invite
+     * @param organizationId The target organization of your invite
+     * @param userId The user identifier
+     */
+    OrganizationsApi.prototype.invitesCreateOneByOrganizationAndUser = function (organizationId, userId, extraHttpRequestParams) {
+        return this.invitesCreateOneByOrganizationAndUserWithHttpInfo(organizationId, userId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Bulk delete existing organization invites
+     * Bulk delete existing organization invites
+     * @param organizationId The target organization of your invite
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     */
+    OrganizationsApi.prototype.invitesDeleteManyByOrganization = function (organizationId, filter, extraHttpRequestParams) {
+        return this.invitesDeleteManyByOrganizationWithHttpInfo(organizationId, filter, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * delete existing invite
+     * delete existing invite
+     * @param organizationId The target organization of your invite
+     * @param inviteId The invite identifier
+     */
+    OrganizationsApi.prototype.invitesDeleteOneByOrganization = function (organizationId, inviteId, extraHttpRequestParams) {
+        return this.invitesDeleteOneByOrganizationWithHttpInfo(organizationId, inviteId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * delete existing invite
+     * delete existing invite
+     * @param organizationId The target organization of your invite
+     * @param userId The user identifier
+     * @param inviteId The invite identifier
+     */
+    OrganizationsApi.prototype.invitesDeleteOneByOrganizationAndUser = function (organizationId, userId, inviteId, extraHttpRequestParams) {
+        return this.invitesDeleteOneByOrganizationAndUserWithHttpInfo(organizationId, userId, inviteId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Returns invites
+     * Returns invites
+     * @param organizationId The target organization of your invite
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;isPublic\&quot;: \&quot;true\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    OrganizationsApi.prototype.invitesQueryByOrganization = function (organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        return this.invitesQueryByOrganizationWithHttpInfo(organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Returns invites
+     * Returns invites
+     * @param organizationId The target organization of your invite
+     * @param userId The user identifier
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;isPublic\&quot;: \&quot;true\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    OrganizationsApi.prototype.invitesQueryByOrganizationAndUser = function (organizationId, userId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        return this.invitesQueryByOrganizationAndUserWithHttpInfo(organizationId, userId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Get one existing invite
+     * Get one existing invite
+     * @param organizationId The target organization of your invite
+     * @param inviteId The invite identifier
+     */
+    OrganizationsApi.prototype.invitesReadOneByOrganization = function (organizationId, inviteId, extraHttpRequestParams) {
+        return this.invitesReadOneByOrganizationWithHttpInfo(organizationId, inviteId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Create multiple new organizations
      * Create multiple new organizations
      * @param organizations Multiple organizations
      */
-    OrganizationsApi.prototype.organizationsBulkPost = function (organizations, extraHttpRequestParams) {
-        return this.organizationsBulkPostWithHttpInfo(organizations, extraHttpRequestParams)
+    OrganizationsApi.prototype.organizationsCreateMany = function (organizations, extraHttpRequestParams) {
+        return this.organizationsCreateManyWithHttpInfo(organizations, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -44,12 +390,28 @@ var OrganizationsApi = (function () {
         });
     };
     /**
-     *
+     * Create new organization
+     * Create new organization
+     * @param organization Your new organization
+     */
+    OrganizationsApi.prototype.organizationsCreateOne = function (organization, extraHttpRequestParams) {
+        return this.organizationsCreateOneWithHttpInfo(organization, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Bulk delete existing organizations
      * Bulk delete existing organizations
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
      */
-    OrganizationsApi.prototype.organizationsDelete = function (filter, extraHttpRequestParams) {
-        return this.organizationsDeleteWithHttpInfo(filter, extraHttpRequestParams)
+    OrganizationsApi.prototype.organizationsDeleteMany = function (filter, extraHttpRequestParams) {
+        return this.organizationsDeleteManyWithHttpInfo(filter, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -60,7 +422,23 @@ var OrganizationsApi = (function () {
         });
     };
     /**
-     *
+     * delete existing organization
+     * delete existing organization
+     * @param organizationId The organization identifier
+     */
+    OrganizationsApi.prototype.organizationsDeleteOne = function (organizationId, extraHttpRequestParams) {
+        return this.organizationsDeleteOneWithHttpInfo(organizationId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Returns organizations
      * Returns organizations
      * @param pageSize Items per page
      * @param pageNumber The page index (starting from 1)
@@ -69,8 +447,8 @@ var OrganizationsApi = (function () {
      * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
      * @param _public Fixed filter for public organizations
      */
-    OrganizationsApi.prototype.organizationsGet = function (pageSize, pageNumber, filter, sort, select, _public, extraHttpRequestParams) {
-        return this.organizationsGetWithHttpInfo(pageSize, pageNumber, filter, sort, select, _public, extraHttpRequestParams)
+    OrganizationsApi.prototype.organizationsQuery = function (pageSize, pageNumber, filter, sort, select, _public, extraHttpRequestParams) {
+        return this.organizationsQueryWithHttpInfo(pageSize, pageNumber, filter, sort, select, _public, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -81,28 +459,12 @@ var OrganizationsApi = (function () {
         });
     };
     /**
-     *
-     * delete existing organization
-     * @param organizationId The organization identifier
-     */
-    OrganizationsApi.prototype.organizationsOrganizationIdDelete = function (organizationId, extraHttpRequestParams) {
-        return this.organizationsOrganizationIdDeleteWithHttpInfo(organizationId, extraHttpRequestParams)
-            .map(function (response) {
-            if (response.status === 204) {
-                return undefined;
-            }
-            else {
-                return response.json();
-            }
-        });
-    };
-    /**
-     *
+     * Get one existing organization
      * Get one existing organization
      * @param organizationId The organization identifier
      */
-    OrganizationsApi.prototype.organizationsOrganizationIdGet = function (organizationId, extraHttpRequestParams) {
-        return this.organizationsOrganizationIdGetWithHttpInfo(organizationId, extraHttpRequestParams)
+    OrganizationsApi.prototype.organizationsReadOne = function (organizationId, extraHttpRequestParams) {
+        return this.organizationsReadOneWithHttpInfo(organizationId, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -113,12 +475,13 @@ var OrganizationsApi = (function () {
         });
     };
     /**
-     *
-     * Create organization invite
-     * @param organizationId The target organization of your invite
+     * Bulk update existing organizations
+     * Bulk update existing organizations
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;xyz\&quot;}
+     * @param organizationBulkUpdate Use filter to find the organizations and do a bulk update
      */
-    OrganizationsApi.prototype.organizationsOrganizationIdInvitesPost = function (organizationId, extraHttpRequestParams) {
-        return this.organizationsOrganizationIdInvitesPostWithHttpInfo(organizationId, extraHttpRequestParams)
+    OrganizationsApi.prototype.organizationsUpdateMany = function (filter, organizationBulkUpdate, extraHttpRequestParams) {
+        return this.organizationsUpdateManyWithHttpInfo(filter, organizationBulkUpdate, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -129,13 +492,13 @@ var OrganizationsApi = (function () {
         });
     };
     /**
-     *
+     * update existing organization
      * update existing organization
      * @param organizationId The user identifier
      * @param updatedOrganization updated organization
      */
-    OrganizationsApi.prototype.organizationsOrganizationIdPut = function (organizationId, updatedOrganization, extraHttpRequestParams) {
-        return this.organizationsOrganizationIdPutWithHttpInfo(organizationId, updatedOrganization, extraHttpRequestParams)
+    OrganizationsApi.prototype.organizationsUpdateOne = function (organizationId, updatedOrganization, extraHttpRequestParams) {
+        return this.organizationsUpdateOneWithHttpInfo(organizationId, updatedOrganization, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -146,12 +509,17 @@ var OrganizationsApi = (function () {
         });
     };
     /**
-     *
-     * Create new organization
-     * @param organization Your new organization
+     * Returns users that have signed up with a specific organization
+     * Returns users that have signed up with a specific organization
+     * @param organizationId The organization identifier
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
      */
-    OrganizationsApi.prototype.organizationsPost = function (organization, extraHttpRequestParams) {
-        return this.organizationsPostWithHttpInfo(organization, extraHttpRequestParams)
+    OrganizationsApi.prototype.usersQueryByOrganization = function (organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        return this.usersQueryByOrganizationWithHttpInfo(organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -162,28 +530,904 @@ var OrganizationsApi = (function () {
         });
     };
     /**
-     *
+     * Returns a specific user that has signed up with a specific organization
+     * Returns a specific user that has signed up with a specific organization
+     * @param organizationId The organization identifier
+     * @param userId The user identifier
+     */
+    OrganizationsApi.prototype.usersReadOneByOrganization = function (organizationId, userId, extraHttpRequestParams) {
+        return this.usersReadOneByOrganizationWithHttpInfo(organizationId, userId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Remove a specific user from an organization
+     * Remove a specific user from an organization
+     * @param organizationId The organization identifier
+     * @param userId The user identifier
+     */
+    OrganizationsApi.prototype.usersRemoveFromOrganization = function (organizationId, userId, extraHttpRequestParams) {
+        return this.usersRemoveFromOrganizationWithHttpInfo(organizationId, userId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Create new application
+     * Create new application
+     * @param organizationId Your Selfbits Organization ID
+     * @param application Your new application
+     */
+    OrganizationsApi.prototype.applicationsCreateOneByOrganizationWithHttpInfo = function (organizationId, application, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/applications'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling applicationsCreateOneByOrganization.');
+        }
+        // verify required parameter 'application' is not null or undefined
+        if (application === null || application === undefined) {
+            throw new Error('Required parameter application was null or undefined when calling applicationsCreateOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            body: application == null ? '' : JSON.stringify(application),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Delete existing SELFBITS CLOUD PLATFORM application
+     * Delete existing SELFBITS CLOUD PLATFORM application
+     * @param organizationId Your Selfbits Organization ID
+     * @param applicationId The tenant application identifier
+     */
+    OrganizationsApi.prototype.applicationsDeleteOneByOrganizationWithHttpInfo = function (organizationId, applicationId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/applications/${applicationId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'applicationId' + '}', String(applicationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling applicationsDeleteOneByOrganization.');
+        }
+        // verify required parameter 'applicationId' is not null or undefined
+        if (applicationId === null || applicationId === undefined) {
+            throw new Error('Required parameter applicationId was null or undefined when calling applicationsDeleteOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Returns applications
+     * Returns applications
+     * @param organizationId The target organization
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;sbcloud\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    OrganizationsApi.prototype.applicationsQueryByOrganizationWithHttpInfo = function (organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/applications'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling applicationsQueryByOrganization.');
+        }
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', pageSize);
+        }
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', pageNumber);
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        if (sort !== undefined) {
+            queryParameters.set('sort', sort);
+        }
+        if (select !== undefined) {
+            queryParameters.set('select', select);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Create new application
+     * Create new application
+     * @param organizationId Your Selfbits Organization ID
+     * @param applicationId The tenant application identifier
+     */
+    OrganizationsApi.prototype.applicationsReadOneByOrganizationWithHttpInfo = function (organizationId, applicationId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/applications/${applicationId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'applicationId' + '}', String(applicationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling applicationsReadOneByOrganization.');
+        }
+        // verify required parameter 'applicationId' is not null or undefined
+        if (applicationId === null || applicationId === undefined) {
+            throw new Error('Required parameter applicationId was null or undefined when calling applicationsReadOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Create new directory
+     * Create new directory
+     * @param organizationId The target organization
+     * @param directory Your new directory
+     */
+    OrganizationsApi.prototype.directoriesCreateOneByOrganizationWithHttpInfo = function (organizationId, directory, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/directories'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling directoriesCreateOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            body: directory == null ? '' : JSON.stringify(directory),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Bulk delete existing directories
+     * Bulk delete existing directories
+     * @param organizationId The target organization
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     */
+    OrganizationsApi.prototype.directoriesDeleteManyByOrganizationWithHttpInfo = function (organizationId, filter, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/directories'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling directoriesDeleteManyByOrganization.');
+        }
+        // verify required parameter 'filter' is not null or undefined
+        if (filter === null || filter === undefined) {
+            throw new Error('Required parameter filter was null or undefined when calling directoriesDeleteManyByOrganization.');
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * delete existing directory
+     * delete existing directory
+     * @param organizationId The target organization
+     * @param directoryId The directory identifier
+     */
+    OrganizationsApi.prototype.directoriesDeleteOneByOrganizationWithHttpInfo = function (organizationId, directoryId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/directories/${directoryId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'directoryId' + '}', String(directoryId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling directoriesDeleteOneByOrganization.');
+        }
+        // verify required parameter 'directoryId' is not null or undefined
+        if (directoryId === null || directoryId === undefined) {
+            throw new Error('Required parameter directoryId was null or undefined when calling directoriesDeleteOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Returns directories
+     * Returns directories
+     * @param organizationId The target organization
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;sbcloud\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    OrganizationsApi.prototype.directoriesQueryByOrganizationWithHttpInfo = function (organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/directories'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling directoriesQueryByOrganization.');
+        }
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', pageSize);
+        }
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', pageNumber);
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        if (sort !== undefined) {
+            queryParameters.set('sort', sort);
+        }
+        if (select !== undefined) {
+            queryParameters.set('select', select);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Get one existing directory
+     * Get one existing directory
+     * @param organizationId The target organization
+     * @param directoryId The directory identifier
+     */
+    OrganizationsApi.prototype.directoriesReadOneByOrganizationWithHttpInfo = function (organizationId, directoryId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/directories/${directoryId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'directoryId' + '}', String(directoryId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling directoriesReadOneByOrganization.');
+        }
+        // verify required parameter 'directoryId' is not null or undefined
+        if (directoryId === null || directoryId === undefined) {
+            throw new Error('Required parameter directoryId was null or undefined when calling directoriesReadOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
      * Bulk update existing users
+     * Bulk update existing users
+     * @param organizationId The target organization
      * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;xyz\&quot;}
-     * @param organizationBulkUpdate Use filter to find the organizations and do a bulk update
+     * @param directoryBulkUpdate Use filter to find the directories and do a bulk update
      */
-    OrganizationsApi.prototype.organizationsPut = function (filter, organizationBulkUpdate, extraHttpRequestParams) {
-        return this.organizationsPutWithHttpInfo(filter, organizationBulkUpdate, extraHttpRequestParams)
-            .map(function (response) {
-            if (response.status === 204) {
-                return undefined;
-            }
-            else {
-                return response.json();
-            }
+    OrganizationsApi.prototype.directoriesUpdateManyByOrganizationWithHttpInfo = function (organizationId, filter, directoryBulkUpdate, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/directories'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling directoriesUpdateManyByOrganization.');
+        }
+        // verify required parameter 'filter' is not null or undefined
+        if (filter === null || filter === undefined) {
+            throw new Error('Required parameter filter was null or undefined when calling directoriesUpdateManyByOrganization.');
+        }
+        // verify required parameter 'directoryBulkUpdate' is not null or undefined
+        if (directoryBulkUpdate === null || directoryBulkUpdate === undefined) {
+            throw new Error('Required parameter directoryBulkUpdate was null or undefined when calling directoriesUpdateManyByOrganization.');
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Put,
+            headers: headers,
+            body: directoryBulkUpdate == null ? '' : JSON.stringify(directoryBulkUpdate),
+            search: queryParameters
         });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
     };
     /**
-     *
+     * update existing directory
+     * update existing directory
+     * @param organizationId The target organization
+     * @param directoryId The user identifier
+     * @param updatedDirectory updated directory
+     */
+    OrganizationsApi.prototype.directoriesUpdateOneByOrganizationWithHttpInfo = function (organizationId, directoryId, updatedDirectory, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/directories/${directoryId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'directoryId' + '}', String(directoryId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling directoriesUpdateOneByOrganization.');
+        }
+        // verify required parameter 'directoryId' is not null or undefined
+        if (directoryId === null || directoryId === undefined) {
+            throw new Error('Required parameter directoryId was null or undefined when calling directoriesUpdateOneByOrganization.');
+        }
+        // verify required parameter 'updatedDirectory' is not null or undefined
+        if (updatedDirectory === null || updatedDirectory === undefined) {
+            throw new Error('Required parameter updatedDirectory was null or undefined when calling directoriesUpdateOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Put,
+            headers: headers,
+            body: updatedDirectory == null ? '' : JSON.stringify(updatedDirectory),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Create organization invite
+     * Create organization invite
+     * @param organizationId The target organization of your invite
+     */
+    OrganizationsApi.prototype.invitesCreateOneByOrganizationWithHttpInfo = function (organizationId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/invites'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling invitesCreateOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Create organization invite
+     * Create organization invite
+     * @param organizationId The target organization of your invite
+     * @param userId The user identifier
+     */
+    OrganizationsApi.prototype.invitesCreateOneByOrganizationAndUserWithHttpInfo = function (organizationId, userId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/users/${userId}/invites'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'userId' + '}', String(userId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling invitesCreateOneByOrganizationAndUser.');
+        }
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling invitesCreateOneByOrganizationAndUser.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Bulk delete existing organization invites
+     * Bulk delete existing organization invites
+     * @param organizationId The target organization of your invite
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     */
+    OrganizationsApi.prototype.invitesDeleteManyByOrganizationWithHttpInfo = function (organizationId, filter, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/invites'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling invitesDeleteManyByOrganization.');
+        }
+        // verify required parameter 'filter' is not null or undefined
+        if (filter === null || filter === undefined) {
+            throw new Error('Required parameter filter was null or undefined when calling invitesDeleteManyByOrganization.');
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * delete existing invite
+     * delete existing invite
+     * @param organizationId The target organization of your invite
+     * @param inviteId The invite identifier
+     */
+    OrganizationsApi.prototype.invitesDeleteOneByOrganizationWithHttpInfo = function (organizationId, inviteId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/invites/${inviteId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'inviteId' + '}', String(inviteId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling invitesDeleteOneByOrganization.');
+        }
+        // verify required parameter 'inviteId' is not null or undefined
+        if (inviteId === null || inviteId === undefined) {
+            throw new Error('Required parameter inviteId was null or undefined when calling invitesDeleteOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * delete existing invite
+     * delete existing invite
+     * @param organizationId The target organization of your invite
+     * @param userId The user identifier
+     * @param inviteId The invite identifier
+     */
+    OrganizationsApi.prototype.invitesDeleteOneByOrganizationAndUserWithHttpInfo = function (organizationId, userId, inviteId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/users/${userId}/invites/${inviteId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'userId' + '}', String(userId))
+            .replace('${' + 'inviteId' + '}', String(inviteId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling invitesDeleteOneByOrganizationAndUser.');
+        }
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling invitesDeleteOneByOrganizationAndUser.');
+        }
+        // verify required parameter 'inviteId' is not null or undefined
+        if (inviteId === null || inviteId === undefined) {
+            throw new Error('Required parameter inviteId was null or undefined when calling invitesDeleteOneByOrganizationAndUser.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Returns invites
+     * Returns invites
+     * @param organizationId The target organization of your invite
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;isPublic\&quot;: \&quot;true\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    OrganizationsApi.prototype.invitesQueryByOrganizationWithHttpInfo = function (organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/invites'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling invitesQueryByOrganization.');
+        }
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', pageSize);
+        }
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', pageNumber);
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        if (sort !== undefined) {
+            queryParameters.set('sort', sort);
+        }
+        if (select !== undefined) {
+            queryParameters.set('select', select);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Returns invites
+     * Returns invites
+     * @param organizationId The target organization of your invite
+     * @param userId The user identifier
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;isPublic\&quot;: \&quot;true\&quot;}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    OrganizationsApi.prototype.invitesQueryByOrganizationAndUserWithHttpInfo = function (organizationId, userId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/users/${userId}/invites'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'userId' + '}', String(userId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling invitesQueryByOrganizationAndUser.');
+        }
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling invitesQueryByOrganizationAndUser.');
+        }
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', pageSize);
+        }
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', pageNumber);
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        if (sort !== undefined) {
+            queryParameters.set('sort', sort);
+        }
+        if (select !== undefined) {
+            queryParameters.set('select', select);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Get one existing invite
+     * Get one existing invite
+     * @param organizationId The target organization of your invite
+     * @param inviteId The invite identifier
+     */
+    OrganizationsApi.prototype.invitesReadOneByOrganizationWithHttpInfo = function (organizationId, inviteId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/invites/${inviteId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'inviteId' + '}', String(inviteId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling invitesReadOneByOrganization.');
+        }
+        // verify required parameter 'inviteId' is not null or undefined
+        if (inviteId === null || inviteId === undefined) {
+            throw new Error('Required parameter inviteId was null or undefined when calling invitesReadOneByOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Create multiple new organizations
      * Create multiple new organizations
      * @param organizations Multiple organizations
      */
-    OrganizationsApi.prototype.organizationsBulkPostWithHttpInfo = function (organizations, extraHttpRequestParams) {
+    OrganizationsApi.prototype.organizationsCreateManyWithHttpInfo = function (organizations, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/organizations/bulk';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -211,17 +1455,49 @@ var OrganizationsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
+     * Create new organization
+     * Create new organization
+     * @param organization Your new organization
+     */
+    OrganizationsApi.prototype.organizationsCreateOneWithHttpInfo = function (organization, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations';
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            body: organization == null ? '' : JSON.stringify(organization),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Bulk delete existing organizations
      * Bulk delete existing organizations
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
      */
-    OrganizationsApi.prototype.organizationsDeleteWithHttpInfo = function (filter, extraHttpRequestParams) {
+    OrganizationsApi.prototype.organizationsDeleteManyWithHttpInfo = function (filter, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/organizations';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'filter' is not null or undefined
         if (filter === null || filter === undefined) {
-            throw new Error('Required parameter filter was null or undefined when calling organizationsDelete.');
+            throw new Error('Required parameter filter was null or undefined when calling organizationsDeleteMany.');
         }
         if (filter !== undefined) {
             queryParameters.set('filter', filter);
@@ -248,7 +1524,42 @@ var OrganizationsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
+     * delete existing organization
+     * delete existing organization
+     * @param organizationId The organization identifier
+     */
+    OrganizationsApi.prototype.organizationsDeleteOneWithHttpInfo = function (organizationId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling organizationsDeleteOne.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Returns organizations
      * Returns organizations
      * @param pageSize Items per page
      * @param pageNumber The page index (starting from 1)
@@ -257,7 +1568,7 @@ var OrganizationsApi = (function () {
      * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
      * @param _public Fixed filter for public organizations
      */
-    OrganizationsApi.prototype.organizationsGetWithHttpInfo = function (pageSize, pageNumber, filter, sort, select, _public, extraHttpRequestParams) {
+    OrganizationsApi.prototype.organizationsQueryWithHttpInfo = function (pageSize, pageNumber, filter, sort, select, _public, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/organizations';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -301,53 +1612,18 @@ var OrganizationsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
-     * delete existing organization
-     * @param organizationId The organization identifier
-     */
-    OrganizationsApi.prototype.organizationsOrganizationIdDeleteWithHttpInfo = function (organizationId, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/organizations/${organizationId}'
-            .replace('${' + 'organizationId' + '}', String(organizationId));
-        var queryParameters = new http_1.URLSearchParams();
-        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'organizationId' is not null or undefined
-        if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling organizationsOrganizationIdDelete.');
-        }
-        // to determine the Content-Type header
-        var consumes = [];
-        // to determine the Accept header
-        var produces = [
-            'application/json'
-        ];
-        // authentication (ConsumerSecurity) required
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
-        }
-        var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Delete,
-            headers: headers,
-            search: queryParameters
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
-        }
-        return this.http.request(path, requestOptions);
-    };
-    /**
-     *
+     * Get one existing organization
      * Get one existing organization
      * @param organizationId The organization identifier
      */
-    OrganizationsApi.prototype.organizationsOrganizationIdGetWithHttpInfo = function (organizationId, extraHttpRequestParams) {
+    OrganizationsApi.prototype.organizationsReadOneWithHttpInfo = function (organizationId, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/organizations/${organizationId}'
             .replace('${' + 'organizationId' + '}', String(organizationId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'organizationId' is not null or undefined
         if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling organizationsOrganizationIdGet.');
+            throw new Error('Required parameter organizationId was null or undefined when calling organizationsReadOne.');
         }
         // to determine the Content-Type header
         var consumes = [];
@@ -371,18 +1647,25 @@ var OrganizationsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
-     * Create organization invite
-     * @param organizationId The target organization of your invite
+     * Bulk update existing organizations
+     * Bulk update existing organizations
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;xyz\&quot;}
+     * @param organizationBulkUpdate Use filter to find the organizations and do a bulk update
      */
-    OrganizationsApi.prototype.organizationsOrganizationIdInvitesPostWithHttpInfo = function (organizationId, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/organizations/${organizationId}/invites'
-            .replace('${' + 'organizationId' + '}', String(organizationId));
+    OrganizationsApi.prototype.organizationsUpdateManyWithHttpInfo = function (filter, organizationBulkUpdate, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'organizationId' is not null or undefined
-        if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling organizationsOrganizationIdInvitesPost.');
+        // verify required parameter 'filter' is not null or undefined
+        if (filter === null || filter === undefined) {
+            throw new Error('Required parameter filter was null or undefined when calling organizationsUpdateMany.');
+        }
+        // verify required parameter 'organizationBulkUpdate' is not null or undefined
+        if (organizationBulkUpdate === null || organizationBulkUpdate === undefined) {
+            throw new Error('Required parameter organizationBulkUpdate was null or undefined when calling organizationsUpdateMany.');
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
         }
         // to determine the Content-Type header
         var consumes = [];
@@ -394,9 +1677,11 @@ var OrganizationsApi = (function () {
         if (this.configuration.apiKey) {
             headers.set('Authorization', this.configuration.apiKey);
         }
+        headers.set('Content-Type', 'application/json');
         var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Post,
+            method: http_2.RequestMethod.Put,
             headers: headers,
+            body: organizationBulkUpdate == null ? '' : JSON.stringify(organizationBulkUpdate),
             search: queryParameters
         });
         // https://github.com/swagger-api/swagger-codegen/issues/4037
@@ -406,23 +1691,23 @@ var OrganizationsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
+     * update existing organization
      * update existing organization
      * @param organizationId The user identifier
      * @param updatedOrganization updated organization
      */
-    OrganizationsApi.prototype.organizationsOrganizationIdPutWithHttpInfo = function (organizationId, updatedOrganization, extraHttpRequestParams) {
+    OrganizationsApi.prototype.organizationsUpdateOneWithHttpInfo = function (organizationId, updatedOrganization, extraHttpRequestParams) {
         var path = this.configuration.basePath + '/organizations/${organizationId}'
             .replace('${' + 'organizationId' + '}', String(organizationId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
         // verify required parameter 'organizationId' is not null or undefined
         if (organizationId === null || organizationId === undefined) {
-            throw new Error('Required parameter organizationId was null or undefined when calling organizationsOrganizationIdPut.');
+            throw new Error('Required parameter organizationId was null or undefined when calling organizationsUpdateOne.');
         }
         // verify required parameter 'updatedOrganization' is not null or undefined
         if (updatedOrganization === null || updatedOrganization === undefined) {
-            throw new Error('Required parameter updatedOrganization was null or undefined when calling organizationsOrganizationIdPut.');
+            throw new Error('Required parameter updatedOrganization was null or undefined when calling organizationsUpdateOne.');
         }
         // to determine the Content-Type header
         var consumes = [];
@@ -448,14 +1733,39 @@ var OrganizationsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
-     * Create new organization
-     * @param organization Your new organization
+     * Returns users that have signed up with a specific organization
+     * Returns users that have signed up with a specific organization
+     * @param organizationId The organization identifier
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
      */
-    OrganizationsApi.prototype.organizationsPostWithHttpInfo = function (organization, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/organizations';
+    OrganizationsApi.prototype.usersQueryByOrganizationWithHttpInfo = function (organizationId, pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/users'
+            .replace('${' + 'organizationId' + '}', String(organizationId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling usersQueryByOrganization.');
+        }
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', pageSize);
+        }
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', pageNumber);
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        if (sort !== undefined) {
+            queryParameters.set('sort', sort);
+        }
+        if (select !== undefined) {
+            queryParameters.set('select', select);
+        }
         // to determine the Content-Type header
         var consumes = [];
         // to determine the Accept header
@@ -466,11 +1776,9 @@ var OrganizationsApi = (function () {
         if (this.configuration.apiKey) {
             headers.set('Authorization', this.configuration.apiKey);
         }
-        headers.set('Content-Type', 'application/json');
         var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Post,
+            method: http_2.RequestMethod.Get,
             headers: headers,
-            body: organization == null ? '' : JSON.stringify(organization),
             search: queryParameters
         });
         // https://github.com/swagger-api/swagger-codegen/issues/4037
@@ -480,25 +1788,24 @@ var OrganizationsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
-     *
-     * Bulk update existing users
-     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;xyz\&quot;}
-     * @param organizationBulkUpdate Use filter to find the organizations and do a bulk update
+     * Returns a specific user that has signed up with a specific organization
+     * Returns a specific user that has signed up with a specific organization
+     * @param organizationId The organization identifier
+     * @param userId The user identifier
      */
-    OrganizationsApi.prototype.organizationsPutWithHttpInfo = function (filter, organizationBulkUpdate, extraHttpRequestParams) {
-        var path = this.configuration.basePath + '/organizations';
+    OrganizationsApi.prototype.usersReadOneByOrganizationWithHttpInfo = function (organizationId, userId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/users/${userId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'userId' + '}', String(userId));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-        // verify required parameter 'filter' is not null or undefined
-        if (filter === null || filter === undefined) {
-            throw new Error('Required parameter filter was null or undefined when calling organizationsPut.');
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling usersReadOneByOrganization.');
         }
-        // verify required parameter 'organizationBulkUpdate' is not null or undefined
-        if (organizationBulkUpdate === null || organizationBulkUpdate === undefined) {
-            throw new Error('Required parameter organizationBulkUpdate was null or undefined when calling organizationsPut.');
-        }
-        if (filter !== undefined) {
-            queryParameters.set('filter', filter);
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling usersReadOneByOrganization.');
         }
         // to determine the Content-Type header
         var consumes = [];
@@ -510,11 +1817,50 @@ var OrganizationsApi = (function () {
         if (this.configuration.apiKey) {
             headers.set('Authorization', this.configuration.apiKey);
         }
-        headers.set('Content-Type', 'application/json');
         var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Put,
+            method: http_2.RequestMethod.Get,
             headers: headers,
-            body: organizationBulkUpdate == null ? '' : JSON.stringify(organizationBulkUpdate),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Remove a specific user from an organization
+     * Remove a specific user from an organization
+     * @param organizationId The organization identifier
+     * @param userId The user identifier
+     */
+    OrganizationsApi.prototype.usersRemoveFromOrganizationWithHttpInfo = function (organizationId, userId, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/organizations/${organizationId}/users/${userId}'
+            .replace('${' + 'organizationId' + '}', String(organizationId))
+            .replace('${' + 'userId' + '}', String(userId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling usersRemoveFromOrganization.');
+        }
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling usersRemoveFromOrganization.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
             search: queryParameters
         });
         // https://github.com/swagger-api/swagger-codegen/issues/4037

@@ -25,20 +25,23 @@ All URIs are relative to *https://YOUR-TENANT.apps.selfbits.io/api/v2/YOUR-TENAN
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**browse**](FilesApi.md#browse) | **RequestMethod.Get** /files/browse/public | browse file path
-[**browse_0**](FilesApi.md#browse_0) | **RequestMethod.Get** /files/browse/private | browse file path
+[**browsePrivateByPath**](FilesApi.md#browsePrivateByPath) | **RequestMethod.Get** /files/browse/private | browse file path
+[**browsePublicByPath**](FilesApi.md#browsePublicByPath) | **RequestMethod.Get** /files/browse/public | browse file path
 [**createPrivate**](FilesApi.md#createPrivate) | **RequestMethod.Post** /files/private | initialize private file upload
+[**createPrivateOrganizationFile**](FilesApi.md#createPrivateOrganizationFile) | **RequestMethod.Post** /organization/${organizationId}/files/private | initialize private file upload
 [**createPublic**](FilesApi.md#createPublic) | **RequestMethod.Post** /files/public | initialize public file upload
+[**createPublicOrganizationFile**](FilesApi.md#createPublicOrganizationFile) | **RequestMethod.Post** /organization/${organizationId}/files/public | initialize public file upload
 [**deleteOne**](FilesApi.md#deleteOne) | **RequestMethod.Delete** /files/${fileId} | delete existing file
 [**query**](FilesApi.md#query) | **RequestMethod.Get** /files | query files
 [**readOne**](FilesApi.md#readOne) | **RequestMethod.Get** /files/file | Read existing file by id or by filePath
 [**updateOne**](FilesApi.md#updateOne) | **RequestMethod.Put** /files/${fileId} | Update customData of an existing file
 [**verifyUpload**](FilesApi.md#verifyUpload) | **RequestMethod.Post** /files/${fileId}/verify | verify the successful file upload
+[**verifyUploadOfOrganizationFile**](FilesApi.md#verifyUploadOfOrganizationFile) | **RequestMethod.Post** /organization/${organizationId}/files/${fileId}/verify | verify the successful file upload
 
 
-<a name="browse"></a>
-# **browse**
-> models.FileBrowserDocs browse(filePath)
+<a name="browsePrivateByPath"></a>
+# **browsePrivateByPath**
+> models.FileBrowserDocs browsePrivateByPath(filePath)
 
 browse file path
 
@@ -55,7 +58,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.browse(filePath: string ).subscribe(
+    this.apiInstance.browsePrivateByPath(filePath: string ).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -67,7 +70,7 @@ export class AppComponent implements OnInit {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filePath** | **string**| The path to the folder you want to browse (f.e. public/myfolder/) | [default to public/]
+ **filePath** | **string**| The path to the folder you want to browse (f.e. private/myfolder/) | [default to private/]
 
 ### Return type
 
@@ -82,9 +85,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="browse_0"></a>
-# **browse_0**
-> models.FileBrowserDocs browse_0(filePath)
+<a name="browsePublicByPath"></a>
+# **browsePublicByPath**
+> models.FileBrowserDocs browsePublicByPath(filePath)
 
 browse file path
 
@@ -101,7 +104,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.browse_1(filePath: string ).subscribe(
+    this.apiInstance.browsePublicByPath(filePath: string ).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -113,7 +116,7 @@ export class AppComponent implements OnInit {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filePath** | **string**| The path to the folder you want to browse (f.e. private/myfolder/) | [default to private/]
+ **filePath** | **string**| The path to the folder you want to browse (f.e. public/myfolder/) | [default to public/]
 
 ### Return type
 
@@ -174,6 +177,53 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="createPrivateOrganizationFile"></a>
+# **createPrivateOrganizationFile**
+> models.NewFileResponse createPrivateOrganizationFile(organizationIdopts)
+
+initialize private file upload
+
+Initialize new private file upload
+
+### Example
+```typescript
+import { FilesApi } from 'ngx.selfbits.io';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: FilesApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance.createPrivateOrganizationFile(organizationId: string file?: models.NewFile ).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organizationId** | **string**| The target organization | 
+ **file** | [**models.NewFile**](NewFile.md)| Your new file | [optional] 
+
+### Return type
+
+[**models.NewFileResponse**](models.NewFileResponse.md)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="createPublic"></a>
 # **createPublic**
 > models.NewFileResponse createPublic(opts)
@@ -205,6 +255,53 @@ export class AppComponent implements OnInit {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **file** | [**models.NewFile**](NewFile.md)| Your new file | [optional] 
+
+### Return type
+
+[**models.NewFileResponse**](models.NewFileResponse.md)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="createPublicOrganizationFile"></a>
+# **createPublicOrganizationFile**
+> models.NewFileResponse createPublicOrganizationFile(organizationIdopts)
+
+initialize public file upload
+
+Initialize new public file upload
+
+### Example
+```typescript
+import { FilesApi } from 'ngx.selfbits.io';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: FilesApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance.createPublicOrganizationFile(organizationId: string file?: models.NewFile ).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organizationId** | **string**| The target organization | 
  **file** | [**models.NewFile**](NewFile.md)| Your new file | [optional] 
 
 ### Return type
@@ -441,6 +538,54 @@ export class AppComponent implements OnInit {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **fileId** | **string**| The target file you want to verify | 
+ **etagObject** | [**models.FileVerificationRequest**](FileVerificationRequest.md)| The etag response header of the successful file upload | 
+
+### Return type
+
+[**models.File**](models.File.md)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="verifyUploadOfOrganizationFile"></a>
+# **verifyUploadOfOrganizationFile**
+> models.File verifyUploadOfOrganizationFile(organizationIdfileIdetagObject)
+
+verify the successful file upload
+
+verify the successful file upload using the ETag header value
+
+### Example
+```typescript
+import { FilesApi } from 'ngx.selfbits.io';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: FilesApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance.verifyUploadOfOrganizationFile(organizationId: string fileId: string etagObject: models.FileVerificationRequest ).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organizationId** | **string**| The target organization | 
  **fileId** | **string**| The target file you want to verify | 
  **etagObject** | [**models.FileVerificationRequest**](FileVerificationRequest.md)| The etag response header of the successful file upload | 
 

@@ -5,6 +5,7 @@ export interface NewEndpoint {
     method: NewEndpoint.MethodEnum;
     description?: string;
     actionId?: string;
+    config?: any;
     customData?: any;
 }
 export declare namespace NewEndpoint {

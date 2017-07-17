@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 <a name="joinOrganizationByProvider"></a>
 # **joinOrganizationByProvider**
-> models.UserSignupResponse joinOrganizationByProvider(organizationIddirectoryIduserSignupRequestopts)
+> models.UserSignupResponse joinOrganizationByProvider(organizationIdproviderIduserSignupRequestopts)
 
 Signup with specific organization and directory that belongs to a specific provider
 
@@ -145,7 +145,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiInstance.joinOrganizationByProvider(organizationId: string directoryId: string userSignupRequest: models.UserSignupRequest invite?: string ).subscribe(
+    this.apiInstance.joinOrganizationByProvider(organizationId: string providerId: string userSignupRequest: models.UserSignupRequest invite?: string ).subscribe(
       data => console.log(data),
       err => console.log(err)
     )
@@ -158,7 +158,7 @@ export class AppComponent implements OnInit {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organizationId** | **string**| the organization of the new user | 
- **directoryId** | **string**| the directory of the new user | 
+ **providerId** | **string**| the target provider | 
  **userSignupRequest** | [**models.UserSignupRequest**](UserSignupRequest.md)| User signup request | 
  **invite** | **string**| Optional invite code | [optional] 
 
