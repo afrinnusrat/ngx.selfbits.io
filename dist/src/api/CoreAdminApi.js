@@ -32,6 +32,23 @@ var CoreAdminApi = (function () {
         }
     }
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    CoreAdminApi.prototype._delete = function (stage, resource, extraHttpRequestParams) {
+        return this._deleteWithHttpInfo(stage, resource, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
      * Create multiple new actions
      * Create multiple new actions
      * @param actions Multiple actions
@@ -807,6 +824,23 @@ var CoreAdminApi = (function () {
         });
     };
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    CoreAdminApi.prototype.get = function (stage, resource, extraHttpRequestParams) {
+        return this.getWithHttpInfo(stage, resource, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
      * Bulk delete existing invites
      * Bulk delete existing invites
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
@@ -1143,6 +1177,24 @@ var CoreAdminApi = (function () {
         });
     };
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    CoreAdminApi.prototype.post = function (stage, resource, payload, extraHttpRequestParams) {
+        return this.postWithHttpInfo(stage, resource, payload, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
      * Create multiple new providers
      * Create multiple new providers
      * @param providers Multiple providers
@@ -1400,6 +1452,24 @@ var CoreAdminApi = (function () {
      */
     CoreAdminApi.prototype.pushservicesUpdateOne = function (pushServiceId, updatedPushService, extraHttpRequestParams) {
         return this.pushservicesUpdateOneWithHttpInfo(pushServiceId, updatedPushService, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    CoreAdminApi.prototype.put = function (stage, resource, payload, extraHttpRequestParams) {
+        return this.putWithHttpInfo(stage, resource, payload, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -1693,6 +1763,26 @@ var CoreAdminApi = (function () {
         });
     };
     /**
+     * Query existing users
+     * Query existing users
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    CoreAdminApi.prototype.usersQuery = function (pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        return this.usersQueryWithHttpInfo(pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json();
+            }
+        });
+    };
+    /**
      * Get one existing users
      * Get one existing users
      * @param userId The user identifier
@@ -1724,6 +1814,47 @@ var CoreAdminApi = (function () {
                 return response.json();
             }
         });
+    };
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    CoreAdminApi.prototype._deleteWithHttpInfo = function (stage, resource, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/rest/${stage}/${resource}'
+            .replace('${' + 'stage' + '}', String(stage))
+            .replace('${' + 'resource' + '}', String(resource));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'stage' is not null or undefined
+        if (stage === null || stage === undefined) {
+            throw new Error('Required parameter stage was null or undefined when calling _delete.');
+        }
+        // verify required parameter 'resource' is not null or undefined
+        if (resource === null || resource === undefined) {
+            throw new Error('Required parameter resource was null or undefined when calling _delete.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
     };
     /**
      * Create multiple new actions
@@ -3517,6 +3648,47 @@ var CoreAdminApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    CoreAdminApi.prototype.getWithHttpInfo = function (stage, resource, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/rest/${stage}/${resource}'
+            .replace('${' + 'stage' + '}', String(stage))
+            .replace('${' + 'resource' + '}', String(resource));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'stage' is not null or undefined
+        if (stage === null || stage === undefined) {
+            throw new Error('Required parameter stage was null or undefined when calling get.');
+        }
+        // verify required parameter 'resource' is not null or undefined
+        if (resource === null || resource === undefined) {
+            throw new Error('Required parameter resource was null or undefined when calling get.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
      * Bulk delete existing invites
      * Bulk delete existing invites
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
@@ -4283,6 +4455,50 @@ var CoreAdminApi = (function () {
         return this.http.request(path, requestOptions);
     };
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    CoreAdminApi.prototype.postWithHttpInfo = function (stage, resource, payload, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/rest/${stage}/${resource}'
+            .replace('${' + 'stage' + '}', String(stage))
+            .replace('${' + 'resource' + '}', String(resource));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'stage' is not null or undefined
+        if (stage === null || stage === undefined) {
+            throw new Error('Required parameter stage was null or undefined when calling post.');
+        }
+        // verify required parameter 'resource' is not null or undefined
+        if (resource === null || resource === undefined) {
+            throw new Error('Required parameter resource was null or undefined when calling post.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Post,
+            headers: headers,
+            body: payload == null ? '' : JSON.stringify(payload),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
      * Create multiple new providers
      * Create multiple new providers
      * @param providers Multiple providers
@@ -4880,6 +5096,50 @@ var CoreAdminApi = (function () {
             method: http_2.RequestMethod.Put,
             headers: headers,
             body: updatedPushService == null ? '' : JSON.stringify(updatedPushService),
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    CoreAdminApi.prototype.putWithHttpInfo = function (stage, resource, payload, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/rest/${stage}/${resource}'
+            .replace('${' + 'stage' + '}', String(stage))
+            .replace('${' + 'resource' + '}', String(resource));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'stage' is not null or undefined
+        if (stage === null || stage === undefined) {
+            throw new Error('Required parameter stage was null or undefined when calling put.');
+        }
+        // verify required parameter 'resource' is not null or undefined
+        if (resource === null || resource === undefined) {
+            throw new Error('Required parameter resource was null or undefined when calling put.');
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        headers.set('Content-Type', 'application/json');
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Put,
+            headers: headers,
+            body: payload == null ? '' : JSON.stringify(payload),
             search: queryParameters
         });
         // https://github.com/swagger-api/swagger-codegen/issues/4037
@@ -5520,6 +5780,55 @@ var CoreAdminApi = (function () {
         }
         var requestOptions = new http_2.RequestOptions({
             method: http_2.RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    /**
+     * Query existing users
+     * Query existing users
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    CoreAdminApi.prototype.usersQueryWithHttpInfo = function (pageSize, pageNumber, filter, sort, select, extraHttpRequestParams) {
+        var path = this.configuration.basePath + '/users';
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', pageSize);
+        }
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', pageNumber);
+        }
+        if (filter !== undefined) {
+            queryParameters.set('filter', filter);
+        }
+        if (sort !== undefined) {
+            queryParameters.set('sort', sort);
+        }
+        if (select !== undefined) {
+            queryParameters.set('select', select);
+        }
+        // to determine the Content-Type header
+        var consumes = [];
+        // to determine the Accept header
+        var produces = [
+            'application/json'
+        ];
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
             headers: headers,
             search: queryParameters
         });

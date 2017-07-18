@@ -11,6 +11,7 @@ All URIs are relative to *https://YOUR-TENANT.apps.selfbits.io/api/v2/YOUR-TENAN
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CoreAdminApi* | [**_delete**](docs/CoreAdminApi.md#_delete) | **RequestMethod.Delete** /rest/${stage}/${resource} | Execute a REST request to a deployed REST API
 *CoreAdminApi* | [**actionsCreateMany**](docs/CoreAdminApi.md#actionsCreateMany) | **RequestMethod.Post** /actions/bulk | Create multiple new actions
 *CoreAdminApi* | [**actionsCreateOne**](docs/CoreAdminApi.md#actionsCreateOne) | **RequestMethod.Post** /actions | Create new action
 *CoreAdminApi* | [**actionsDeleteMany**](docs/CoreAdminApi.md#actionsDeleteMany) | **RequestMethod.Delete** /actions | Bulk delete existing actions
@@ -57,6 +58,7 @@ Class | Method | HTTP request | Description
 *CoreAdminApi* | [**endpointsReadOne**](docs/CoreAdminApi.md#endpointsReadOne) | **RequestMethod.Get** /endpoints/${endpointId} | Get one existing endpoint
 *CoreAdminApi* | [**endpointsUpdateMany**](docs/CoreAdminApi.md#endpointsUpdateMany) | **RequestMethod.Put** /endpoints | Bulk update existing users
 *CoreAdminApi* | [**endpointsUpdateOne**](docs/CoreAdminApi.md#endpointsUpdateOne) | **RequestMethod.Put** /endpoints/${endpointId} | update existing endpoint
+*CoreAdminApi* | [**get**](docs/CoreAdminApi.md#get) | **RequestMethod.Get** /rest/${stage}/${resource} | Execute a REST request to a deployed REST API
 *CoreAdminApi* | [**invitesDeleteMany**](docs/CoreAdminApi.md#invitesDeleteMany) | **RequestMethod.Delete** /invites | Bulk delete existing invites
 *CoreAdminApi* | [**invitesDeleteOne**](docs/CoreAdminApi.md#invitesDeleteOne) | **RequestMethod.Delete** /invites/${inviteId} | delete existing invite
 *CoreAdminApi* | [**invitesQuery**](docs/CoreAdminApi.md#invitesQuery) | **RequestMethod.Get** /invites | Returns invites
@@ -77,6 +79,7 @@ Class | Method | HTTP request | Description
 *CoreAdminApi* | [**organizationsReadOne**](docs/CoreAdminApi.md#organizationsReadOne) | **RequestMethod.Get** /organizations/${organizationId} | Get one existing organization
 *CoreAdminApi* | [**organizationsUpdateMany**](docs/CoreAdminApi.md#organizationsUpdateMany) | **RequestMethod.Put** /organizations | Bulk update existing organizations
 *CoreAdminApi* | [**organizationsUpdateOne**](docs/CoreAdminApi.md#organizationsUpdateOne) | **RequestMethod.Put** /organizations/${organizationId} | update existing organization
+*CoreAdminApi* | [**post**](docs/CoreAdminApi.md#post) | **RequestMethod.Post** /rest/${stage}/${resource} | Execute a REST request to a deployed REST API
 *CoreAdminApi* | [**providersCreateMany**](docs/CoreAdminApi.md#providersCreateMany) | **RequestMethod.Post** /providers/bulk | Create multiple new providers
 *CoreAdminApi* | [**providersCreateOne**](docs/CoreAdminApi.md#providersCreateOne) | **RequestMethod.Post** /providers | Create new provider
 *CoreAdminApi* | [**providersDeleteMany**](docs/CoreAdminApi.md#providersDeleteMany) | **RequestMethod.Delete** /providers | Bulk delete existing providers
@@ -93,6 +96,7 @@ Class | Method | HTTP request | Description
 *CoreAdminApi* | [**pushservicesQuery**](docs/CoreAdminApi.md#pushservicesQuery) | **RequestMethod.Get** /pushservices | Returns pushservices
 *CoreAdminApi* | [**pushservicesReadOne**](docs/CoreAdminApi.md#pushservicesReadOne) | **RequestMethod.Get** /pushservices/${pushServiceId} | Get one existing pushService
 *CoreAdminApi* | [**pushservicesUpdateOne**](docs/CoreAdminApi.md#pushservicesUpdateOne) | **RequestMethod.Put** /pushservices/${pushServiceId} | update existing pushService
+*CoreAdminApi* | [**put**](docs/CoreAdminApi.md#put) | **RequestMethod.Put** /rest/${stage}/${resource} | Execute a REST request to a deployed REST API
 *CoreAdminApi* | [**rolesCreateMany**](docs/CoreAdminApi.md#rolesCreateMany) | **RequestMethod.Post** /roles/bulk | Create multiple new roles
 *CoreAdminApi* | [**rolesCreateOne**](docs/CoreAdminApi.md#rolesCreateOne) | **RequestMethod.Post** /roles | Create new role
 *CoreAdminApi* | [**rolesDeleteMany**](docs/CoreAdminApi.md#rolesDeleteMany) | **RequestMethod.Delete** /roles | Bulk delete existing roles
@@ -110,6 +114,7 @@ Class | Method | HTTP request | Description
 *CoreAdminApi* | [**smsServiceReadOne**](docs/CoreAdminApi.md#smsServiceReadOne) | **RequestMethod.Get** /sms/${smsServiceId} | Get one existing smsService
 *CoreAdminApi* | [**smsServiceUpdateOne**](docs/CoreAdminApi.md#smsServiceUpdateOne) | **RequestMethod.Put** /sms/${smsServiceId} | update existing smsService
 *CoreAdminApi* | [**usersDeleteOne**](docs/CoreAdminApi.md#usersDeleteOne) | **RequestMethod.Delete** /users/${userId} | delete existing user
+*CoreAdminApi* | [**usersQuery**](docs/CoreAdminApi.md#usersQuery) | **RequestMethod.Get** /users | Query existing users
 *CoreAdminApi* | [**usersReadOne**](docs/CoreAdminApi.md#usersReadOne) | **RequestMethod.Get** /users/${userId} | Get one existing users
 *CoreAdminApi* | [**usersUpdateOne**](docs/CoreAdminApi.md#usersUpdateOne) | **RequestMethod.Put** /users/${userId} | update existing user
 

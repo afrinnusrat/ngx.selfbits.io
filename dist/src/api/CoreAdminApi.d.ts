@@ -12,6 +12,13 @@ export declare class CoreAdminApi {
     sbClientSecret: string;
     constructor(http: Http, configuration: Configuration);
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    _delete(stage: string, resource: string, extraHttpRequestParams?: any): Observable<models.RestEndpointExecutionResponse>;
+    /**
      * Create multiple new actions
      * Create multiple new actions
      * @param actions Multiple actions
@@ -327,6 +334,13 @@ export declare class CoreAdminApi {
      */
     endpointsUpdateOne(endpointId: string, updatedEndpoint: models.EndpointUpdate, extraHttpRequestParams?: any): Observable<models.Endpoint>;
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    get(stage: string, resource: string, extraHttpRequestParams?: any): Observable<models.RestEndpointExecutionResponse>;
+    /**
      * Bulk delete existing invites
      * Bulk delete existing invites
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
@@ -463,6 +477,14 @@ export declare class CoreAdminApi {
      */
     organizationsUpdateOne(organizationId: string, updatedOrganization: models.OrganizationUpdate, extraHttpRequestParams?: any): Observable<models.Organization>;
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    post(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload, extraHttpRequestParams?: any): Observable<models.RestEndpointExecutionResponse>;
+    /**
      * Create multiple new providers
      * Create multiple new providers
      * @param providers Multiple providers
@@ -569,6 +591,14 @@ export declare class CoreAdminApi {
      * @param updatedPushService updated pushService
      */
     pushservicesUpdateOne(pushServiceId: string, updatedPushService: models.PushServiceUpdate, extraHttpRequestParams?: any): Observable<models.PushService>;
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    put(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload, extraHttpRequestParams?: any): Observable<models.RestEndpointExecutionResponse>;
     /**
      * Create multiple new roles
      * Create multiple new roles
@@ -683,6 +713,16 @@ export declare class CoreAdminApi {
      */
     usersDeleteOne(userId: string, extraHttpRequestParams?: any): Observable<{}>;
     /**
+     * Query existing users
+     * Query existing users
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    usersQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.UserPage>;
+    /**
      * Get one existing users
      * Get one existing users
      * @param userId The user identifier
@@ -695,6 +735,13 @@ export declare class CoreAdminApi {
      * @param updatedUser updated user
      */
     usersUpdateOne(userId: string, updatedUser: models.UserUpdate, extraHttpRequestParams?: any): Observable<models.User>;
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    _deleteWithHttpInfo(stage: string, resource: string, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * Create multiple new actions
      * Create multiple new actions
@@ -1011,6 +1058,13 @@ export declare class CoreAdminApi {
      */
     endpointsUpdateOneWithHttpInfo(endpointId: string, updatedEndpoint: models.EndpointUpdate, extraHttpRequestParams?: any): Observable<Response>;
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    getWithHttpInfo(stage: string, resource: string, extraHttpRequestParams?: any): Observable<Response>;
+    /**
      * Bulk delete existing invites
      * Bulk delete existing invites
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
@@ -1147,6 +1201,14 @@ export declare class CoreAdminApi {
      */
     organizationsUpdateOneWithHttpInfo(organizationId: string, updatedOrganization: models.OrganizationUpdate, extraHttpRequestParams?: any): Observable<Response>;
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    postWithHttpInfo(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload, extraHttpRequestParams?: any): Observable<Response>;
+    /**
      * Create multiple new providers
      * Create multiple new providers
      * @param providers Multiple providers
@@ -1253,6 +1315,14 @@ export declare class CoreAdminApi {
      * @param updatedPushService updated pushService
      */
     pushservicesUpdateOneWithHttpInfo(pushServiceId: string, updatedPushService: models.PushServiceUpdate, extraHttpRequestParams?: any): Observable<Response>;
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    putWithHttpInfo(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * Create multiple new roles
      * Create multiple new roles
@@ -1366,6 +1436,16 @@ export declare class CoreAdminApi {
      * @param userId The user identifier or me
      */
     usersDeleteOneWithHttpInfo(userId: string, extraHttpRequestParams?: any): Observable<Response>;
+    /**
+     * Query existing users
+     * Query existing users
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    usersQueryWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response>;
     /**
      * Get one existing users
      * Get one existing users

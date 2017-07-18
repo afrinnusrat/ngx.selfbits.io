@@ -42,6 +42,23 @@ export class CoreAdminApi {
     }
 
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    public _delete(stage: string, resource: string, extraHttpRequestParams?: any): Observable<models.RestEndpointExecutionResponse> {
+        return this._deleteWithHttpInfo(stage, resource, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
      * Create multiple new actions
      * Create multiple new actions
      * @param actions Multiple actions
@@ -817,6 +834,23 @@ export class CoreAdminApi {
     }
 
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    public get(stage: string, resource: string, extraHttpRequestParams?: any): Observable<models.RestEndpointExecutionResponse> {
+        return this.getWithHttpInfo(stage, resource, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
      * Bulk delete existing invites
      * Bulk delete existing invites
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
@@ -1153,6 +1187,24 @@ export class CoreAdminApi {
     }
 
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    public post(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload, extraHttpRequestParams?: any): Observable<models.RestEndpointExecutionResponse> {
+        return this.postWithHttpInfo(stage, resource, payload, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
      * Create multiple new providers
      * Create multiple new providers
      * @param providers Multiple providers
@@ -1410,6 +1462,24 @@ export class CoreAdminApi {
      */
     public pushservicesUpdateOne(pushServiceId: string, updatedPushService: models.PushServiceUpdate, extraHttpRequestParams?: any): Observable<models.PushService> {
         return this.pushservicesUpdateOneWithHttpInfo(pushServiceId, updatedPushService, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    public put(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload, extraHttpRequestParams?: any): Observable<models.RestEndpointExecutionResponse> {
+        return this.putWithHttpInfo(stage, resource, payload, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -1703,6 +1773,26 @@ export class CoreAdminApi {
     }
 
     /**
+     * Query existing users
+     * Query existing users
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public usersQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<models.UserPage> {
+        return this.usersQueryWithHttpInfo(pageSize, pageNumber, filter, sort, select, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
      * Get one existing users
      * Get one existing users
      * @param userId The user identifier
@@ -1735,6 +1825,55 @@ export class CoreAdminApi {
             });
     }
 
+
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    public _deleteWithHttpInfo(stage: string, resource: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/rest/${stage}/${resource}'
+                    .replace('${' + 'stage' + '}', String(stage))
+                    .replace('${' + 'resource' + '}', String(resource));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'stage' is not null or undefined
+        if (stage === null || stage === undefined) {
+            throw new Error('Required parameter stage was null or undefined when calling _delete.');
+        }
+        // verify required parameter 'resource' is not null or undefined
+        if (resource === null || resource === undefined) {
+            throw new Error('Required parameter resource was null or undefined when calling _delete.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
 
     /**
      * Create multiple new actions
@@ -3958,6 +4097,55 @@ export class CoreAdminApi {
     }
 
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     */
+    public getWithHttpInfo(stage: string, resource: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/rest/${stage}/${resource}'
+                    .replace('${' + 'stage' + '}', String(stage))
+                    .replace('${' + 'resource' + '}', String(resource));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'stage' is not null or undefined
+        if (stage === null || stage === undefined) {
+            throw new Error('Required parameter stage was null or undefined when calling get.');
+        }
+        // verify required parameter 'resource' is not null or undefined
+        if (resource === null || resource === undefined) {
+            throw new Error('Required parameter resource was null or undefined when calling get.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * Bulk delete existing invites
      * Bulk delete existing invites
      * @param filter Sequelize filter object like {\&quot;name\&quot;: { \&quot;$like\&quot; : \&quot;app%\&quot;}, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
@@ -4910,6 +5098,59 @@ export class CoreAdminApi {
     }
 
     /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    public postWithHttpInfo(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/rest/${stage}/${resource}'
+                    .replace('${' + 'stage' + '}', String(stage))
+                    .replace('${' + 'resource' + '}', String(resource));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'stage' is not null or undefined
+        if (stage === null || stage === undefined) {
+            throw new Error('Required parameter stage was null or undefined when calling post.');
+        }
+        // verify required parameter 'resource' is not null or undefined
+        if (resource === null || resource === undefined) {
+            throw new Error('Required parameter resource was null or undefined when calling post.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: payload == null ? '' : JSON.stringify(payload), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * Create multiple new providers
      * Create multiple new providers
      * @param providers Multiple providers
@@ -5651,6 +5892,59 @@ export class CoreAdminApi {
             method: RequestMethod.Put,
             headers: headers,
             body: updatedPushService == null ? '' : JSON.stringify(updatedPushService), // https://github.com/angular/angular/issues/10612
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Execute a REST request to a deployed REST API
+     * Execute a REST request to a deployed REST API
+     * @param stage The stage identifier
+     * @param resource The resource path
+     * @param payload Execution payload
+     */
+    public putWithHttpInfo(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/rest/${stage}/${resource}'
+                    .replace('${' + 'stage' + '}', String(stage))
+                    .replace('${' + 'resource' + '}', String(resource));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        // verify required parameter 'stage' is not null or undefined
+        if (stage === null || stage === undefined) {
+            throw new Error('Required parameter stage was null or undefined when calling put.');
+        }
+        // verify required parameter 'resource' is not null or undefined
+        if (resource === null || resource === undefined) {
+            throw new Error('Required parameter resource was null or undefined when calling put.');
+        }
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Put,
+            headers: headers,
+            body: payload == null ? '' : JSON.stringify(payload), // https://github.com/angular/angular/issues/10612
             search: queryParameters
         });
 
@@ -6446,6 +6740,68 @@ export class CoreAdminApi {
 
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters
+        });
+
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Query existing users
+     * Query existing users
+     * @param pageSize Items per page
+     * @param pageNumber The page index (starting from 1)
+     * @param filter Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}}
+     * @param sort Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 }
+     * @param select Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 }
+     */
+    public usersQueryWithHttpInfo(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.configuration.basePath + '/users';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        if (pageSize !== undefined) {
+            queryParameters.set('pageSize', <any>pageSize);
+        }
+
+        if (pageNumber !== undefined) {
+            queryParameters.set('pageNumber', <any>pageNumber);
+        }
+
+        if (filter !== undefined) {
+            queryParameters.set('filter', <any>filter);
+        }
+
+        if (sort !== undefined) {
+            queryParameters.set('sort', <any>sort);
+        }
+
+        if (select !== undefined) {
+            queryParameters.set('select', <any>select);
+        }
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (ConsumerSecurity) required
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
             headers: headers,
             search: queryParameters
         });

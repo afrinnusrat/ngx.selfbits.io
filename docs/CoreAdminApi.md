@@ -25,6 +25,7 @@ All URIs are relative to *https://YOUR-TENANT.apps.selfbits.io/api/v2/YOUR-TENAN
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**_delete**](CoreAdminApi.md#_delete) | **RequestMethod.Delete** /rest/${stage}/${resource} | Execute a REST request to a deployed REST API
 [**actionsCreateMany**](CoreAdminApi.md#actionsCreateMany) | **RequestMethod.Post** /actions/bulk | Create multiple new actions
 [**actionsCreateOne**](CoreAdminApi.md#actionsCreateOne) | **RequestMethod.Post** /actions | Create new action
 [**actionsDeleteMany**](CoreAdminApi.md#actionsDeleteMany) | **RequestMethod.Delete** /actions | Bulk delete existing actions
@@ -71,6 +72,7 @@ Method | HTTP request | Description
 [**endpointsReadOne**](CoreAdminApi.md#endpointsReadOne) | **RequestMethod.Get** /endpoints/${endpointId} | Get one existing endpoint
 [**endpointsUpdateMany**](CoreAdminApi.md#endpointsUpdateMany) | **RequestMethod.Put** /endpoints | Bulk update existing users
 [**endpointsUpdateOne**](CoreAdminApi.md#endpointsUpdateOne) | **RequestMethod.Put** /endpoints/${endpointId} | update existing endpoint
+[**get**](CoreAdminApi.md#get) | **RequestMethod.Get** /rest/${stage}/${resource} | Execute a REST request to a deployed REST API
 [**invitesDeleteMany**](CoreAdminApi.md#invitesDeleteMany) | **RequestMethod.Delete** /invites | Bulk delete existing invites
 [**invitesDeleteOne**](CoreAdminApi.md#invitesDeleteOne) | **RequestMethod.Delete** /invites/${inviteId} | delete existing invite
 [**invitesQuery**](CoreAdminApi.md#invitesQuery) | **RequestMethod.Get** /invites | Returns invites
@@ -91,6 +93,7 @@ Method | HTTP request | Description
 [**organizationsReadOne**](CoreAdminApi.md#organizationsReadOne) | **RequestMethod.Get** /organizations/${organizationId} | Get one existing organization
 [**organizationsUpdateMany**](CoreAdminApi.md#organizationsUpdateMany) | **RequestMethod.Put** /organizations | Bulk update existing organizations
 [**organizationsUpdateOne**](CoreAdminApi.md#organizationsUpdateOne) | **RequestMethod.Put** /organizations/${organizationId} | update existing organization
+[**post**](CoreAdminApi.md#post) | **RequestMethod.Post** /rest/${stage}/${resource} | Execute a REST request to a deployed REST API
 [**providersCreateMany**](CoreAdminApi.md#providersCreateMany) | **RequestMethod.Post** /providers/bulk | Create multiple new providers
 [**providersCreateOne**](CoreAdminApi.md#providersCreateOne) | **RequestMethod.Post** /providers | Create new provider
 [**providersDeleteMany**](CoreAdminApi.md#providersDeleteMany) | **RequestMethod.Delete** /providers | Bulk delete existing providers
@@ -107,6 +110,7 @@ Method | HTTP request | Description
 [**pushservicesQuery**](CoreAdminApi.md#pushservicesQuery) | **RequestMethod.Get** /pushservices | Returns pushservices
 [**pushservicesReadOne**](CoreAdminApi.md#pushservicesReadOne) | **RequestMethod.Get** /pushservices/${pushServiceId} | Get one existing pushService
 [**pushservicesUpdateOne**](CoreAdminApi.md#pushservicesUpdateOne) | **RequestMethod.Put** /pushservices/${pushServiceId} | update existing pushService
+[**put**](CoreAdminApi.md#put) | **RequestMethod.Put** /rest/${stage}/${resource} | Execute a REST request to a deployed REST API
 [**rolesCreateMany**](CoreAdminApi.md#rolesCreateMany) | **RequestMethod.Post** /roles/bulk | Create multiple new roles
 [**rolesCreateOne**](CoreAdminApi.md#rolesCreateOne) | **RequestMethod.Post** /roles | Create new role
 [**rolesDeleteMany**](CoreAdminApi.md#rolesDeleteMany) | **RequestMethod.Delete** /roles | Bulk delete existing roles
@@ -124,9 +128,57 @@ Method | HTTP request | Description
 [**smsServiceReadOne**](CoreAdminApi.md#smsServiceReadOne) | **RequestMethod.Get** /sms/${smsServiceId} | Get one existing smsService
 [**smsServiceUpdateOne**](CoreAdminApi.md#smsServiceUpdateOne) | **RequestMethod.Put** /sms/${smsServiceId} | update existing smsService
 [**usersDeleteOne**](CoreAdminApi.md#usersDeleteOne) | **RequestMethod.Delete** /users/${userId} | delete existing user
+[**usersQuery**](CoreAdminApi.md#usersQuery) | **RequestMethod.Get** /users | Query existing users
 [**usersReadOne**](CoreAdminApi.md#usersReadOne) | **RequestMethod.Get** /users/${userId} | Get one existing users
 [**usersUpdateOne**](CoreAdminApi.md#usersUpdateOne) | **RequestMethod.Put** /users/${userId} | update existing user
 
+
+<a name="_delete"></a>
+# **_delete**
+> models.RestEndpointExecutionResponse _delete
+
+Execute a REST request to a deployed REST API
+
+Execute a REST request to a deployed REST API
+
+### Example
+```typescript
+import { CoreAdminApi } from '';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: CoreAdminApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance._delete(stage: string, resource: string).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stage** | **string**| The stage identifier | 
+ **resource** | **string**| The resource path | 
+
+### Return type
+
+[**models.RestEndpointExecutionResponse**](models.RestEndpointExecutionResponse.md)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="actionsCreateMany"></a>
 # **actionsCreateMany**
@@ -2283,6 +2335,53 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="get"></a>
+# **get**
+> models.RestEndpointExecutionResponse get
+
+Execute a REST request to a deployed REST API
+
+Execute a REST request to a deployed REST API
+
+### Example
+```typescript
+import { CoreAdminApi } from '';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: CoreAdminApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance.get(stage: string, resource: string).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stage** | **string**| The stage identifier | 
+ **resource** | **string**| The resource path | 
+
+### Return type
+
+[**models.RestEndpointExecutionResponse**](models.RestEndpointExecutionResponse.md)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="invitesDeleteMany"></a>
 # **invitesDeleteMany**
 > models.BulkDeleteResponse invitesDeleteMany
@@ -3219,6 +3318,54 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="post"></a>
+# **post**
+> models.RestEndpointExecutionResponse post
+
+Execute a REST request to a deployed REST API
+
+Execute a REST request to a deployed REST API
+
+### Example
+```typescript
+import { CoreAdminApi } from '';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: CoreAdminApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance.post(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stage** | **string**| The stage identifier | 
+ **resource** | **string**| The resource path | 
+ **payload** | [**models.RestEndpointExecutionRequestPayload**](RestEndpointExecutionRequestPayload.md)| Execution payload | [optional] 
+
+### Return type
+
+[**models.RestEndpointExecutionResponse**](models.RestEndpointExecutionResponse.md)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="providersCreateMany"></a>
 # **providersCreateMany**
 > models.ProviderArray providersCreateMany
@@ -3956,6 +4103,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**models.PushService**](models.PushService.md)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="put"></a>
+# **put**
+> models.RestEndpointExecutionResponse put
+
+Execute a REST request to a deployed REST API
+
+Execute a REST request to a deployed REST API
+
+### Example
+```typescript
+import { CoreAdminApi } from '';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: CoreAdminApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance.put(stage: string, resource: string, payload?: models.RestEndpointExecutionRequestPayload).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stage** | **string**| The stage identifier | 
+ **resource** | **string**| The resource path | 
+ **payload** | [**models.RestEndpointExecutionRequestPayload**](RestEndpointExecutionRequestPayload.md)| Execution payload | [optional] 
+
+### Return type
+
+[**models.RestEndpointExecutionResponse**](models.RestEndpointExecutionResponse.md)
 
 ### Authorization
 
@@ -4749,6 +4944,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+[ConsumerSecurity](../README.md#ConsumerSecurity)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="usersQuery"></a>
+# **usersQuery**
+> models.UserPage usersQuery
+
+Query existing users
+
+Query existing users
+
+### Example
+```typescript
+import { CoreAdminApi } from '';
+
+@Component({ selector: 'app-root', templateUrl: './app.component.html' })
+export class AppComponent implements OnInit {
+  constructor(
+    private apiInstance: CoreAdminApi
+  ) { }
+
+  ngOnInit() {
+    this.apiInstance.usersQuery(pageSize?: number, pageNumber?: number, filter?: string, sort?: string, select?: string).subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    )
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | **number**| Items per page | [optional] [default to 20]
+ **pageNumber** | **number**| The page index (starting from 1) | [optional] [default to 1]
+ **filter** | **string**| Sequelize filter object like {\&quot;name\&quot;: \&quot;john doe\&quot;, \&quot;customData\&quot;: { \&quot;$contains\&quot;: {\&quot;key2\&quot; : \&quot;val2\&quot;}}} | [optional] 
+ **sort** | **string**| Sort object (1&#x3D;ascending, -1&#x3D;descending) like {\&quot;createdAt\&quot;: -1, \&quot;name\&quot; : 1 } | [optional] 
+ **select** | **string**| Select object (1&#x3D;include, -1&#x3D;exclude) like {\&quot;Id\&quot;: 1, \&quot;name\&quot;: 1 } | [optional] 
+
+### Return type
+
+[**models.UserPage**](models.UserPage.md)
 
 ### Authorization
 
