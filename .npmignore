@@ -9,6 +9,7 @@ build.xml
 node_modules/*
 npm-debug.log
 *.ts
+!*.d.ts
 tests
 examples
 .github
@@ -21,7 +22,7 @@ docs/
 .swagger-codegen-ignore
 banner.png
 git_push.sh
-index.d.ts
+./index.d.ts
 
 /dist/compiled
 
