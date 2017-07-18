@@ -22,7 +22,7 @@ docs/
 .swagger-codegen-ignore
 banner.png
 git_push.sh
-./index.d.ts
+/index.d.ts
 
 /dist/compiled
 
