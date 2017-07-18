@@ -13,5 +13,5 @@ import * as models from './models';
 export interface UserLoginResponse {
     user: models.User;
     authorization: models.AuthorizationResponse;
-    organizations?: models.UserOrganizationListResponse;
+    organizations: models.UserOrganizationListResponse;
 }

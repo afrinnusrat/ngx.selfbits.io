@@ -14,5 +14,5 @@ export interface UserSignupResponse {
     user: models.User;
     authorization: models.AuthorizationResponse;
     credentials?: models.LoginCredentials;
-    organizations?: models.UserOrganizationListResponse;
+    organizations: models.UserOrganizationListResponse;
 }

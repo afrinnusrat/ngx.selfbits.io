@@ -19,7 +19,7 @@ export interface UserSignupResponse {
 
     credentials?: models.LoginCredentials;
 
-    organizations?: models.UserOrganizationListResponse;
+    organizations: models.UserOrganizationListResponse;
 
 }
 

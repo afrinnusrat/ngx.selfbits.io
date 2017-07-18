@@ -17,7 +17,11 @@ export interface OrganizationShort {
 
     name: string;
 
-    description?: string;
+    description: string;
+
+    isDefault: boolean;
+
+    isPublic: boolean;
 
 }
 
